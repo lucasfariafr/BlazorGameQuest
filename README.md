@@ -29,4 +29,4 @@ Enfin, lancer l'application via : http://localhost:5133/
 ## Notes
 
 - Assurez-vous que GameService est lancé avant de démarrer le frontend.
-- Les ports peuvent varier selon la configuration
+- Les ports peuvent varier selon la configuration.
