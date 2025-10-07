@@ -2,37 +2,37 @@ using GameServices.Interfaces;
 using SharedModels.Enums;
 using SharedModels.Models;
 
-namespace GameServices.Services
+namespace GameServices.Services;
+
+public class RoomInitializer : IRoomInitializer
 {
-    public class RoomInitializer : IRoomInitializer
+    public IReadOnlyList<Room> InitializeRooms()
     {
-        public List<Room> InitializeRooms()
+        return new List<Room>
         {
-            return new List<Room>
+            new()
             {
-                new Room
-                {
-                    Id = 1,
-                    Description = $"Un {MonsterType.Goblin} apparaît. Que faites-vous ?",
-                    Monster = MonsterType.Goblin,
-                    AvailableActions = new List<PlayerAction>
-                    {
-                        PlayerAction.Fight,
-                        PlayerAction.RunAway,
-                        PlayerAction.Search
-                    }
-            }   ,
-                new Room
-                {
-                    Id = 2,
-                    Description = "Un coffre mystérieux !",
-                    AvailableActions = new List<PlayerAction>
-                    {
-                        PlayerAction.Open,
-                        PlayerAction.Ignore
-                    }
-                }
-            };
-        }
+                Id = 1,
+                Description = $"Un {MonsterType.Goblin} apparaît. Que faites-vous ?",
+                Monster = MonsterType.Goblin,
+                AvailableActions =
+                [
+                    PlayerAction.Fight,
+                    PlayerAction.RunAway,
+                    PlayerAction.Search
+                ]
+            },
+            new()
+            {
+                Id = 2,
+                Description = "Un coffre mystérieux !",
+                Monster = null,
+                AvailableActions =
+                [
+                    PlayerAction.Open,
+                    PlayerAction.Ignore
+                ]
+            },
+        }.AsReadOnly();
     }
 }

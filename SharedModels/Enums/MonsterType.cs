@@ -1,9 +1,8 @@
-namespace SharedModels.Enums
+namespace SharedModels.Enums;
+
+public enum MonsterType
 {
-    public enum MonsterType
-    {
-        Goblin,
-        Ogre,
-        Zombie,
-    }
+    Goblin = 0,
+    Ogre = 1,
+    Zombie = 2,
 }

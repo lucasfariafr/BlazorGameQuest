@@ -1,0 +1,58 @@
+@page "/room/{roomId:int}"
+@inject HttpClient Http
+@using SharedModels.Models
+@using SharedModels.Enums
+@using System.Text.Json
+@using System.Text.Json.Serialization
+
+@if (room == null)
+{
+    <div class="d-flex justify-content-center align-items-center" style="height: 200px;">
+        <div class="spinner-border text-primary" role="status"></div>
+    </div>
+}
+else
+{
+    <PageTitle>Bladebound · Salle @(roomId)</PageTitle>
+
+    <div class="room-container">
+        <h4>Salle @roomId</h4>
+        <p>@room.Description</p>
+        <ul>
+            @foreach (var action in room.AvailableActions)
+            {
+                <li>
+                    <button class="btn @GetActionButtonClass(action)">
+                        @action
+                    </button>
+                </li>
+            }
+        </ul>
+    </div>
+}
+
+@code {
+    [Parameter]
+    public int roomId { get; set; }
+
+    private Room? room;
+
+    protected override async Task OnInitializedAsync()
+    {
+        room = await Http.GetFromJsonAsync<Room>($"http://localhost:5154/api/Room/{roomId}", new JsonSerializerOptions
+        {
+            Converters = { new JsonStringEnumConverter() },
+            PropertyNameCaseInsensitive = true
+        });
+    }
+
+    private static string GetActionButtonClass(PlayerAction action) => action switch
+    {
+        PlayerAction.Fight => "btn-danger",
+        PlayerAction.RunAway => "btn-warning",
+        PlayerAction.Search => "btn-info",
+        PlayerAction.Open => "btn-success",
+        PlayerAction.Ignore => "btn-secondary",
+        _ => "btn-primary"
+    };
+}

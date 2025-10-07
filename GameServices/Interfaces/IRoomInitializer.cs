@@ -4,6 +4,6 @@ namespace GameServices.Interfaces
 {
     public interface IRoomInitializer
     {
-        List<Room> InitializeRooms();
+        IReadOnlyList<Room> InitializeRooms();
     }
 }

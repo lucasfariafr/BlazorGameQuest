@@ -3,3 +3,9 @@
 ### Récupérer les salles
 GET {{GameServices_HostAddress}}/api/Room
 Accept: application/json
+
+### Récupérer une salle
+@RoomId = 1
+
+GET {{GameServices_HostAddress}}/api/Room/{{RoomId}}
+Accept: application/json

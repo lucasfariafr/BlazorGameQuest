@@ -1,11 +1,10 @@
-namespace SharedModels.Enums
+namespace SharedModels.Enums;
+
+public enum PlayerAction
 {
-    public enum PlayerAction
-    {
-        Fight,
-        RunAway,
-        Search,
-        Open,
-        Ignore
-    }
+    Fight = 0,
+    RunAway = 1,
+    Search = 2,
+    Open = 3,
+    Ignore = 4
 }

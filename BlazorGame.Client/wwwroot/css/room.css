@@ -1,0 +1,17 @@
+.room-container ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  gap: 10px;
+}
+
+.room-container li {
+  margin: 0;
+}
+
+.room-container button {
+  padding: 5px 10px;
+  min-width: 113px;
+  height: 38px;
+  text-align: center;
+}

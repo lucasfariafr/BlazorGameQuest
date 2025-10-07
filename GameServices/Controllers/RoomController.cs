@@ -1,25 +1,41 @@
-using Microsoft.AspNetCore.Mvc;
 using GameServices.Interfaces;
+using Microsoft.AspNetCore.Mvc;
 using SharedModels.Models;
-using System.Collections.Generic;
 
-namespace GameServices.Controllers
+namespace GameServices.Controllers;
+
+[Route("api/[controller]")]
+[ApiController]
+[Produces("application/json")]
+public class RoomController : ControllerBase
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class RoomController : ControllerBase
+    private readonly IRoomService _roomService;
+
+    public RoomController(IRoomService roomService)
     {
-        private readonly IRoomInitializer _roomInitializer;
+        _roomService = roomService;
+    }
 
-        public RoomController(IRoomInitializer roomInitializer)
+    [HttpGet]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    public ActionResult<IEnumerable<Room>> GetAllRooms()
+    {
+        var rooms = _roomService.GetAllRooms();
+        return Ok(rooms);
+    }
+
+    [HttpGet("{id:int}")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public ActionResult<Room> GetRoomById(int id)
+    {
+        var room = _roomService.GetRoomById(id);
+
+        if (room is null)
         {
-            _roomInitializer = roomInitializer;
+            return NotFound(new { message = $"La salle avec l'ID {id} n'existe pas." });
         }
 
-        [HttpGet]
-        public ActionResult<List<Room>> GetRooms()
-        {
-            return Ok(_roomInitializer.InitializeRooms());
-        }
+        return Ok(room);
     }
 }
