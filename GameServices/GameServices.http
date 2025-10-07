@@ -1,0 +1,5 @@
+@GameServices_HostAddress = http://localhost:5154
+
+### Récupérer les salles
+GET {{GameServices_HostAddress}}/api/Room
+Accept: application/json
