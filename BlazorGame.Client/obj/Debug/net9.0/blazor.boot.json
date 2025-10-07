@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "BlazorGame.Client",
   "resources": {
-    "hash": "sha256-ZMu6wEgu1nbP8JHXY7Vpe8gPjfDtCrmL3sGe+MMGQ5w=",
+    "hash": "sha256-ND4yokft1+0PYrr8+6gkMp8Nrd05YsXVswtsaM+zm6o=",
     "fingerprinting": {
       "Microsoft.AspNetCore.Authorization.z6jo10m0rd.wasm": "Microsoft.AspNetCore.Authorization.wasm",
       "Microsoft.AspNetCore.Components.65wbz7t8mt.wasm": "Microsoft.AspNetCore.Components.wasm",
@@ -195,25 +195,25 @@
       "netstandard.kaml52uspo.wasm": "netstandard.wasm",
       "System.Private.CoreLib.uqnhzdwypx.wasm": "System.Private.CoreLib.wasm",
       "dotnet.js": "dotnet.js",
-      "dotnet.native.9ih887ebfz.js": "dotnet.native.js",
-      "dotnet.native.21mns4qp4i.wasm": "dotnet.native.wasm",
-      "dotnet.runtime.st3wwc8rqy.js": "dotnet.runtime.js",
+      "dotnet.native.hmanx9razn.js": "dotnet.native.js",
+      "dotnet.native.p4lwlf2bu1.wasm": "dotnet.native.wasm",
+      "dotnet.runtime.o8gq1i8bk6.js": "dotnet.runtime.js",
       "icudt_CJK.tjcz0u77k5.dat": "icudt_CJK.dat",
       "icudt_EFIGS.tptq2av103.dat": "icudt_EFIGS.dat",
       "icudt_no_CJK.lfu7j35m59.dat": "icudt_no_CJK.dat",
-      "SharedModels.xdqbnn4kjq.wasm": "SharedModels.wasm",
-      "SharedModels.kbtpch2lb4.pdb": "SharedModels.pdb",
-      "BlazorGame.Client.qdj34wy6b4.wasm": "BlazorGame.Client.wasm",
-      "BlazorGame.Client.c39hc6hkp9.pdb": "BlazorGame.Client.pdb"
+      "SharedModels.6femirdcm5.wasm": "SharedModels.wasm",
+      "SharedModels.aulv3f87up.pdb": "SharedModels.pdb",
+      "BlazorGame.Client.8kwtlxgzur.wasm": "BlazorGame.Client.wasm",
+      "BlazorGame.Client.4o4iv1ncwq.pdb": "BlazorGame.Client.pdb"
     },
     "jsModuleNative": {
-      "dotnet.native.9ih887ebfz.js": "sha256-oS7IRiQoVt9ThQ7Y2UM3XoeY0JqPD02cg9IvRdufn2w="
+      "dotnet.native.hmanx9razn.js": "sha256-d7UNSArplVrX3arY2Kmhxp1wN79ng8hLqIBrkiQ9Gbo="
     },
     "jsModuleRuntime": {
-      "dotnet.runtime.st3wwc8rqy.js": "sha256-oBRKHAqZUsvCRnCzkQfB7zc45cpKLNq2NKyrG10IKx8="
+      "dotnet.runtime.o8gq1i8bk6.js": "sha256-uD1t4tsPtmIHsx30SC4OztehGGaHVDksFD38rL2e3P4="
     },
     "wasmNative": {
-      "dotnet.native.21mns4qp4i.wasm": "sha256-RtuwNrUOdAJ5A4aS4ZmceO4ySriaYqTdC7X++6yd9lM="
+      "dotnet.native.p4lwlf2bu1.wasm": "sha256-+eNtxSEiakcWrx6VoLGcDvqDWS3/kWe0AtiYmQFwe7E="
     },
     "icu": {
       "icudt_CJK.tjcz0u77k5.dat": "sha256-SZLtQnRc0JkwqHab0VUVP7T3uBPSeYzxzDnpxPpUnHk=",
@@ -414,12 +414,12 @@
       "WindowsBase.vy2l5u79y6.wasm": "sha256-ufB9Mo5joMyUs3DzXWWBFFIZNEVrt6h9N5stYB6Oln4=",
       "mscorlib.xd6mv31d55.wasm": "sha256-1YSLR2eZt3ceALFV//vZUF2AloxVil3VlrW1zZYPSEI=",
       "netstandard.kaml52uspo.wasm": "sha256-HLEwBpLfzKw2/zGSVzHzFJxznCkt/WIjahrziiMrOpA=",
-      "SharedModels.xdqbnn4kjq.wasm": "sha256-qzKxScQzIAy+rU69s/nn8vQXDECLhoGmCttv+yErjJs=",
-      "BlazorGame.Client.qdj34wy6b4.wasm": "sha256-ItdBT/x3xTrbpMrZJzGc5nonEeutxVMrNene9ckbhMQ="
+      "SharedModels.6femirdcm5.wasm": "sha256-fp8aEuCs5JilpIJ5w8QCaI3xlpq5rwq2pGHs5RNRNYk=",
+      "BlazorGame.Client.8kwtlxgzur.wasm": "sha256-6Jyz6jHeoK63RQP9lQHFG6+NJD80wW3nDjwEzo4wOBw="
     },
     "pdb": {
-      "SharedModels.kbtpch2lb4.pdb": "sha256-UM8QHMVf/ZHWrT5VSDyI4kbP5pdBJ0AOAcDb8QooAZU=",
-      "BlazorGame.Client.c39hc6hkp9.pdb": "sha256-SLyZjeuO+X4CeYzPri43kWbrDhfMFpD0ymyPBXCjO/I="
+      "SharedModels.aulv3f87up.pdb": "sha256-Uj+ROk0GLDdlsaPFa1SnH+MtM2lnaoeS0Q5JGVwsTnQ=",
+      "BlazorGame.Client.4o4iv1ncwq.pdb": "sha256-3IRwnGXmy8e3p3Rz5FXsEugEszK45qSfZY/u7FwjRqg="
     }
   },
   "cacheBootResources": true,

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\lucas\\Documents\\C#\\BlazorGameQuest\\AuthenticationServices\\AuthenticationServices.csproj": {}
+    "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\AuthenticationServices\\AuthenticationServices.csproj": {}
   },
   "projects": {
-    "C:\\Users\\lucas\\Documents\\C#\\BlazorGameQuest\\AuthenticationServices\\AuthenticationServices.csproj": {
+    "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\AuthenticationServices\\AuthenticationServices.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\lucas\\Documents\\C#\\BlazorGameQuest\\AuthenticationServices\\AuthenticationServices.csproj",
+        "projectUniqueName": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\AuthenticationServices\\AuthenticationServices.csproj",
         "projectName": "AuthenticationServices",
-        "projectPath": "C:\\Users\\lucas\\Documents\\C#\\BlazorGameQuest\\AuthenticationServices\\AuthenticationServices.csproj",
+        "projectPath": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\AuthenticationServices\\AuthenticationServices.csproj",
         "packagesPath": "C:\\Users\\lucas\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\lucas\\Documents\\C#\\BlazorGameQuest\\AuthenticationServices\\obj\\",
+        "outputPath": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\AuthenticationServices\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\lucas\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -36,9 +36,9 @@
         "restoreAuditProperties": {
           "enableAudit": "true",
           "auditLevel": "low",
-          "auditMode": "direct"
+          "auditMode": "all"
         },
-        "SdkAnalysisLevel": "9.0.300"
+        "SdkAnalysisLevel": "9.0.100"
       },
       "frameworks": {
         "net9.0": {
@@ -68,7 +68,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files (x86)\\dotnet\\sdk\\9.0.100/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
