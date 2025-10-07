@@ -28,12 +28,24 @@ build_property.EnableCodeStyleSeverity =
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/lucas/Documents/Projets/BlazorGameQuest/BlazorGame.Client/Pages/History.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSGlzdG9yeS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/lucas/Documents/Projets/BlazorGameQuest/BlazorGame.Client/Pages/Home.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSG9tZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/lucas/Documents/Projets/BlazorGameQuest/BlazorGame.Client/Pages/Login.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9naW4ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/lucas/Documents/Projets/BlazorGameQuest/BlazorGame.Client/Pages/NewAdventure.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTmV3QWR2ZW50dXJlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/lucas/Documents/Projets/BlazorGameQuest/BlazorGame.Client/Pages/Scores.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2NvcmVzLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/lucas/Documents/Projets/BlazorGameQuest/BlazorGame.Client/_Imports.razor]

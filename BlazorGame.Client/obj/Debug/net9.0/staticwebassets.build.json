@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "vg4TbeCl9QAehd3HbBsBC4B/m2LJGzcd17DWZ0J4soA=",
+  "Hash": "E1yZ6DH1+Tv6BU6smspg7HIOX+ZZPps2Cusdg3WMoCA=",
   "Source": "BlazorGame.Client",
   "BasePath": "/",
   "Mode": "Root",
@@ -31,8 +31,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "WasmResource",
       "AssetTraitValue": "manifest",
-      "Fingerprint": "8lamv58p3u",
-      "Integrity": "HFJHAMSMOLhDam6aLHMDlwcgbkOH6Dp3hYC9mmxeMYg=",
+      "Fingerprint": "t6jf0qdu8n",
+      "Integrity": "G/lsNqhtepv2Nvqx4SOl0G/Kt4Db51TmhKYUvErvx6Q=",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "obj\\Debug\\net9.0\\blazor.boot.json"
@@ -73,8 +73,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "WasmResource",
       "AssetTraitValue": "symbol",
-      "Fingerprint": "4o4iv1ncwq",
-      "Integrity": "3IRwnGXmy8e3p3Rz5FXsEugEszK45qSfZY/u7FwjRqg=",
+      "Fingerprint": "cvkxfb0uwl",
+      "Integrity": "GB0TF6xwDt/5FiKqSEcS3fsLYS+Dj3YFdYpvzH8peFE=",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "obj\\Debug\\net9.0\\BlazorGame.Client.pdb"
@@ -94,8 +94,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "WasmResource",
       "AssetTraitValue": "runtime",
-      "Fingerprint": "8kwtlxgzur",
-      "Integrity": "6Jyz6jHeoK63RQP9lQHFG6+NJD80wW3nDjwEzo4wOBw=",
+      "Fingerprint": "a6mlyaa2we",
+      "Integrity": "frIjlWlEAur/7oTmCgBk1da1l33mGdIhSyWj4ZGD+zk=",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\obj\\Debug\\net9.0\\webcil\\BlazorGame.Client.wasm"
@@ -913,8 +913,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "WasmResource",
       "AssetTraitValue": "symbol",
-      "Fingerprint": "aulv3f87up",
-      "Integrity": "Uj+ROk0GLDdlsaPFa1SnH+MtM2lnaoeS0Q5JGVwsTnQ=",
+      "Fingerprint": "73t6gyt22c",
+      "Integrity": "wwDsi2ZrIjUakkZ1mFTurehvFi0IygdU++et1A1fOx8=",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\SharedModels\\bin\\Debug\\net9.0\\SharedModels.pdb"
@@ -934,8 +934,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "WasmResource",
       "AssetTraitValue": "runtime",
-      "Fingerprint": "6femirdcm5",
-      "Integrity": "fp8aEuCs5JilpIJ5w8QCaI3xlpq5rwq2pGHs5RNRNYk=",
+      "Fingerprint": "r8ukl6ji3f",
+      "Integrity": "5Wy5Wte18BLQrSxjbmxFoEhy81f1YChULjhXmW8biII=",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\obj\\Debug\\net9.0\\webcil\\SharedModels.wasm"
@@ -4826,12 +4826,12 @@
       "OriginalItemSpec": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\bin\\Debug\\net9.0\\wwwroot\\_framework\\System.IO.FileSystem.wasm"
     },
     {
-      "Identity": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\obj\\Debug\\net9.0\\compressed\\3xge7xgleq-8kwtlxgzur.gz",
+      "Identity": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\obj\\Debug\\net9.0\\compressed\\3xge7xgleq-a6mlyaa2we.gz",
       "SourceId": "BlazorGame.Client",
       "SourceType": "Computed",
       "ContentRoot": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\obj\\Debug\\net9.0\\compressed\\",
       "BasePath": "/",
-      "RelativePath": "_framework/BlazorGame.Client#[.{fingerprint=8kwtlxgzur}]!.wasm.gz",
+      "RelativePath": "_framework/BlazorGame.Client#[.{fingerprint=a6mlyaa2we}]!.wasm.gz",
       "AssetKind": "Build",
       "AssetMode": "All",
       "AssetRole": "Alternative",
@@ -4840,8 +4840,8 @@
       "RelatedAsset": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\bin\\Debug\\net9.0\\wwwroot\\_framework\\BlazorGame.Client.wasm",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "8rf668jh82",
-      "Integrity": "ROsTqQXXaDQs6ACKhseW/SGvyuKeOmdWFc9msVbJmkc=",
+      "Fingerprint": "z7jel2eb8k",
+      "Integrity": "z3Vhnyv2paUz6TAgStexCG9PVnjZkRFunAtuX+BcANQ=",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\bin\\Debug\\net9.0\\wwwroot\\_framework\\BlazorGame.Client.wasm"
@@ -4931,12 +4931,12 @@
       "OriginalItemSpec": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\bin\\Debug\\net9.0\\wwwroot\\_framework\\dotnet.native.js"
     },
     {
-      "Identity": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\obj\\Debug\\net9.0\\compressed\\4g85fzs2dp-6femirdcm5.gz",
+      "Identity": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\obj\\Debug\\net9.0\\compressed\\4g85fzs2dp-r8ukl6ji3f.gz",
       "SourceId": "BlazorGame.Client",
       "SourceType": "Computed",
       "ContentRoot": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\obj\\Debug\\net9.0\\compressed\\",
       "BasePath": "/",
-      "RelativePath": "_framework/SharedModels#[.{fingerprint=6femirdcm5}]!.wasm.gz",
+      "RelativePath": "_framework/SharedModels#[.{fingerprint=r8ukl6ji3f}]!.wasm.gz",
       "AssetKind": "Build",
       "AssetMode": "All",
       "AssetRole": "Alternative",
@@ -4945,8 +4945,8 @@
       "RelatedAsset": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\bin\\Debug\\net9.0\\wwwroot\\_framework\\SharedModels.wasm",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "eaee7hd52b",
-      "Integrity": "KmWEy0fJzp3g8nZQHj+c91IXl3h7dF50XXhUIw6dFo8=",
+      "Fingerprint": "njiedsdswo",
+      "Integrity": "Y0L09lXQocRl5WHT0zFGoibgzqUY3DbOF9tRbDWY3oo=",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\bin\\Debug\\net9.0\\wwwroot\\_framework\\SharedModels.wasm"
@@ -5267,12 +5267,12 @@
       "OriginalItemSpec": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\bin\\Debug\\net9.0\\wwwroot\\_framework\\System.Runtime.CompilerServices.VisualC.wasm"
     },
     {
-      "Identity": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\obj\\Debug\\net9.0\\compressed\\6di2wi1uy7-zfr8xbgscl.gz",
+      "Identity": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\obj\\Debug\\net9.0\\compressed\\6di2wi1uy7-c448525135.gz",
       "SourceId": "BlazorGame.Client",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\obj\\Debug\\net9.0\\compressed\\",
       "BasePath": "/",
-      "RelativePath": "index#[.{fingerprint=zfr8xbgscl}]?.html.gz",
+      "RelativePath": "index#[.{fingerprint=c448525135}]?.html.gz",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Alternative",
@@ -5281,8 +5281,8 @@
       "RelatedAsset": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\wwwroot\\index.html",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "rwa2re25yq",
-      "Integrity": "u/bZ21vr1oFhX9wOLOIaR6V3+PGzOaE4iCWsplpH/hk=",
+      "Fingerprint": "br3hifnt8m",
+      "Integrity": "R8tQeAo5kCJy42ZbTq4d4FQqKPPc9w3/Ske/XNXJWso=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\wwwroot\\index.html"
@@ -5582,12 +5582,12 @@
       "OriginalItemSpec": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\bin\\Debug\\net9.0\\wwwroot\\_framework\\System.Net.Http.wasm"
     },
     {
-      "Identity": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\obj\\Debug\\net9.0\\compressed\\825d4wn90r-kd7rx2gh6c.gz",
+      "Identity": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\obj\\Debug\\net9.0\\compressed\\825d4wn90r-qyeqqjpxa3.gz",
       "SourceId": "BlazorGame.Client",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\obj\\Debug\\net9.0\\compressed\\",
       "BasePath": "/",
-      "RelativePath": "css/connection#[.{fingerprint=kd7rx2gh6c}]?.css.gz",
+      "RelativePath": "css/connection#[.{fingerprint=qyeqqjpxa3}]?.css.gz",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Alternative",
@@ -5596,8 +5596,8 @@
       "RelatedAsset": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\wwwroot\\css\\connection.css",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "h6ufkj3b05",
-      "Integrity": "ifYTgKCUifkIuvawXOI6oonTM+Y/Y7oUqiHJ0AoPz6A=",
+      "Fingerprint": "8o1hqhc41n",
+      "Integrity": "SN951EBuINeTFq3uiAByzQyE5wke/vyIZrKAa8T9HGA=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\wwwroot\\css\\connection.css"
@@ -5624,12 +5624,12 @@
       "OriginalItemSpec": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
     },
     {
-      "Identity": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\obj\\Debug\\net9.0\\compressed\\851kpmcpoy-k8vf0r6do6.gz",
+      "Identity": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\obj\\Debug\\net9.0\\compressed\\851kpmcpoy-hp9jwrsvua.gz",
       "SourceId": "BlazorGame.Client",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\obj\\Debug\\net9.0\\compressed\\",
       "BasePath": "/",
-      "RelativePath": "css/app#[.{fingerprint=k8vf0r6do6}]?.css.gz",
+      "RelativePath": "css/app#[.{fingerprint=hp9jwrsvua}]?.css.gz",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Alternative",
@@ -5638,19 +5638,19 @@
       "RelatedAsset": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\wwwroot\\css\\app.css",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "k2830wdsyr",
-      "Integrity": "nJsH3gSNZHkdFCbrX2zwHjI2iNkUyfZ5D5wUSSJz0mk=",
+      "Fingerprint": "wwj5bqjg3i",
+      "Integrity": "ELcPd/k+Ql0JSJ1I2+XY0Su2Q3RDO3377ZtA8iT00Uk=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\wwwroot\\css\\app.css"
     },
     {
-      "Identity": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\obj\\Debug\\net9.0\\compressed\\85j3kajxx2-aulv3f87up.gz",
+      "Identity": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\obj\\Debug\\net9.0\\compressed\\85j3kajxx2-73t6gyt22c.gz",
       "SourceId": "BlazorGame.Client",
       "SourceType": "Computed",
       "ContentRoot": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\obj\\Debug\\net9.0\\compressed\\",
       "BasePath": "/",
-      "RelativePath": "_framework/SharedModels#[.{fingerprint=aulv3f87up}]!.pdb.gz",
+      "RelativePath": "_framework/SharedModels#[.{fingerprint=73t6gyt22c}]!.pdb.gz",
       "AssetKind": "Build",
       "AssetMode": "All",
       "AssetRole": "Alternative",
@@ -5659,8 +5659,8 @@
       "RelatedAsset": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\bin\\Debug\\net9.0\\wwwroot\\_framework\\SharedModels.pdb",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "1jzk4i7bhb",
-      "Integrity": "3SzY2Jg3TqQx6lJuXL61IeDgnxospx9vXVQSE5hqnqg=",
+      "Fingerprint": "vdpqn98bbw",
+      "Integrity": "A37woPo1VzVeumFRVK5qscjgeEJg5WKIz8LosyMg+kU=",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\bin\\Debug\\net9.0\\wwwroot\\_framework\\SharedModels.pdb"
@@ -7346,12 +7346,12 @@
       "OriginalItemSpec": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\bin\\Debug\\net9.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Metadata.wasm"
     },
     {
-      "Identity": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\obj\\Debug\\net9.0\\compressed\\l6szname3n-4o4iv1ncwq.gz",
+      "Identity": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\obj\\Debug\\net9.0\\compressed\\l6szname3n-cvkxfb0uwl.gz",
       "SourceId": "BlazorGame.Client",
       "SourceType": "Computed",
       "ContentRoot": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\obj\\Debug\\net9.0\\compressed\\",
       "BasePath": "/",
-      "RelativePath": "_framework/BlazorGame.Client#[.{fingerprint=4o4iv1ncwq}]!.pdb.gz",
+      "RelativePath": "_framework/BlazorGame.Client#[.{fingerprint=cvkxfb0uwl}]!.pdb.gz",
       "AssetKind": "Build",
       "AssetMode": "All",
       "AssetRole": "Alternative",
@@ -7360,8 +7360,8 @@
       "RelatedAsset": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\bin\\Debug\\net9.0\\wwwroot\\_framework\\BlazorGame.Client.pdb",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "gyd2mbqqkh",
-      "Integrity": "2EpDVicSdr6Mr5XmlFggRKxcPLALJhaPMGqAZUIZC/0=",
+      "Fingerprint": "f1xofcv316",
+      "Integrity": "Q4xIIdwLK4VMqk3qvMu4+0mpKPOrRLhSLPoW2mvgc3I=",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\bin\\Debug\\net9.0\\wwwroot\\_framework\\BlazorGame.Client.pdb"
@@ -9173,7 +9173,7 @@
       "OriginalItemSpec": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\bin\\Debug\\net9.0\\wwwroot\\_framework\\System.Diagnostics.Tools.wasm"
     },
     {
-      "Identity": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\obj\\Debug\\net9.0\\compressed\\wvjiyygni7-8lamv58p3u.gz",
+      "Identity": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\obj\\Debug\\net9.0\\compressed\\wvjiyygni7-t6jf0qdu8n.gz",
       "SourceId": "BlazorGame.Client",
       "SourceType": "Computed",
       "ContentRoot": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\obj\\Debug\\net9.0\\compressed\\",
@@ -9187,8 +9187,8 @@
       "RelatedAsset": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\bin\\Debug\\net9.0\\wwwroot\\_framework\\blazor.boot.json",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "n8j642zwai",
-      "Integrity": "56IpgBoij/8me6wQe1FmbXD6UiHXtAgb0r3oMz1bK/4=",
+      "Fingerprint": "azyiikd546",
+      "Integrity": "lrPGCvFsB4gQN3ZhawMMtYkcLPiLm0GI5yZG/sYV59w=",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\bin\\Debug\\net9.0\\wwwroot\\_framework\\blazor.boot.json"
@@ -9754,8 +9754,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "k8vf0r6do6",
-      "Integrity": "5DfuJUhNJBpkeSkIa2VjvVKDnAbJMyoKmUxqZ4HQBv8=",
+      "Fingerprint": "hp9jwrsvua",
+      "Integrity": "5aNm3GBC584tFZMRaleZlJ5VRy/TPEZCb58S62i+fzA=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\app.css"
@@ -9775,8 +9775,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "kd7rx2gh6c",
-      "Integrity": "6FhgdLgohmONzaK4liEkVzA11vAiYOeMfk39p0azCNc=",
+      "Fingerprint": "qyeqqjpxa3",
+      "Integrity": "vttzvSBjkL+GlFoPK0As1mP3BICHFW4WlUy58vZNyFs=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\connection.css"
@@ -9817,8 +9817,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "zfr8xbgscl",
-      "Integrity": "EfamMMuYImC6EoFQI6+/L7i8oxun8VyQUlfc/qUc6Zs=",
+      "Fingerprint": "c448525135",
+      "Integrity": "JDw09F/fyBepAVR+A0NJ9X14L9BWZWvPP04SdhaRRjE=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\index.html"
@@ -10768,11 +10768,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"HFJHAMSMOLhDam6aLHMDlwcgbkOH6Dp3hYC9mmxeMYg=\""
+          "Value": "\"G/lsNqhtepv2Nvqx4SOl0G/Kt4Db51TmhKYUvErvx6Q=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 07 Oct 2025 13:25:26 GMT"
+          "Value": "Tue, 07 Oct 2025 14:50:44 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -10782,18 +10782,18 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-HFJHAMSMOLhDam6aLHMDlwcgbkOH6Dp3hYC9mmxeMYg="
+          "Value": "sha256-G/lsNqhtepv2Nvqx4SOl0G/Kt4Db51TmhKYUvErvx6Q="
         }
       ]
     },
     {
       "Route": "_framework/blazor.boot.json",
-      "AssetFile": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\obj\\Debug\\net9.0\\compressed\\wvjiyygni7-8lamv58p3u.gz",
+      "AssetFile": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\obj\\Debug\\net9.0\\compressed\\wvjiyygni7-t6jf0qdu8n.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000080456996"
+          "Quality": "0.000080450523"
         }
       ],
       "ResponseHeaders": [
@@ -10803,15 +10803,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "12428"
+          "Value": "12429"
         },
         {
           "Name": "ETag",
-          "Value": "\"56IpgBoij/8me6wQe1FmbXD6UiHXtAgb0r3oMz1bK/4=\""
+          "Value": "\"lrPGCvFsB4gQN3ZhawMMtYkcLPiLm0GI5yZG/sYV59w=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 07 Oct 2025 13:19:13 GMT"
+          "Value": "Tue, 07 Oct 2025 14:50:05 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -10831,19 +10831,19 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"HFJHAMSMOLhDam6aLHMDlwcgbkOH6Dp3hYC9mmxeMYg=\""
+          "Value": "W/\"G/lsNqhtepv2Nvqx4SOl0G/Kt4Db51TmhKYUvErvx6Q=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-HFJHAMSMOLhDam6aLHMDlwcgbkOH6Dp3hYC9mmxeMYg="
+          "Value": "sha256-G/lsNqhtepv2Nvqx4SOl0G/Kt4Db51TmhKYUvErvx6Q="
         }
       ]
     },
     {
       "Route": "_framework/blazor.boot.json.gz",
-      "AssetFile": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\obj\\Debug\\net9.0\\compressed\\wvjiyygni7-8lamv58p3u.gz",
+      "AssetFile": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\obj\\Debug\\net9.0\\compressed\\wvjiyygni7-t6jf0qdu8n.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -10852,7 +10852,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "12428"
+          "Value": "12429"
         },
         {
           "Name": "Content-Type",
@@ -10860,11 +10860,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"56IpgBoij/8me6wQe1FmbXD6UiHXtAgb0r3oMz1bK/4=\""
+          "Value": "\"lrPGCvFsB4gQN3ZhawMMtYkcLPiLm0GI5yZG/sYV59w=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 07 Oct 2025 13:19:13 GMT"
+          "Value": "Tue, 07 Oct 2025 14:50:05 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -10882,7 +10882,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-56IpgBoij/8me6wQe1FmbXD6UiHXtAgb0r3oMz1bK/4="
+          "Value": "sha256-lrPGCvFsB4gQN3ZhawMMtYkcLPiLm0GI5yZG/sYV59w="
         }
       ]
     },
@@ -11024,168 +11024,7 @@
       ]
     },
     {
-      "Route": "_framework/BlazorGame.Client.4o4iv1ncwq.pdb",
-      "AssetFile": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\bin\\Debug\\net9.0\\wwwroot\\_framework\\BlazorGame.Client.pdb",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "24268"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "application/octet-stream"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"3IRwnGXmy8e3p3Rz5FXsEugEszK45qSfZY/u7FwjRqg=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Tue, 07 Oct 2025 13:25:25 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "4o4iv1ncwq"
-        },
-        {
-          "Name": "label",
-          "Value": "_framework/BlazorGame.Client.pdb"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-3IRwnGXmy8e3p3Rz5FXsEugEszK45qSfZY/u7FwjRqg="
-        }
-      ]
-    },
-    {
-      "Route": "_framework/BlazorGame.Client.4o4iv1ncwq.pdb",
-      "AssetFile": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\obj\\Debug\\net9.0\\compressed\\l6szname3n-4o4iv1ncwq.gz",
-      "Selectors": [
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip",
-          "Quality": "0.000055953447"
-        }
-      ],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "17871"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"2EpDVicSdr6Mr5XmlFggRKxcPLALJhaPMGqAZUIZC/0=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Tue, 07 Oct 2025 13:25:26 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "application/octet-stream"
-        },
-        {
-          "Name": "ETag",
-          "Value": "W/\"3IRwnGXmy8e3p3Rz5FXsEugEszK45qSfZY/u7FwjRqg=\""
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "4o4iv1ncwq"
-        },
-        {
-          "Name": "label",
-          "Value": "_framework/BlazorGame.Client.pdb"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-3IRwnGXmy8e3p3Rz5FXsEugEszK45qSfZY/u7FwjRqg="
-        }
-      ]
-    },
-    {
-      "Route": "_framework/BlazorGame.Client.4o4iv1ncwq.pdb.gz",
-      "AssetFile": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\obj\\Debug\\net9.0\\compressed\\l6szname3n-4o4iv1ncwq.gz",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "17871"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "application/octet-stream"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"2EpDVicSdr6Mr5XmlFggRKxcPLALJhaPMGqAZUIZC/0=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Tue, 07 Oct 2025 13:25:26 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "4o4iv1ncwq"
-        },
-        {
-          "Name": "label",
-          "Value": "_framework/BlazorGame.Client.pdb.gz"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-2EpDVicSdr6Mr5XmlFggRKxcPLALJhaPMGqAZUIZC/0="
-        }
-      ]
-    },
-    {
-      "Route": "_framework/BlazorGame.Client.8kwtlxgzur.wasm",
+      "Route": "_framework/BlazorGame.Client.a6mlyaa2we.wasm",
       "AssetFile": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\bin\\Debug\\net9.0\\wwwroot\\_framework\\BlazorGame.Client.wasm",
       "Selectors": [],
       "ResponseHeaders": [
@@ -11195,7 +11034,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "23317"
+          "Value": "25877"
         },
         {
           "Name": "Content-Type",
@@ -11203,11 +11042,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"6Jyz6jHeoK63RQP9lQHFG6+NJD80wW3nDjwEzo4wOBw=\""
+          "Value": "\"frIjlWlEAur/7oTmCgBk1da1l33mGdIhSyWj4ZGD+zk=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 07 Oct 2025 13:25:25 GMT"
+          "Value": "Tue, 07 Oct 2025 14:50:44 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -11217,7 +11056,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "8kwtlxgzur"
+          "Value": "a6mlyaa2we"
         },
         {
           "Name": "label",
@@ -11225,18 +11064,18 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-6Jyz6jHeoK63RQP9lQHFG6+NJD80wW3nDjwEzo4wOBw="
+          "Value": "sha256-frIjlWlEAur/7oTmCgBk1da1l33mGdIhSyWj4ZGD+zk="
         }
       ]
     },
     {
-      "Route": "_framework/BlazorGame.Client.8kwtlxgzur.wasm",
-      "AssetFile": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\obj\\Debug\\net9.0\\compressed\\3xge7xgleq-8kwtlxgzur.gz",
+      "Route": "_framework/BlazorGame.Client.a6mlyaa2we.wasm",
+      "AssetFile": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\obj\\Debug\\net9.0\\compressed\\3xge7xgleq-a6mlyaa2we.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000112271247"
+          "Quality": "0.000103498241"
         }
       ],
       "ResponseHeaders": [
@@ -11246,15 +11085,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "8906"
+          "Value": "9661"
         },
         {
           "Name": "ETag",
-          "Value": "\"ROsTqQXXaDQs6ACKhseW/SGvyuKeOmdWFc9msVbJmkc=\""
+          "Value": "\"z3Vhnyv2paUz6TAgStexCG9PVnjZkRFunAtuX+BcANQ=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 07 Oct 2025 13:25:26 GMT"
+          "Value": "Tue, 07 Oct 2025 14:50:44 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -11274,13 +11113,13 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"6Jyz6jHeoK63RQP9lQHFG6+NJD80wW3nDjwEzo4wOBw=\""
+          "Value": "W/\"frIjlWlEAur/7oTmCgBk1da1l33mGdIhSyWj4ZGD+zk=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "8kwtlxgzur"
+          "Value": "a6mlyaa2we"
         },
         {
           "Name": "label",
@@ -11288,13 +11127,13 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-6Jyz6jHeoK63RQP9lQHFG6+NJD80wW3nDjwEzo4wOBw="
+          "Value": "sha256-frIjlWlEAur/7oTmCgBk1da1l33mGdIhSyWj4ZGD+zk="
         }
       ]
     },
     {
-      "Route": "_framework/BlazorGame.Client.8kwtlxgzur.wasm.gz",
-      "AssetFile": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\obj\\Debug\\net9.0\\compressed\\3xge7xgleq-8kwtlxgzur.gz",
+      "Route": "_framework/BlazorGame.Client.a6mlyaa2we.wasm.gz",
+      "AssetFile": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\obj\\Debug\\net9.0\\compressed\\3xge7xgleq-a6mlyaa2we.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -11303,7 +11142,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "8906"
+          "Value": "9661"
         },
         {
           "Name": "Content-Type",
@@ -11311,11 +11150,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"ROsTqQXXaDQs6ACKhseW/SGvyuKeOmdWFc9msVbJmkc=\""
+          "Value": "\"z3Vhnyv2paUz6TAgStexCG9PVnjZkRFunAtuX+BcANQ=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 07 Oct 2025 13:25:26 GMT"
+          "Value": "Tue, 07 Oct 2025 14:50:44 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -11333,7 +11172,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "8kwtlxgzur"
+          "Value": "a6mlyaa2we"
         },
         {
           "Name": "label",
@@ -11341,7 +11180,168 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-ROsTqQXXaDQs6ACKhseW/SGvyuKeOmdWFc9msVbJmkc="
+          "Value": "sha256-z3Vhnyv2paUz6TAgStexCG9PVnjZkRFunAtuX+BcANQ="
+        }
+      ]
+    },
+    {
+      "Route": "_framework/BlazorGame.Client.cvkxfb0uwl.pdb",
+      "AssetFile": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\bin\\Debug\\net9.0\\wwwroot\\_framework\\BlazorGame.Client.pdb",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "28152"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/octet-stream"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"GB0TF6xwDt/5FiKqSEcS3fsLYS+Dj3YFdYpvzH8peFE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 07 Oct 2025 14:50:43 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "cvkxfb0uwl"
+        },
+        {
+          "Name": "label",
+          "Value": "_framework/BlazorGame.Client.pdb"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-GB0TF6xwDt/5FiKqSEcS3fsLYS+Dj3YFdYpvzH8peFE="
+        }
+      ]
+    },
+    {
+      "Route": "_framework/BlazorGame.Client.cvkxfb0uwl.pdb",
+      "AssetFile": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\obj\\Debug\\net9.0\\compressed\\l6szname3n-cvkxfb0uwl.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.000046663556"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "21429"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Q4xIIdwLK4VMqk3qvMu4+0mpKPOrRLhSLPoW2mvgc3I=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 07 Oct 2025 14:50:44 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/octet-stream"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"GB0TF6xwDt/5FiKqSEcS3fsLYS+Dj3YFdYpvzH8peFE=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "cvkxfb0uwl"
+        },
+        {
+          "Name": "label",
+          "Value": "_framework/BlazorGame.Client.pdb"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-GB0TF6xwDt/5FiKqSEcS3fsLYS+Dj3YFdYpvzH8peFE="
+        }
+      ]
+    },
+    {
+      "Route": "_framework/BlazorGame.Client.cvkxfb0uwl.pdb.gz",
+      "AssetFile": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\obj\\Debug\\net9.0\\compressed\\l6szname3n-cvkxfb0uwl.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "21429"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/octet-stream"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Q4xIIdwLK4VMqk3qvMu4+0mpKPOrRLhSLPoW2mvgc3I=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 07 Oct 2025 14:50:44 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "cvkxfb0uwl"
+        },
+        {
+          "Name": "label",
+          "Value": "_framework/BlazorGame.Client.pdb.gz"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-Q4xIIdwLK4VMqk3qvMu4+0mpKPOrRLhSLPoW2mvgc3I="
         }
       ]
     },
@@ -11356,7 +11356,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "24268"
+          "Value": "28152"
         },
         {
           "Name": "Content-Type",
@@ -11364,11 +11364,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"3IRwnGXmy8e3p3Rz5FXsEugEszK45qSfZY/u7FwjRqg=\""
+          "Value": "\"GB0TF6xwDt/5FiKqSEcS3fsLYS+Dj3YFdYpvzH8peFE=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 07 Oct 2025 13:25:25 GMT"
+          "Value": "Tue, 07 Oct 2025 14:50:43 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -11378,18 +11378,18 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-3IRwnGXmy8e3p3Rz5FXsEugEszK45qSfZY/u7FwjRqg="
+          "Value": "sha256-GB0TF6xwDt/5FiKqSEcS3fsLYS+Dj3YFdYpvzH8peFE="
         }
       ]
     },
     {
       "Route": "_framework/BlazorGame.Client.pdb",
-      "AssetFile": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\obj\\Debug\\net9.0\\compressed\\l6szname3n-4o4iv1ncwq.gz",
+      "AssetFile": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\obj\\Debug\\net9.0\\compressed\\l6szname3n-cvkxfb0uwl.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000055953447"
+          "Quality": "0.000046663556"
         }
       ],
       "ResponseHeaders": [
@@ -11399,15 +11399,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "17871"
+          "Value": "21429"
         },
         {
           "Name": "ETag",
-          "Value": "\"2EpDVicSdr6Mr5XmlFggRKxcPLALJhaPMGqAZUIZC/0=\""
+          "Value": "\"Q4xIIdwLK4VMqk3qvMu4+0mpKPOrRLhSLPoW2mvgc3I=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 07 Oct 2025 13:25:26 GMT"
+          "Value": "Tue, 07 Oct 2025 14:50:44 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -11427,19 +11427,19 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"3IRwnGXmy8e3p3Rz5FXsEugEszK45qSfZY/u7FwjRqg=\""
+          "Value": "W/\"GB0TF6xwDt/5FiKqSEcS3fsLYS+Dj3YFdYpvzH8peFE=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-3IRwnGXmy8e3p3Rz5FXsEugEszK45qSfZY/u7FwjRqg="
+          "Value": "sha256-GB0TF6xwDt/5FiKqSEcS3fsLYS+Dj3YFdYpvzH8peFE="
         }
       ]
     },
     {
       "Route": "_framework/BlazorGame.Client.pdb.gz",
-      "AssetFile": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\obj\\Debug\\net9.0\\compressed\\l6szname3n-4o4iv1ncwq.gz",
+      "AssetFile": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\obj\\Debug\\net9.0\\compressed\\l6szname3n-cvkxfb0uwl.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -11448,7 +11448,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "17871"
+          "Value": "21429"
         },
         {
           "Name": "Content-Type",
@@ -11456,11 +11456,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"2EpDVicSdr6Mr5XmlFggRKxcPLALJhaPMGqAZUIZC/0=\""
+          "Value": "\"Q4xIIdwLK4VMqk3qvMu4+0mpKPOrRLhSLPoW2mvgc3I=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 07 Oct 2025 13:25:26 GMT"
+          "Value": "Tue, 07 Oct 2025 14:50:44 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -11478,7 +11478,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-2EpDVicSdr6Mr5XmlFggRKxcPLALJhaPMGqAZUIZC/0="
+          "Value": "sha256-Q4xIIdwLK4VMqk3qvMu4+0mpKPOrRLhSLPoW2mvgc3I="
         }
       ]
     },
@@ -11493,7 +11493,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "23317"
+          "Value": "25877"
         },
         {
           "Name": "Content-Type",
@@ -11501,11 +11501,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"6Jyz6jHeoK63RQP9lQHFG6+NJD80wW3nDjwEzo4wOBw=\""
+          "Value": "\"frIjlWlEAur/7oTmCgBk1da1l33mGdIhSyWj4ZGD+zk=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 07 Oct 2025 13:25:25 GMT"
+          "Value": "Tue, 07 Oct 2025 14:50:44 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -11515,18 +11515,18 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-6Jyz6jHeoK63RQP9lQHFG6+NJD80wW3nDjwEzo4wOBw="
+          "Value": "sha256-frIjlWlEAur/7oTmCgBk1da1l33mGdIhSyWj4ZGD+zk="
         }
       ]
     },
     {
       "Route": "_framework/BlazorGame.Client.wasm",
-      "AssetFile": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\obj\\Debug\\net9.0\\compressed\\3xge7xgleq-8kwtlxgzur.gz",
+      "AssetFile": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\obj\\Debug\\net9.0\\compressed\\3xge7xgleq-a6mlyaa2we.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000112271247"
+          "Quality": "0.000103498241"
         }
       ],
       "ResponseHeaders": [
@@ -11536,15 +11536,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "8906"
+          "Value": "9661"
         },
         {
           "Name": "ETag",
-          "Value": "\"ROsTqQXXaDQs6ACKhseW/SGvyuKeOmdWFc9msVbJmkc=\""
+          "Value": "\"z3Vhnyv2paUz6TAgStexCG9PVnjZkRFunAtuX+BcANQ=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 07 Oct 2025 13:25:26 GMT"
+          "Value": "Tue, 07 Oct 2025 14:50:44 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -11564,19 +11564,19 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"6Jyz6jHeoK63RQP9lQHFG6+NJD80wW3nDjwEzo4wOBw=\""
+          "Value": "W/\"frIjlWlEAur/7oTmCgBk1da1l33mGdIhSyWj4ZGD+zk=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-6Jyz6jHeoK63RQP9lQHFG6+NJD80wW3nDjwEzo4wOBw="
+          "Value": "sha256-frIjlWlEAur/7oTmCgBk1da1l33mGdIhSyWj4ZGD+zk="
         }
       ]
     },
     {
       "Route": "_framework/BlazorGame.Client.wasm.gz",
-      "AssetFile": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\obj\\Debug\\net9.0\\compressed\\3xge7xgleq-8kwtlxgzur.gz",
+      "AssetFile": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\obj\\Debug\\net9.0\\compressed\\3xge7xgleq-a6mlyaa2we.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -11585,7 +11585,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "8906"
+          "Value": "9661"
         },
         {
           "Name": "Content-Type",
@@ -11593,11 +11593,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"ROsTqQXXaDQs6ACKhseW/SGvyuKeOmdWFc9msVbJmkc=\""
+          "Value": "\"z3Vhnyv2paUz6TAgStexCG9PVnjZkRFunAtuX+BcANQ=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 07 Oct 2025 13:25:26 GMT"
+          "Value": "Tue, 07 Oct 2025 14:50:44 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -11615,7 +11615,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-ROsTqQXXaDQs6ACKhseW/SGvyuKeOmdWFc9msVbJmkc="
+          "Value": "sha256-z3Vhnyv2paUz6TAgStexCG9PVnjZkRFunAtuX+BcANQ="
         }
       ]
     },
@@ -22944,168 +22944,7 @@
       ]
     },
     {
-      "Route": "_framework/SharedModels.6femirdcm5.wasm",
-      "AssetFile": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\bin\\Debug\\net9.0\\wwwroot\\_framework\\SharedModels.wasm",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "3349"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "application/wasm"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"fp8aEuCs5JilpIJ5w8QCaI3xlpq5rwq2pGHs5RNRNYk=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Tue, 07 Oct 2025 13:06:03 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "6femirdcm5"
-        },
-        {
-          "Name": "label",
-          "Value": "_framework/SharedModels.wasm"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-fp8aEuCs5JilpIJ5w8QCaI3xlpq5rwq2pGHs5RNRNYk="
-        }
-      ]
-    },
-    {
-      "Route": "_framework/SharedModels.6femirdcm5.wasm",
-      "AssetFile": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\obj\\Debug\\net9.0\\compressed\\4g85fzs2dp-6femirdcm5.gz",
-      "Selectors": [
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip",
-          "Quality": "0.000693962526"
-        }
-      ],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1440"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"KmWEy0fJzp3g8nZQHj+c91IXl3h7dF50XXhUIw6dFo8=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Tue, 07 Oct 2025 13:06:06 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "application/wasm"
-        },
-        {
-          "Name": "ETag",
-          "Value": "W/\"fp8aEuCs5JilpIJ5w8QCaI3xlpq5rwq2pGHs5RNRNYk=\""
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "6femirdcm5"
-        },
-        {
-          "Name": "label",
-          "Value": "_framework/SharedModels.wasm"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-fp8aEuCs5JilpIJ5w8QCaI3xlpq5rwq2pGHs5RNRNYk="
-        }
-      ]
-    },
-    {
-      "Route": "_framework/SharedModels.6femirdcm5.wasm.gz",
-      "AssetFile": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\obj\\Debug\\net9.0\\compressed\\4g85fzs2dp-6femirdcm5.gz",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1440"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "application/wasm"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"KmWEy0fJzp3g8nZQHj+c91IXl3h7dF50XXhUIw6dFo8=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Tue, 07 Oct 2025 13:06:06 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "6femirdcm5"
-        },
-        {
-          "Name": "label",
-          "Value": "_framework/SharedModels.wasm.gz"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-KmWEy0fJzp3g8nZQHj+c91IXl3h7dF50XXhUIw6dFo8="
-        }
-      ]
-    },
-    {
-      "Route": "_framework/SharedModels.aulv3f87up.pdb",
+      "Route": "_framework/SharedModels.73t6gyt22c.pdb",
       "AssetFile": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\bin\\Debug\\net9.0\\wwwroot\\_framework\\SharedModels.pdb",
       "Selectors": [],
       "ResponseHeaders": [
@@ -23123,11 +22962,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"Uj+ROk0GLDdlsaPFa1SnH+MtM2lnaoeS0Q5JGVwsTnQ=\""
+          "Value": "\"wwDsi2ZrIjUakkZ1mFTurehvFi0IygdU++et1A1fOx8=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 07 Oct 2025 13:05:55 GMT"
+          "Value": "Tue, 07 Oct 2025 13:47:56 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -23137,7 +22976,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "aulv3f87up"
+          "Value": "73t6gyt22c"
         },
         {
           "Name": "label",
@@ -23145,18 +22984,18 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-Uj+ROk0GLDdlsaPFa1SnH+MtM2lnaoeS0Q5JGVwsTnQ="
+          "Value": "sha256-wwDsi2ZrIjUakkZ1mFTurehvFi0IygdU++et1A1fOx8="
         }
       ]
     },
     {
-      "Route": "_framework/SharedModels.aulv3f87up.pdb",
-      "AssetFile": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\obj\\Debug\\net9.0\\compressed\\85j3kajxx2-aulv3f87up.gz",
+      "Route": "_framework/SharedModels.73t6gyt22c.pdb",
+      "AssetFile": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\obj\\Debug\\net9.0\\compressed\\85j3kajxx2-73t6gyt22c.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000161082474"
+          "Quality": "0.000161056531"
         }
       ],
       "ResponseHeaders": [
@@ -23166,15 +23005,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "6207"
+          "Value": "6208"
         },
         {
           "Name": "ETag",
-          "Value": "\"3SzY2Jg3TqQx6lJuXL61IeDgnxospx9vXVQSE5hqnqg=\""
+          "Value": "\"A37woPo1VzVeumFRVK5qscjgeEJg5WKIz8LosyMg+kU=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 07 Oct 2025 13:06:06 GMT"
+          "Value": "Tue, 07 Oct 2025 13:48:56 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -23194,13 +23033,13 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"Uj+ROk0GLDdlsaPFa1SnH+MtM2lnaoeS0Q5JGVwsTnQ=\""
+          "Value": "W/\"wwDsi2ZrIjUakkZ1mFTurehvFi0IygdU++et1A1fOx8=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "aulv3f87up"
+          "Value": "73t6gyt22c"
         },
         {
           "Name": "label",
@@ -23208,13 +23047,13 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-Uj+ROk0GLDdlsaPFa1SnH+MtM2lnaoeS0Q5JGVwsTnQ="
+          "Value": "sha256-wwDsi2ZrIjUakkZ1mFTurehvFi0IygdU++et1A1fOx8="
         }
       ]
     },
     {
-      "Route": "_framework/SharedModels.aulv3f87up.pdb.gz",
-      "AssetFile": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\obj\\Debug\\net9.0\\compressed\\85j3kajxx2-aulv3f87up.gz",
+      "Route": "_framework/SharedModels.73t6gyt22c.pdb.gz",
+      "AssetFile": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\obj\\Debug\\net9.0\\compressed\\85j3kajxx2-73t6gyt22c.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -23223,7 +23062,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "6207"
+          "Value": "6208"
         },
         {
           "Name": "Content-Type",
@@ -23231,11 +23070,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"3SzY2Jg3TqQx6lJuXL61IeDgnxospx9vXVQSE5hqnqg=\""
+          "Value": "\"A37woPo1VzVeumFRVK5qscjgeEJg5WKIz8LosyMg+kU=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 07 Oct 2025 13:06:06 GMT"
+          "Value": "Tue, 07 Oct 2025 13:48:56 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -23253,7 +23092,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "aulv3f87up"
+          "Value": "73t6gyt22c"
         },
         {
           "Name": "label",
@@ -23261,7 +23100,7 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-3SzY2Jg3TqQx6lJuXL61IeDgnxospx9vXVQSE5hqnqg="
+          "Value": "sha256-A37woPo1VzVeumFRVK5qscjgeEJg5WKIz8LosyMg+kU="
         }
       ]
     },
@@ -23284,11 +23123,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"Uj+ROk0GLDdlsaPFa1SnH+MtM2lnaoeS0Q5JGVwsTnQ=\""
+          "Value": "\"wwDsi2ZrIjUakkZ1mFTurehvFi0IygdU++et1A1fOx8=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 07 Oct 2025 13:05:55 GMT"
+          "Value": "Tue, 07 Oct 2025 13:47:56 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -23298,18 +23137,18 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-Uj+ROk0GLDdlsaPFa1SnH+MtM2lnaoeS0Q5JGVwsTnQ="
+          "Value": "sha256-wwDsi2ZrIjUakkZ1mFTurehvFi0IygdU++et1A1fOx8="
         }
       ]
     },
     {
       "Route": "_framework/SharedModels.pdb",
-      "AssetFile": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\obj\\Debug\\net9.0\\compressed\\85j3kajxx2-aulv3f87up.gz",
+      "AssetFile": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\obj\\Debug\\net9.0\\compressed\\85j3kajxx2-73t6gyt22c.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000161082474"
+          "Quality": "0.000161056531"
         }
       ],
       "ResponseHeaders": [
@@ -23319,15 +23158,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "6207"
+          "Value": "6208"
         },
         {
           "Name": "ETag",
-          "Value": "\"3SzY2Jg3TqQx6lJuXL61IeDgnxospx9vXVQSE5hqnqg=\""
+          "Value": "\"A37woPo1VzVeumFRVK5qscjgeEJg5WKIz8LosyMg+kU=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 07 Oct 2025 13:06:06 GMT"
+          "Value": "Tue, 07 Oct 2025 13:48:56 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -23347,19 +23186,19 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"Uj+ROk0GLDdlsaPFa1SnH+MtM2lnaoeS0Q5JGVwsTnQ=\""
+          "Value": "W/\"wwDsi2ZrIjUakkZ1mFTurehvFi0IygdU++et1A1fOx8=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-Uj+ROk0GLDdlsaPFa1SnH+MtM2lnaoeS0Q5JGVwsTnQ="
+          "Value": "sha256-wwDsi2ZrIjUakkZ1mFTurehvFi0IygdU++et1A1fOx8="
         }
       ]
     },
     {
       "Route": "_framework/SharedModels.pdb.gz",
-      "AssetFile": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\obj\\Debug\\net9.0\\compressed\\85j3kajxx2-aulv3f87up.gz",
+      "AssetFile": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\obj\\Debug\\net9.0\\compressed\\85j3kajxx2-73t6gyt22c.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -23368,7 +23207,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "6207"
+          "Value": "6208"
         },
         {
           "Name": "Content-Type",
@@ -23376,11 +23215,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"3SzY2Jg3TqQx6lJuXL61IeDgnxospx9vXVQSE5hqnqg=\""
+          "Value": "\"A37woPo1VzVeumFRVK5qscjgeEJg5WKIz8LosyMg+kU=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 07 Oct 2025 13:06:06 GMT"
+          "Value": "Tue, 07 Oct 2025 13:48:56 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -23398,7 +23237,168 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-3SzY2Jg3TqQx6lJuXL61IeDgnxospx9vXVQSE5hqnqg="
+          "Value": "sha256-A37woPo1VzVeumFRVK5qscjgeEJg5WKIz8LosyMg+kU="
+        }
+      ]
+    },
+    {
+      "Route": "_framework/SharedModels.r8ukl6ji3f.wasm",
+      "AssetFile": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\bin\\Debug\\net9.0\\wwwroot\\_framework\\SharedModels.wasm",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "3349"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/wasm"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"5Wy5Wte18BLQrSxjbmxFoEhy81f1YChULjhXmW8biII=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 07 Oct 2025 13:48:55 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "r8ukl6ji3f"
+        },
+        {
+          "Name": "label",
+          "Value": "_framework/SharedModels.wasm"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-5Wy5Wte18BLQrSxjbmxFoEhy81f1YChULjhXmW8biII="
+        }
+      ]
+    },
+    {
+      "Route": "_framework/SharedModels.r8ukl6ji3f.wasm",
+      "AssetFile": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\obj\\Debug\\net9.0\\compressed\\4g85fzs2dp-r8ukl6ji3f.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.000698324022"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1431"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Y0L09lXQocRl5WHT0zFGoibgzqUY3DbOF9tRbDWY3oo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 07 Oct 2025 13:48:56 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/wasm"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"5Wy5Wte18BLQrSxjbmxFoEhy81f1YChULjhXmW8biII=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "r8ukl6ji3f"
+        },
+        {
+          "Name": "label",
+          "Value": "_framework/SharedModels.wasm"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-5Wy5Wte18BLQrSxjbmxFoEhy81f1YChULjhXmW8biII="
+        }
+      ]
+    },
+    {
+      "Route": "_framework/SharedModels.r8ukl6ji3f.wasm.gz",
+      "AssetFile": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\obj\\Debug\\net9.0\\compressed\\4g85fzs2dp-r8ukl6ji3f.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1431"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/wasm"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Y0L09lXQocRl5WHT0zFGoibgzqUY3DbOF9tRbDWY3oo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 07 Oct 2025 13:48:56 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "r8ukl6ji3f"
+        },
+        {
+          "Name": "label",
+          "Value": "_framework/SharedModels.wasm.gz"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-Y0L09lXQocRl5WHT0zFGoibgzqUY3DbOF9tRbDWY3oo="
         }
       ]
     },
@@ -23421,11 +23421,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"fp8aEuCs5JilpIJ5w8QCaI3xlpq5rwq2pGHs5RNRNYk=\""
+          "Value": "\"5Wy5Wte18BLQrSxjbmxFoEhy81f1YChULjhXmW8biII=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 07 Oct 2025 13:06:03 GMT"
+          "Value": "Tue, 07 Oct 2025 13:48:55 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -23435,18 +23435,18 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-fp8aEuCs5JilpIJ5w8QCaI3xlpq5rwq2pGHs5RNRNYk="
+          "Value": "sha256-5Wy5Wte18BLQrSxjbmxFoEhy81f1YChULjhXmW8biII="
         }
       ]
     },
     {
       "Route": "_framework/SharedModels.wasm",
-      "AssetFile": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\obj\\Debug\\net9.0\\compressed\\4g85fzs2dp-6femirdcm5.gz",
+      "AssetFile": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\obj\\Debug\\net9.0\\compressed\\4g85fzs2dp-r8ukl6ji3f.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000693962526"
+          "Quality": "0.000698324022"
         }
       ],
       "ResponseHeaders": [
@@ -23456,15 +23456,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1440"
+          "Value": "1431"
         },
         {
           "Name": "ETag",
-          "Value": "\"KmWEy0fJzp3g8nZQHj+c91IXl3h7dF50XXhUIw6dFo8=\""
+          "Value": "\"Y0L09lXQocRl5WHT0zFGoibgzqUY3DbOF9tRbDWY3oo=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 07 Oct 2025 13:06:06 GMT"
+          "Value": "Tue, 07 Oct 2025 13:48:56 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -23484,19 +23484,19 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"fp8aEuCs5JilpIJ5w8QCaI3xlpq5rwq2pGHs5RNRNYk=\""
+          "Value": "W/\"5Wy5Wte18BLQrSxjbmxFoEhy81f1YChULjhXmW8biII=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-fp8aEuCs5JilpIJ5w8QCaI3xlpq5rwq2pGHs5RNRNYk="
+          "Value": "sha256-5Wy5Wte18BLQrSxjbmxFoEhy81f1YChULjhXmW8biII="
         }
       ]
     },
     {
       "Route": "_framework/SharedModels.wasm.gz",
-      "AssetFile": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\obj\\Debug\\net9.0\\compressed\\4g85fzs2dp-6femirdcm5.gz",
+      "AssetFile": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\obj\\Debug\\net9.0\\compressed\\4g85fzs2dp-r8ukl6ji3f.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -23505,7 +23505,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1440"
+          "Value": "1431"
         },
         {
           "Name": "Content-Type",
@@ -23513,11 +23513,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"KmWEy0fJzp3g8nZQHj+c91IXl3h7dF50XXhUIw6dFo8=\""
+          "Value": "\"Y0L09lXQocRl5WHT0zFGoibgzqUY3DbOF9tRbDWY3oo=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 07 Oct 2025 13:06:06 GMT"
+          "Value": "Tue, 07 Oct 2025 13:48:56 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -23535,7 +23535,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-KmWEy0fJzp3g8nZQHj+c91IXl3h7dF50XXhUIw6dFo8="
+          "Value": "sha256-Y0L09lXQocRl5WHT0zFGoibgzqUY3DbOF9tRbDWY3oo="
         }
       ]
     },
@@ -72413,12 +72413,12 @@
     },
     {
       "Route": "css/app.css",
-      "AssetFile": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\obj\\Debug\\net9.0\\compressed\\851kpmcpoy-k8vf0r6do6.gz",
+      "AssetFile": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\obj\\Debug\\net9.0\\compressed\\851kpmcpoy-hp9jwrsvua.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000494559842"
+          "Quality": "0.000489236791"
         }
       ],
       "ResponseHeaders": [
@@ -72428,15 +72428,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "2021"
+          "Value": "2043"
         },
         {
           "Name": "ETag",
-          "Value": "\"nJsH3gSNZHkdFCbrX2zwHjI2iNkUyfZ5D5wUSSJz0mk=\""
+          "Value": "\"ELcPd/k+Ql0JSJ1I2+XY0Su2Q3RDO3377ZtA8iT00Uk=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 07 Oct 2025 12:50:42 GMT"
+          "Value": "Tue, 07 Oct 2025 14:35:34 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -72456,13 +72456,13 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"5DfuJUhNJBpkeSkIa2VjvVKDnAbJMyoKmUxqZ4HQBv8=\""
+          "Value": "W/\"5aNm3GBC584tFZMRaleZlJ5VRy/TPEZCb58S62i+fzA=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-5DfuJUhNJBpkeSkIa2VjvVKDnAbJMyoKmUxqZ4HQBv8="
+          "Value": "sha256-5aNm3GBC584tFZMRaleZlJ5VRy/TPEZCb58S62i+fzA="
         }
       ]
     },
@@ -72477,7 +72477,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "3987"
+          "Value": "4041"
         },
         {
           "Name": "Content-Type",
@@ -72485,11 +72485,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"5DfuJUhNJBpkeSkIa2VjvVKDnAbJMyoKmUxqZ4HQBv8=\""
+          "Value": "\"5aNm3GBC584tFZMRaleZlJ5VRy/TPEZCb58S62i+fzA=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 07 Oct 2025 12:50:42 GMT"
+          "Value": "Tue, 07 Oct 2025 14:35:34 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -72499,13 +72499,13 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-5DfuJUhNJBpkeSkIa2VjvVKDnAbJMyoKmUxqZ4HQBv8="
+          "Value": "sha256-5aNm3GBC584tFZMRaleZlJ5VRy/TPEZCb58S62i+fzA="
         }
       ]
     },
     {
       "Route": "css/app.css.gz",
-      "AssetFile": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\obj\\Debug\\net9.0\\compressed\\851kpmcpoy-k8vf0r6do6.gz",
+      "AssetFile": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\obj\\Debug\\net9.0\\compressed\\851kpmcpoy-hp9jwrsvua.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -72514,7 +72514,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "2021"
+          "Value": "2043"
         },
         {
           "Name": "Content-Type",
@@ -72522,11 +72522,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"nJsH3gSNZHkdFCbrX2zwHjI2iNkUyfZ5D5wUSSJz0mk=\""
+          "Value": "\"ELcPd/k+Ql0JSJ1I2+XY0Su2Q3RDO3377ZtA8iT00Uk=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 07 Oct 2025 12:50:42 GMT"
+          "Value": "Tue, 07 Oct 2025 14:35:34 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -72544,18 +72544,18 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-nJsH3gSNZHkdFCbrX2zwHjI2iNkUyfZ5D5wUSSJz0mk="
+          "Value": "sha256-ELcPd/k+Ql0JSJ1I2+XY0Su2Q3RDO3377ZtA8iT00Uk="
         }
       ]
     },
     {
-      "Route": "css/app.k8vf0r6do6.css",
-      "AssetFile": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\obj\\Debug\\net9.0\\compressed\\851kpmcpoy-k8vf0r6do6.gz",
+      "Route": "css/app.hp9jwrsvua.css",
+      "AssetFile": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\obj\\Debug\\net9.0\\compressed\\851kpmcpoy-hp9jwrsvua.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000494559842"
+          "Quality": "0.000489236791"
         }
       ],
       "ResponseHeaders": [
@@ -72565,15 +72565,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "2021"
+          "Value": "2043"
         },
         {
           "Name": "ETag",
-          "Value": "\"nJsH3gSNZHkdFCbrX2zwHjI2iNkUyfZ5D5wUSSJz0mk=\""
+          "Value": "\"ELcPd/k+Ql0JSJ1I2+XY0Su2Q3RDO3377ZtA8iT00Uk=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 07 Oct 2025 12:50:42 GMT"
+          "Value": "Tue, 07 Oct 2025 14:35:34 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -72593,13 +72593,13 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"5DfuJUhNJBpkeSkIa2VjvVKDnAbJMyoKmUxqZ4HQBv8=\""
+          "Value": "W/\"5aNm3GBC584tFZMRaleZlJ5VRy/TPEZCb58S62i+fzA=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "k8vf0r6do6"
+          "Value": "hp9jwrsvua"
         },
         {
           "Name": "label",
@@ -72607,12 +72607,12 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-5DfuJUhNJBpkeSkIa2VjvVKDnAbJMyoKmUxqZ4HQBv8="
+          "Value": "sha256-5aNm3GBC584tFZMRaleZlJ5VRy/TPEZCb58S62i+fzA="
         }
       ]
     },
     {
-      "Route": "css/app.k8vf0r6do6.css",
+      "Route": "css/app.hp9jwrsvua.css",
       "AssetFile": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\wwwroot\\css\\app.css",
       "Selectors": [],
       "ResponseHeaders": [
@@ -72622,7 +72622,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "3987"
+          "Value": "4041"
         },
         {
           "Name": "Content-Type",
@@ -72630,11 +72630,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"5DfuJUhNJBpkeSkIa2VjvVKDnAbJMyoKmUxqZ4HQBv8=\""
+          "Value": "\"5aNm3GBC584tFZMRaleZlJ5VRy/TPEZCb58S62i+fzA=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 07 Oct 2025 12:50:42 GMT"
+          "Value": "Tue, 07 Oct 2025 14:35:34 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -72644,7 +72644,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "k8vf0r6do6"
+          "Value": "hp9jwrsvua"
         },
         {
           "Name": "label",
@@ -72652,13 +72652,13 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-5DfuJUhNJBpkeSkIa2VjvVKDnAbJMyoKmUxqZ4HQBv8="
+          "Value": "sha256-5aNm3GBC584tFZMRaleZlJ5VRy/TPEZCb58S62i+fzA="
         }
       ]
     },
     {
-      "Route": "css/app.k8vf0r6do6.css.gz",
-      "AssetFile": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\obj\\Debug\\net9.0\\compressed\\851kpmcpoy-k8vf0r6do6.gz",
+      "Route": "css/app.hp9jwrsvua.css.gz",
+      "AssetFile": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\obj\\Debug\\net9.0\\compressed\\851kpmcpoy-hp9jwrsvua.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -72667,7 +72667,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "2021"
+          "Value": "2043"
         },
         {
           "Name": "Content-Type",
@@ -72675,11 +72675,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"nJsH3gSNZHkdFCbrX2zwHjI2iNkUyfZ5D5wUSSJz0mk=\""
+          "Value": "\"ELcPd/k+Ql0JSJ1I2+XY0Su2Q3RDO3377ZtA8iT00Uk=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 07 Oct 2025 12:50:42 GMT"
+          "Value": "Tue, 07 Oct 2025 14:35:34 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -72697,7 +72697,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "k8vf0r6do6"
+          "Value": "hp9jwrsvua"
         },
         {
           "Name": "label",
@@ -72705,18 +72705,18 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-nJsH3gSNZHkdFCbrX2zwHjI2iNkUyfZ5D5wUSSJz0mk="
+          "Value": "sha256-ELcPd/k+Ql0JSJ1I2+XY0Su2Q3RDO3377ZtA8iT00Uk="
         }
       ]
     },
     {
       "Route": "css/connection.css",
-      "AssetFile": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\obj\\Debug\\net9.0\\compressed\\825d4wn90r-kd7rx2gh6c.gz",
+      "AssetFile": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\obj\\Debug\\net9.0\\compressed\\825d4wn90r-qyeqqjpxa3.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.001164144354"
+          "Quality": "0.001302083333"
         }
       ],
       "ResponseHeaders": [
@@ -72726,15 +72726,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "858"
+          "Value": "767"
         },
         {
           "Name": "ETag",
-          "Value": "\"ifYTgKCUifkIuvawXOI6oonTM+Y/Y7oUqiHJ0AoPz6A=\""
+          "Value": "\"SN951EBuINeTFq3uiAByzQyE5wke/vyIZrKAa8T9HGA=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 07 Oct 2025 13:23:02 GMT"
+          "Value": "Tue, 07 Oct 2025 14:08:54 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -72754,13 +72754,13 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"6FhgdLgohmONzaK4liEkVzA11vAiYOeMfk39p0azCNc=\""
+          "Value": "W/\"vttzvSBjkL+GlFoPK0As1mP3BICHFW4WlUy58vZNyFs=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-6FhgdLgohmONzaK4liEkVzA11vAiYOeMfk39p0azCNc="
+          "Value": "sha256-vttzvSBjkL+GlFoPK0As1mP3BICHFW4WlUy58vZNyFs="
         }
       ]
     },
@@ -72775,7 +72775,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "2397"
+          "Value": "2149"
         },
         {
           "Name": "Content-Type",
@@ -72783,11 +72783,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"6FhgdLgohmONzaK4liEkVzA11vAiYOeMfk39p0azCNc=\""
+          "Value": "\"vttzvSBjkL+GlFoPK0As1mP3BICHFW4WlUy58vZNyFs=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 07 Oct 2025 13:23:02 GMT"
+          "Value": "Tue, 07 Oct 2025 14:08:54 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -72797,13 +72797,13 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-6FhgdLgohmONzaK4liEkVzA11vAiYOeMfk39p0azCNc="
+          "Value": "sha256-vttzvSBjkL+GlFoPK0As1mP3BICHFW4WlUy58vZNyFs="
         }
       ]
     },
     {
       "Route": "css/connection.css.gz",
-      "AssetFile": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\obj\\Debug\\net9.0\\compressed\\825d4wn90r-kd7rx2gh6c.gz",
+      "AssetFile": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\obj\\Debug\\net9.0\\compressed\\825d4wn90r-qyeqqjpxa3.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -72812,7 +72812,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "858"
+          "Value": "767"
         },
         {
           "Name": "Content-Type",
@@ -72820,11 +72820,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"ifYTgKCUifkIuvawXOI6oonTM+Y/Y7oUqiHJ0AoPz6A=\""
+          "Value": "\"SN951EBuINeTFq3uiAByzQyE5wke/vyIZrKAa8T9HGA=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 07 Oct 2025 13:23:02 GMT"
+          "Value": "Tue, 07 Oct 2025 14:08:54 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -72842,18 +72842,18 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-ifYTgKCUifkIuvawXOI6oonTM+Y/Y7oUqiHJ0AoPz6A="
+          "Value": "sha256-SN951EBuINeTFq3uiAByzQyE5wke/vyIZrKAa8T9HGA="
         }
       ]
     },
     {
-      "Route": "css/connection.kd7rx2gh6c.css",
-      "AssetFile": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\obj\\Debug\\net9.0\\compressed\\825d4wn90r-kd7rx2gh6c.gz",
+      "Route": "css/connection.qyeqqjpxa3.css",
+      "AssetFile": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\obj\\Debug\\net9.0\\compressed\\825d4wn90r-qyeqqjpxa3.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.001164144354"
+          "Quality": "0.001302083333"
         }
       ],
       "ResponseHeaders": [
@@ -72863,15 +72863,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "858"
+          "Value": "767"
         },
         {
           "Name": "ETag",
-          "Value": "\"ifYTgKCUifkIuvawXOI6oonTM+Y/Y7oUqiHJ0AoPz6A=\""
+          "Value": "\"SN951EBuINeTFq3uiAByzQyE5wke/vyIZrKAa8T9HGA=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 07 Oct 2025 13:23:02 GMT"
+          "Value": "Tue, 07 Oct 2025 14:08:54 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -72891,13 +72891,13 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"6FhgdLgohmONzaK4liEkVzA11vAiYOeMfk39p0azCNc=\""
+          "Value": "W/\"vttzvSBjkL+GlFoPK0As1mP3BICHFW4WlUy58vZNyFs=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "kd7rx2gh6c"
+          "Value": "qyeqqjpxa3"
         },
         {
           "Name": "label",
@@ -72905,12 +72905,12 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-6FhgdLgohmONzaK4liEkVzA11vAiYOeMfk39p0azCNc="
+          "Value": "sha256-vttzvSBjkL+GlFoPK0As1mP3BICHFW4WlUy58vZNyFs="
         }
       ]
     },
     {
-      "Route": "css/connection.kd7rx2gh6c.css",
+      "Route": "css/connection.qyeqqjpxa3.css",
       "AssetFile": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\wwwroot\\css\\connection.css",
       "Selectors": [],
       "ResponseHeaders": [
@@ -72920,7 +72920,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "2397"
+          "Value": "2149"
         },
         {
           "Name": "Content-Type",
@@ -72928,11 +72928,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"6FhgdLgohmONzaK4liEkVzA11vAiYOeMfk39p0azCNc=\""
+          "Value": "\"vttzvSBjkL+GlFoPK0As1mP3BICHFW4WlUy58vZNyFs=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 07 Oct 2025 13:23:02 GMT"
+          "Value": "Tue, 07 Oct 2025 14:08:54 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -72942,7 +72942,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "kd7rx2gh6c"
+          "Value": "qyeqqjpxa3"
         },
         {
           "Name": "label",
@@ -72950,13 +72950,13 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-6FhgdLgohmONzaK4liEkVzA11vAiYOeMfk39p0azCNc="
+          "Value": "sha256-vttzvSBjkL+GlFoPK0As1mP3BICHFW4WlUy58vZNyFs="
         }
       ]
     },
     {
-      "Route": "css/connection.kd7rx2gh6c.css.gz",
-      "AssetFile": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\obj\\Debug\\net9.0\\compressed\\825d4wn90r-kd7rx2gh6c.gz",
+      "Route": "css/connection.qyeqqjpxa3.css.gz",
+      "AssetFile": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\obj\\Debug\\net9.0\\compressed\\825d4wn90r-qyeqqjpxa3.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -72965,7 +72965,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "858"
+          "Value": "767"
         },
         {
           "Name": "Content-Type",
@@ -72973,11 +72973,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"ifYTgKCUifkIuvawXOI6oonTM+Y/Y7oUqiHJ0AoPz6A=\""
+          "Value": "\"SN951EBuINeTFq3uiAByzQyE5wke/vyIZrKAa8T9HGA=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 07 Oct 2025 13:23:02 GMT"
+          "Value": "Tue, 07 Oct 2025 14:08:54 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -72995,7 +72995,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "kd7rx2gh6c"
+          "Value": "qyeqqjpxa3"
         },
         {
           "Name": "label",
@@ -73003,7 +73003,7 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-ifYTgKCUifkIuvawXOI6oonTM+Y/Y7oUqiHJ0AoPz6A="
+          "Value": "sha256-SN951EBuINeTFq3uiAByzQyE5wke/vyIZrKAa8T9HGA="
         }
       ]
     },
@@ -73090,13 +73090,13 @@
       ]
     },
     {
-      "Route": "index.html",
-      "AssetFile": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\obj\\Debug\\net9.0\\compressed\\6di2wi1uy7-zfr8xbgscl.gz",
+      "Route": "index.c448525135.html",
+      "AssetFile": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\obj\\Debug\\net9.0\\compressed\\6di2wi1uy7-c448525135.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.002079002079"
+          "Quality": "0.002057613169"
         }
       ],
       "ResponseHeaders": [
@@ -73106,19 +73106,19 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "480"
+          "Value": "485"
         },
         {
           "Name": "ETag",
-          "Value": "\"u/bZ21vr1oFhX9wOLOIaR6V3+PGzOaE4iCWsplpH/hk=\""
+          "Value": "\"R8tQeAo5kCJy42ZbTq4d4FQqKPPc9w3/Ske/XNXJWso=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 07 Oct 2025 12:50:42 GMT"
+          "Value": "Tue, 07 Oct 2025 14:49:55 GMT"
         },
         {
           "Name": "Cache-Control",
-          "Value": "no-cache"
+          "Value": "max-age=31536000, immutable"
         },
         {
           "Name": "Content-Encoding",
@@ -73134,18 +73134,26 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"EfamMMuYImC6EoFQI6+/L7i8oxun8VyQUlfc/qUc6Zs=\""
+          "Value": "W/\"JDw09F/fyBepAVR+A0NJ9X14L9BWZWvPP04SdhaRRjE=\""
         }
       ],
       "EndpointProperties": [
         {
+          "Name": "fingerprint",
+          "Value": "c448525135"
+        },
+        {
+          "Name": "label",
+          "Value": "index.html"
+        },
+        {
           "Name": "integrity",
-          "Value": "sha256-EfamMMuYImC6EoFQI6+/L7i8oxun8VyQUlfc/qUc6Zs="
+          "Value": "sha256-JDw09F/fyBepAVR+A0NJ9X14L9BWZWvPP04SdhaRRjE="
         }
       ]
     },
     {
-      "Route": "index.html",
+      "Route": "index.c448525135.html",
       "AssetFile": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\wwwroot\\index.html",
       "Selectors": [],
       "ResponseHeaders": [
@@ -73163,121 +73171,21 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"EfamMMuYImC6EoFQI6+/L7i8oxun8VyQUlfc/qUc6Zs=\""
+          "Value": "\"JDw09F/fyBepAVR+A0NJ9X14L9BWZWvPP04SdhaRRjE=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 07 Oct 2025 12:50:42 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-EfamMMuYImC6EoFQI6+/L7i8oxun8VyQUlfc/qUc6Zs="
-        }
-      ]
-    },
-    {
-      "Route": "index.html.gz",
-      "AssetFile": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\obj\\Debug\\net9.0\\compressed\\6di2wi1uy7-zfr8xbgscl.gz",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "480"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/html"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"u/bZ21vr1oFhX9wOLOIaR6V3+PGzOaE4iCWsplpH/hk=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Tue, 07 Oct 2025 12:50:42 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-u/bZ21vr1oFhX9wOLOIaR6V3+PGzOaE4iCWsplpH/hk="
-        }
-      ]
-    },
-    {
-      "Route": "index.zfr8xbgscl.html",
-      "AssetFile": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\obj\\Debug\\net9.0\\compressed\\6di2wi1uy7-zfr8xbgscl.gz",
-      "Selectors": [
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip",
-          "Quality": "0.002079002079"
-        }
-      ],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "480"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"u/bZ21vr1oFhX9wOLOIaR6V3+PGzOaE4iCWsplpH/hk=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Tue, 07 Oct 2025 12:50:42 GMT"
+          "Value": "Tue, 07 Oct 2025 14:49:55 GMT"
         },
         {
           "Name": "Cache-Control",
           "Value": "max-age=31536000, immutable"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/html"
-        },
-        {
-          "Name": "ETag",
-          "Value": "W/\"EfamMMuYImC6EoFQI6+/L7i8oxun8VyQUlfc/qUc6Zs=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "zfr8xbgscl"
+          "Value": "c448525135"
         },
         {
           "Name": "label",
@@ -73285,13 +73193,13 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-EfamMMuYImC6EoFQI6+/L7i8oxun8VyQUlfc/qUc6Zs="
+          "Value": "sha256-JDw09F/fyBepAVR+A0NJ9X14L9BWZWvPP04SdhaRRjE="
         }
       ]
     },
     {
-      "Route": "index.zfr8xbgscl.html",
-      "AssetFile": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\wwwroot\\index.html",
+      "Route": "index.c448525135.html.gz",
+      "AssetFile": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\obj\\Debug\\net9.0\\compressed\\6di2wi1uy7-c448525135.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -73300,7 +73208,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "985"
+          "Value": "485"
         },
         {
           "Name": "Content-Type",
@@ -73308,56 +73216,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"EfamMMuYImC6EoFQI6+/L7i8oxun8VyQUlfc/qUc6Zs=\""
+          "Value": "\"R8tQeAo5kCJy42ZbTq4d4FQqKPPc9w3/Ske/XNXJWso=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 07 Oct 2025 12:50:42 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "zfr8xbgscl"
-        },
-        {
-          "Name": "label",
-          "Value": "index.html"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-EfamMMuYImC6EoFQI6+/L7i8oxun8VyQUlfc/qUc6Zs="
-        }
-      ]
-    },
-    {
-      "Route": "index.zfr8xbgscl.html.gz",
-      "AssetFile": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\obj\\Debug\\net9.0\\compressed\\6di2wi1uy7-zfr8xbgscl.gz",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "480"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/html"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"u/bZ21vr1oFhX9wOLOIaR6V3+PGzOaE4iCWsplpH/hk=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Tue, 07 Oct 2025 12:50:42 GMT"
+          "Value": "Tue, 07 Oct 2025 14:49:55 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -73375,7 +73238,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "zfr8xbgscl"
+          "Value": "c448525135"
         },
         {
           "Name": "label",
@@ -73383,7 +73246,144 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-u/bZ21vr1oFhX9wOLOIaR6V3+PGzOaE4iCWsplpH/hk="
+          "Value": "sha256-R8tQeAo5kCJy42ZbTq4d4FQqKPPc9w3/Ske/XNXJWso="
+        }
+      ]
+    },
+    {
+      "Route": "index.html",
+      "AssetFile": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\obj\\Debug\\net9.0\\compressed\\6di2wi1uy7-c448525135.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.002057613169"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "485"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"R8tQeAo5kCJy42ZbTq4d4FQqKPPc9w3/Ske/XNXJWso=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 07 Oct 2025 14:49:55 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"JDw09F/fyBepAVR+A0NJ9X14L9BWZWvPP04SdhaRRjE=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-JDw09F/fyBepAVR+A0NJ9X14L9BWZWvPP04SdhaRRjE="
+        }
+      ]
+    },
+    {
+      "Route": "index.html",
+      "AssetFile": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\wwwroot\\index.html",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "985"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"JDw09F/fyBepAVR+A0NJ9X14L9BWZWvPP04SdhaRRjE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 07 Oct 2025 14:49:55 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-JDw09F/fyBepAVR+A0NJ9X14L9BWZWvPP04SdhaRRjE="
+        }
+      ]
+    },
+    {
+      "Route": "index.html.gz",
+      "AssetFile": "C:\\Users\\lucas\\Documents\\Projets\\BlazorGameQuest\\BlazorGame.Client\\obj\\Debug\\net9.0\\compressed\\6di2wi1uy7-c448525135.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "485"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"R8tQeAo5kCJy42ZbTq4d4FQqKPPc9w3/Ske/XNXJWso=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 07 Oct 2025 14:49:55 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-R8tQeAo5kCJy42ZbTq4d4FQqKPPc9w3/Ske/XNXJWso="
         }
       ]
     },

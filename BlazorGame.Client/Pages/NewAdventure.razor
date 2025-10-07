@@ -1,0 +1,17 @@
+@page "/new-adventure"
+@inject NavigationManager Navigation
+
+<PageTitle>Bladebound · Nouvelle aventure</PageTitle>
+
+<div class="container-adventure">
+    <h4>Bienvenu dans Bladebound !</h4>
+    <p>Une aventure palpitante vous attend… Oserez-vous relever le défi ?</p>
+    <button class="btn btn-primary" @onclick="StartNewGame">Commencer</button>
+</div>
+
+@code {
+    private void StartNewGame()
+    {
+        Navigation.NavigateTo("/room/1");
+    }
+}

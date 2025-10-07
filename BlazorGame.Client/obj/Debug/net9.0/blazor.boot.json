@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "BlazorGame.Client",
   "resources": {
-    "hash": "sha256-ND4yokft1+0PYrr8+6gkMp8Nrd05YsXVswtsaM+zm6o=",
+    "hash": "sha256-WIJyfncgth9lOJZNVUXT1B4O2SPKfBnGSlGMraRGOPs=",
     "fingerprinting": {
       "Microsoft.AspNetCore.Authorization.z6jo10m0rd.wasm": "Microsoft.AspNetCore.Authorization.wasm",
       "Microsoft.AspNetCore.Components.65wbz7t8mt.wasm": "Microsoft.AspNetCore.Components.wasm",
@@ -201,10 +201,10 @@
       "icudt_CJK.tjcz0u77k5.dat": "icudt_CJK.dat",
       "icudt_EFIGS.tptq2av103.dat": "icudt_EFIGS.dat",
       "icudt_no_CJK.lfu7j35m59.dat": "icudt_no_CJK.dat",
-      "SharedModels.6femirdcm5.wasm": "SharedModels.wasm",
-      "SharedModels.aulv3f87up.pdb": "SharedModels.pdb",
-      "BlazorGame.Client.8kwtlxgzur.wasm": "BlazorGame.Client.wasm",
-      "BlazorGame.Client.4o4iv1ncwq.pdb": "BlazorGame.Client.pdb"
+      "SharedModels.r8ukl6ji3f.wasm": "SharedModels.wasm",
+      "SharedModels.73t6gyt22c.pdb": "SharedModels.pdb",
+      "BlazorGame.Client.a6mlyaa2we.wasm": "BlazorGame.Client.wasm",
+      "BlazorGame.Client.cvkxfb0uwl.pdb": "BlazorGame.Client.pdb"
     },
     "jsModuleNative": {
       "dotnet.native.hmanx9razn.js": "sha256-d7UNSArplVrX3arY2Kmhxp1wN79ng8hLqIBrkiQ9Gbo="
@@ -414,12 +414,12 @@
       "WindowsBase.vy2l5u79y6.wasm": "sha256-ufB9Mo5joMyUs3DzXWWBFFIZNEVrt6h9N5stYB6Oln4=",
       "mscorlib.xd6mv31d55.wasm": "sha256-1YSLR2eZt3ceALFV//vZUF2AloxVil3VlrW1zZYPSEI=",
       "netstandard.kaml52uspo.wasm": "sha256-HLEwBpLfzKw2/zGSVzHzFJxznCkt/WIjahrziiMrOpA=",
-      "SharedModels.6femirdcm5.wasm": "sha256-fp8aEuCs5JilpIJ5w8QCaI3xlpq5rwq2pGHs5RNRNYk=",
-      "BlazorGame.Client.8kwtlxgzur.wasm": "sha256-6Jyz6jHeoK63RQP9lQHFG6+NJD80wW3nDjwEzo4wOBw="
+      "SharedModels.r8ukl6ji3f.wasm": "sha256-5Wy5Wte18BLQrSxjbmxFoEhy81f1YChULjhXmW8biII=",
+      "BlazorGame.Client.a6mlyaa2we.wasm": "sha256-frIjlWlEAur/7oTmCgBk1da1l33mGdIhSyWj4ZGD+zk="
     },
     "pdb": {
-      "SharedModels.aulv3f87up.pdb": "sha256-Uj+ROk0GLDdlsaPFa1SnH+MtM2lnaoeS0Q5JGVwsTnQ=",
-      "BlazorGame.Client.4o4iv1ncwq.pdb": "sha256-3IRwnGXmy8e3p3Rz5FXsEugEszK45qSfZY/u7FwjRqg="
+      "SharedModels.73t6gyt22c.pdb": "sha256-wwDsi2ZrIjUakkZ1mFTurehvFi0IygdU++et1A1fOx8=",
+      "BlazorGame.Client.cvkxfb0uwl.pdb": "sha256-GB0TF6xwDt/5FiKqSEcS3fsLYS+Dj3YFdYpvzH8peFE="
     }
   },
   "cacheBootResources": true,
