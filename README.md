@@ -14,7 +14,8 @@ cd GameServices
 dotnet build
 dotnet run
 ```
-Une fois lancé, vous pouvez ouvrir Swagger pour explorer l’API via : http://localhost:5154/index.html
+Une fois lancé, vous pouvez ouvrir Swagger pour explorer l’API via : 
+http://localhost:5154/index.html
 
 ### 2. Frontend (BlazorGame.Client)
 
@@ -23,7 +24,8 @@ cd BlazorGame.Client
 dotnet build
 dotnet run
 ```
-Enfin, lancer l'application via : http://localhost:5133/
+Enfin, lancer l'application via : 
+http://localhost:5133/
 
 ## Notes
 
