@@ -10,12 +10,11 @@
 ### 1. Backend (GameService)
 
 ```bash
-cd GameService
+cd GameServices
 dotnet build
 dotnet run
 ```
-Une fois lancé, vous pouvez ouvrir Swagger pour explorer l’API via :
-http://localhost:5154/index.html
+Une fois lancé, vous pouvez ouvrir Swagger pour explorer l’API via : http://localhost:5154/index.html
 
 ### 2. Frontend (BlazorGame.Client)
 
@@ -29,4 +28,3 @@ Enfin, lancer l'application via : http://localhost:5133/
 ## Notes
 
 - Assurez-vous que GameService est lancé avant de démarrer le frontend.
-- Les ports peuvent varier selon la configuration.

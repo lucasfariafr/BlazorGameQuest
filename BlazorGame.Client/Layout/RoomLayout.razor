@@ -1,0 +1,55 @@
+@inherits LayoutComponentBase
+@using SharedModels.Enums
+@using System.ComponentModel.DataAnnotations
+
+<div class="room-container">
+    <div class="room-header">
+        <h4>Salle @RoomId</h4>
+        @if (!string.IsNullOrEmpty(Description))
+        {
+            <p class="room-description">@Description</p>
+        }
+    </div>
+
+    <div class="room-content">
+        @Body
+    </div>
+
+    @if (AvailableActions != null && AvailableActions.Any())
+    {
+        <div class="room-actions">
+            <ul class="action-list">
+                @foreach (var action in AvailableActions)
+                {
+                    <li>
+                        <button class="btn btn-primary">
+                            @GetActionDisplayName(action)
+                        </button>
+                    </li>
+                }
+            </ul>
+        </div>
+    }
+</div>
+
+@code {
+    [Parameter]
+    public int RoomId { get; set; }
+
+    [Parameter]
+    public string? Description { get; set; }
+
+    [Parameter]
+    public IReadOnlyList<PlayerAction>? AvailableActions { get; set; }
+
+    private static string GetActionDisplayName(PlayerAction action)
+    {
+        var displayName = action.GetType()
+        .GetMember(action.ToString())
+        .FirstOrDefault()?
+        .GetCustomAttributes(typeof(DisplayAttribute), false)
+        .FirstOrDefault() as DisplayAttribute;
+
+        return displayName?.Name ?? action.ToString();
+    }
+}

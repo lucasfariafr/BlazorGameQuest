@@ -1,0 +1,23 @@
+.home-container {
+  display: flex;
+  text-align: left;
+}
+
+.left-side {
+  display: flex;
+  flex-direction: column;
+}
+
+.left-side .btn {
+  max-width: 130px;
+}
+
+.highlight {
+  color: #ff6b6b;
+}
+
+.right-side img {
+  width: 120px;
+  margin-left: 20px;
+  height: auto;
+}

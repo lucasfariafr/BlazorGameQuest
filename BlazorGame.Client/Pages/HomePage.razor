@@ -1,0 +1,24 @@
+@page "/home"
+@inject NavigationManager Navigation
+
+<PageTitle>Bladebound · Accueil</PageTitle>
+
+<div class="home-container">
+    <div class="left-side">
+        <h4>
+            Prêt pour le <span class="highlight">défi</span> ?
+        </h4>
+        <p>Entre dans l’arène.</p>
+        <button class="btn btn-primary" @onclick="HandleStart">Rejoins moi !</button>
+    </div>
+    <div class="right-side">
+        <img src="images/icons/hero-icon.png" alt="Icône du joueur" />
+    </div>
+</div>
+
+@code {
+    private void HandleStart()
+    {
+        Navigation.NavigateTo("/new-adventure");
+    }
+}

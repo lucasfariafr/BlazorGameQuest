@@ -2,7 +2,7 @@
 @inject NavigationManager Navigation
 
 <div class="page">
-    @if (Navigation.Uri.EndsWith("/login") || Navigation.Uri.EndsWith("/register"))
+    @if (Navigation.Uri.EndsWith("/login"))
     {
         @Body
     }

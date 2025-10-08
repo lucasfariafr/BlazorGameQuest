@@ -1,0 +1,36 @@
+@page "/new-adventure/room/{roomId:int}"
+@inject HttpClient Http
+@using SharedModels.Models
+@using SharedModels.Enums
+@using System.Text.Json
+@using System.Text.Json.Serialization
+@using System.ComponentModel.DataAnnotations
+
+<PageTitle>Bladebound · Salle @(roomId)</PageTitle>
+
+@if (room == null)
+{
+    <div class="d-flex justify-content-center align-items-center" style="height: 200px;">
+        <div class="spinner-border text-primary" role="status"></div>
+    </div>
+}
+else
+{
+    <RoomLayout RoomId="@roomId" Description="@room.Description" AvailableActions="@room.AvailableActions" />
+}
+
+@code {
+    [Parameter]
+    public int roomId { get; set; }
+
+    private Room? room;
+
+    protected override async Task OnInitializedAsync()
+    {
+        room = await Http.GetFromJsonAsync<Room>($"http://localhost:5154/api/Room/{roomId}", new JsonSerializerOptions
+        {
+            Converters = { new JsonStringEnumConverter() },
+            PropertyNameCaseInsensitive = true
+        });
+    }
+}
