@@ -10,6 +10,9 @@
 }
 
 .room-container button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 5px 10px;
   min-width: 113px;
   height: 38px;

@@ -2,3 +2,46 @@
 @inject NavigationManager Navigation
 
 <PageTitle>Bladebound · Historique personnel</PageTitle>
+
+<div class="table-container">
+    <div class="header">
+        <div class="header-actions">
+            <button class="btn filter">Filter</button>
+            <button class="btn export">Exporter</button>
+        </div>
+    </div>
+
+    <table class="table-content">
+        <thead>
+            <tr>
+                <th>Joueur</th>
+                <th>Niveau</th>
+                <th>Score</th>
+                <th class="center">Salles explorées</th>
+                <th class="center">Trésors trouvés</th>
+                <th class="center">Ennemies vaincues</th>
+                <th class="center">Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><span class="player-name">Fafa</span></td>
+                <td>Facile</td>
+                <td>1550</td>
+                <td class="center">12</td>
+                <td class="center">2</td>
+                <td class="center">10</td>
+                <td class="center"><span class="status survived">Victoire</span></td>
+            </tr>
+            <tr>
+                <td><span class="player-name">Fafa</span></td>
+                <td>Moyen</td>
+                <td>2650</td>
+                <td class="center">12</td>
+                <td class="center">4</td>
+                <td class="center">8</td>
+                <td class="center"><span class="status survived">Victoire</span></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

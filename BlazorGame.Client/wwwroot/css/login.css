@@ -72,7 +72,7 @@ button:disabled {
 
 .password-wrapper svg {
   position: absolute;
-  right: 3px;
+  right: 6px;
   top: 40%;
   transform: translateY(-50%);
   cursor: pointer;
