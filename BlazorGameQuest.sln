@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedModels", "SharedModel
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameServices", "GameServices\GameServices.csproj", "{7AFB2458-77FB-4637-80F8-15F903D239FA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameServices.Tests", "GameServices.Tests\GameServices.Tests.csproj", "{B8B1AE92-CF1F-4A37-8F63-F49CD50D49DA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +71,18 @@ Global
 		{7AFB2458-77FB-4637-80F8-15F903D239FA}.Release|x64.Build.0 = Release|Any CPU
 		{7AFB2458-77FB-4637-80F8-15F903D239FA}.Release|x86.ActiveCfg = Release|Any CPU
 		{7AFB2458-77FB-4637-80F8-15F903D239FA}.Release|x86.Build.0 = Release|Any CPU
+		{B8B1AE92-CF1F-4A37-8F63-F49CD50D49DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8B1AE92-CF1F-4A37-8F63-F49CD50D49DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8B1AE92-CF1F-4A37-8F63-F49CD50D49DA}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{B8B1AE92-CF1F-4A37-8F63-F49CD50D49DA}.Debug|x64.Build.0 = Debug|Any CPU
+		{B8B1AE92-CF1F-4A37-8F63-F49CD50D49DA}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B8B1AE92-CF1F-4A37-8F63-F49CD50D49DA}.Debug|x86.Build.0 = Debug|Any CPU
+		{B8B1AE92-CF1F-4A37-8F63-F49CD50D49DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8B1AE92-CF1F-4A37-8F63-F49CD50D49DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8B1AE92-CF1F-4A37-8F63-F49CD50D49DA}.Release|x64.ActiveCfg = Release|Any CPU
+		{B8B1AE92-CF1F-4A37-8F63-F49CD50D49DA}.Release|x64.Build.0 = Release|Any CPU
+		{B8B1AE92-CF1F-4A37-8F63-F49CD50D49DA}.Release|x86.ActiveCfg = Release|Any CPU
+		{B8B1AE92-CF1F-4A37-8F63-F49CD50D49DA}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
