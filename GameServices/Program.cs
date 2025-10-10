@@ -12,11 +12,14 @@ ConfigureMiddleware(app);
 
 app.Run();
 
+// Configure les services de l'application et l'injection de dépendances
 static void ConfigureServices(IServiceCollection services, IConfiguration configuration)
 {
+    // Enregistrement des services
     services.AddSingleton<IRoomInitializer, RoomInitializer>();
     services.AddSingleton<IRoomService, RoomService>();
 
+    // Configuration des contrôleurs avec des options JSON personnalisées
     services.AddControllers()
         .AddJsonOptions(options =>
         {
@@ -25,6 +28,7 @@ static void ConfigureServices(IServiceCollection services, IConfiguration config
             options.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
         });
 
+    // Configuration Cors pour autoriser les requêtes du client Blazor
     services.AddCors(options =>
     {
         options.AddPolicy("AllowBlazorClient", policy =>
@@ -37,6 +41,7 @@ static void ConfigureServices(IServiceCollection services, IConfiguration config
         });
     });
 
+    // Configuration de Swagger pour la documentation de l'API
     services.AddEndpointsApiExplorer();
     services.AddSwaggerGen(c =>
     {
@@ -49,6 +54,7 @@ static void ConfigureServices(IServiceCollection services, IConfiguration config
 
 }
 
+// Configure le pipeline de traitement des requêtes HTTP
 static void ConfigureMiddleware(WebApplication app)
 {
     if (app.Environment.IsDevelopment())
@@ -56,11 +62,6 @@ static void ConfigureMiddleware(WebApplication app)
         app.UseDeveloperExceptionPage();
         app.UseSwagger();
         app.UseSwaggerUI();
-    }
-    else
-    {
-        app.UseExceptionHandler("/error");
-        app.UseHsts();
     }
 
     app.UseHttpsRedirection();

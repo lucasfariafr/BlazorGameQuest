@@ -25,6 +25,8 @@ else
 
     private Room? room;
 
+    // Méthode appelée lors de l'initialisation du composant Blazor
+    // Récupère les données de la room depuis l'API en fonction de l'ID fourni
     protected override async Task OnInitializedAsync()
     {
         room = await Http.GetFromJsonAsync<Room>($"http://localhost:5154/api/Room/{roomId}", new JsonSerializerOptions

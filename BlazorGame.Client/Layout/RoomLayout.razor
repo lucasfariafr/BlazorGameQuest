@@ -42,6 +42,8 @@
     [Parameter]
     public IReadOnlyList<PlayerAction>? AvailableActions { get; set; }
 
+    // Récupère le nom d'affichage d'une action à partir de son attribut Display
+    // Si aucun attribut Display n'est défini, retourne le nom de l'énumération
     private static string GetActionDisplayName(PlayerAction action)
     {
         var displayName = action.GetType()
