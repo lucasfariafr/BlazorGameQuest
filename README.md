@@ -1,49 +1,67 @@
-# BlazorGameQuest 
+# BlazorGameQuest
 
-## Développeur 
-- Lucas FARIA
-- El Hadj SYLLA
+## Développeurs
+- Lucas Faria
+- El Hadj Sylla
 
 ## Prérequis
 
-- [.NET 9 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/9.0) installé
+Avant de lancer le projet, assurez-vous d’avoir installé les éléments suivants :
+
+- [.NET 9 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/9.0)
 - Un terminal ou PowerShell
 
 ## Lancer le projet
 
-### 1. Backend (GameService)
+### 1. Lancer le service principal (API)
+
+Dans un premier terminal, exécutez :
 
 ```bash
 cd GameServices
 dotnet build
 dotnet run
 ```
-Une fois lancé, vous pouvez ouvrir Swagger pour explorer l’API via : 
-http://localhost:5154/index.html
+Une fois le service lancé, ouvrez Swagger pour explorer l’API : http://localhost:5154/index.html
 
-### 2. Frontend (BlazorGame.Client)
+### 2. Lancer le client Blazor
+Dans un second terminal, exécutez :
 
 ```bash
 cd BlazorGame.Client
 dotnet build
 dotnet run
 ```
-Enfin, lancer l'application via : 
-http://localhost:5133/
-
-## Notes
-
-- Assurez-vous que GameService est lancé avant de démarrer le frontend.
+Ensuite, ouvrez l’application à l’adresse suivante : http://localhost:5133/
 
 ## Tests Unitaires à venir 
 
-### 1. Vérifier si Joueur change de Salle quand Salle Reussit
-### 2. Vérifier si Joueur ouvre Coffre alors réponse
-### 3. Vérifier si lorsque Derniere Salle, Fin du Jeu
-### 4. Vérifier si Joueur a Perdu lorsque Plus de Point de Vie
-### 5. Vérifier si Salles non Nulles
-### 6. Vérifier si Première Salle est vraiment la Première Salle
-### 7. Vérifier si Point de Vie Perdu sont réellement Perdu
-### 8. Vérifier si Potion Soigne Point de Vie
+### Logique du Joueur
+1. **Changement de salle**  
+   Vérifier que le joueur change bien de salle lorsque la salle actuelle est réussie.
 
+2. **Ouverture du coffre**  
+   Vérifier que le joueur obtient la récompense lorsqu’il ouvre un coffre.
 
+3. **Perte de points de vie**  
+   Vérifier que les points de vie perdus sont effectivement déduits du total.
+
+4. **Utilisation de potion**  
+   Vérifier qu’une potion restaure correctement les points de vie du joueur.
+
+5. **Mort du joueur**  
+   Vérifier que le joueur est déclaré perdant lorsqu’il n’a plus de points de vie.
+
+### Logique du Jeu et des Salles
+6. **Validité des salles**  
+   Vérifier que toutes les salles du jeu sont bien non nulles.
+
+7. **Première salle correcte**  
+   Vérifier que la première salle définie est bien celle attendue.
+
+8. **Fin du jeu** 
+   Vérifier que lorsque le joueur atteint la dernière salle, la fin du jeu est déclenchée.
+
+## Notes
+- Assurez-vous que GameService est lancé avant de démarrer le frontend.
+- Si un port est déjà utilisé, vous pouvez le modifier dans le fichier launchSettings.json.

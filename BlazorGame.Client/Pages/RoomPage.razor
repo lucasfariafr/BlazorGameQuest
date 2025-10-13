@@ -20,13 +20,23 @@ else
 }
 
 @code {
+    /// <summary>
+    /// Identifiant de la salle à afficher.
+    /// Ce paramètre est passé au composant depuis le parent ou l'URL.
+    /// </summary>
     [Parameter]
     public int roomId { get; set; }
 
+    /// <summary>
+    /// La salle récupérée depuis l'API.
+    /// </summary>
     private Room? room;
 
-    // Méthode appelée lors de l'initialisation du composant Blazor
-    // Récupère les données de la room depuis l'API en fonction de l'ID fourni
+    /// <summary>
+    /// Méthode appelée lors de l'initialisation du composant Blazor.
+    /// Récupère les données de la salle depuis l'API en fonction de <see cref="roomId"/>.
+    /// </summary>
+    /// <returns>Une <see cref="Task"/> représentant l'opération asynchrone.</returns>
     protected override async Task OnInitializedAsync()
     {
         room = await Http.GetFromJsonAsync<Room>($"http://localhost:5154/api/Room/{roomId}", new JsonSerializerOptions

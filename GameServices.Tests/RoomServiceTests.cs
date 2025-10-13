@@ -8,23 +8,29 @@ using SharedModels.Models;
 
 namespace GameServices.Tests;
 
+/// <summary>
+/// Contient les tests unitaires pour le service <see cref="RoomService"/> et le contrôleur <see cref="RoomController"/>.
+/// </summary>
 public class RoomServiceTests
 {
-    // Vérifie que GetAllRooms retourne un résultat Ok avec une liste de salles
+    /// <summary>
+    /// Vérifie que la méthode <see cref="RoomController.GetAllRooms"/> retourne un résultat <see cref="OkObjectResult"/>
+    /// contenant une liste de salles non vide.
+    /// </summary>
     [Fact]
     public void GetAllRooms_ShouldReturnOkWithRooms()
     {
         // Préparation
         var mockService = new Mock<IRoomService>();
         var expectedRooms = new List<Room>
-        {
-            new()
             {
-                Id = 1,
-                Description = "Room 1",
-                AvailableActions = []
-            }
-        };
+                new()
+                {
+                    Id = 1,
+                    Description = "Room 1",
+                    AvailableActions = new List<PlayerAction>()
+                }
+            };
         mockService.Setup(s => s.GetAllRooms()).Returns(expectedRooms);
         var controller = new RoomController(mockService.Object);
 
@@ -37,7 +43,11 @@ public class RoomServiceTests
         Assert.Single(rooms);
     }
 
-    // Vérifie que la première salle retournée par le service possède les bonnes propriétés
+    /// <summary>
+    /// Vérifie que la première salle retournée par <see cref="RoomService.GetAllRooms"/>
+    /// possède les bonnes propriétés, y compris l'identifiant, la description, le type de monstre
+    /// et les actions disponibles.
+    /// </summary>
     [Fact]
     public void NavigateToFirstRoom_ShouldBeFirstRoom()
     {
@@ -45,11 +55,11 @@ public class RoomServiceTests
         var roomInitializer = new RoomInitializer();
         var service = new RoomService(roomInitializer);
         var expectedActions = new List<PlayerAction>
-        {
-            PlayerAction.Fight,
-            PlayerAction.RunAway,
-            PlayerAction.Search
-        };
+            {
+                PlayerAction.Fight,
+                PlayerAction.RunAway,
+                PlayerAction.Search
+            };
 
         // Action
         var rooms = service.GetAllRooms();
@@ -62,7 +72,10 @@ public class RoomServiceTests
         Assert.Equal(expectedActions, firstRoom.AvailableActions);
     }
 
-    // Vérifie que GetRoomById retourne un résultat NotFound lorsque l'ID de la salle n'existe pas
+    /// <summary>
+    /// Vérifie que <see cref="RoomController.GetRoomById(int)"/> retourne un résultat <see cref="NotFoundObjectResult"/>
+    /// lorsque l'identifiant de la salle n'existe pas.
+    /// </summary>
     [Fact]
     public void GetRoomById_ShouldReturnNotFound_WhenRoomDoesNotExist()
     {
