@@ -1,4 +1,8 @@
-# BlazorGameQuest
+# BlazorGameQuest 
+
+## Développeur 
+- Lucas FARIA
+- El Hadj SYLLA
 
 ## Prérequis
 
