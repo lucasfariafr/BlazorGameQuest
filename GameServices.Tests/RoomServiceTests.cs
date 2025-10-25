@@ -1,11 +1,3 @@
-using GameServices.Controllers;
-using GameServices.Interfaces;
-using GameServices.Services;
-using Microsoft.AspNetCore.Mvc;
-using Moq;
-using SharedModels.Enums;
-using SharedModels.Models;
-
 namespace GameServices.Tests;
 
 /// <summary>
@@ -21,17 +13,12 @@ public class RoomServiceTests
     public void GetAllRooms_ShouldReturnOkWithRooms()
     {
         // Préparation
+        var roomInitializer = new RoomInitializer();
+        var expectedRooms = roomInitializer.InitializeRooms();
+        
         var mockService = new Mock<IRoomService>();
-        var expectedRooms = new List<Room>
-            {
-                new()
-                {
-                    Id = 1,
-                    Description = "Room 1",
-                    AvailableActions = new List<PlayerAction>()
-                }
-            };
         mockService.Setup(s => s.GetAllRooms()).Returns(expectedRooms);
+        
         var controller = new RoomController(mockService.Object);
 
         // Action
@@ -39,8 +26,8 @@ public class RoomServiceTests
 
         // Vérification
         var okResult = Assert.IsType<OkObjectResult>(result.Result);
-        var rooms = Assert.IsAssignableFrom<IEnumerable<Room>>(okResult.Value);
-        Assert.Single(rooms);
+        var rooms = Assert.IsAssignableFrom<IReadOnlyList<Room>>(okResult.Value);
+        Assert.Equal(2, rooms.Count);
     }
 
     /// <summary>
@@ -54,11 +41,11 @@ public class RoomServiceTests
         // Préparation
         var roomInitializer = new RoomInitializer();
         var service = new RoomService(roomInitializer);
-        var expectedActions = new List<PlayerAction>
+        var expectedActions = new List<AvailableActions>
             {
-                PlayerAction.Fight,
-                PlayerAction.RunAway,
-                PlayerAction.Search
+                AvailableActions.Fight,
+                AvailableActions.RunAway,
+                AvailableActions.Search
             };
 
         // Action
@@ -66,10 +53,10 @@ public class RoomServiceTests
         var firstRoom = rooms[0];
 
         // Vérification
-        Assert.Equal(1, firstRoom.Id);
-        Assert.Equal($"Un {MonsterType.Goblin} apparaît. Que faites-vous ?", firstRoom.Description);
-        Assert.Equal(MonsterType.Goblin, firstRoom.Monster);
-        Assert.Equal(expectedActions, firstRoom.AvailableActions);
+        Assert.Equal(1, firstRoom.RoomId);
+        Assert.Equal($"Un {firstRoom.Monster?.Type.ToString().ToLower()} apparaît. Que faites-vous ?", firstRoom.Description);
+        Assert.Equal(firstRoom.Monster?.Type, MonsterType.Zombie);
+        Assert.Equal(expectedActions, firstRoom.Actions);
     }
 
     /// <summary>

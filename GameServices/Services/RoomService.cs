@@ -1,6 +1,3 @@
-using GameServices.Interfaces;
-using SharedModels.Models;
-
 namespace GameServices.Services;
 
 /// <summary>
@@ -34,5 +31,5 @@ public class RoomService : IRoomService
     /// <returns>
     /// La salle correspondante (<see cref="Room"/>), ou <see langword="null"/> si aucune salle ne correspond à l'identifiant.
     /// </returns>
-    public Room? GetRoomById(int id) => _rooms.FirstOrDefault(r => r.Id == id);
+    public Room? GetRoomById(int id) => _rooms.FirstOrDefault(r => r.RoomId == id);
 }

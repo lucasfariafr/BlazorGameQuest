@@ -1,5 +1,3 @@
-using SharedModels.Models;
-
 namespace GameServices.Interfaces;
 
 /// <summary>

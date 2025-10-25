@@ -1,0 +1,9 @@
+global using SharedModels.Constants;
+global using SharedModels.Enums.Entities;
+global using SharedModels.Enums.Environment;
+global using SharedModels.Enums.Utils;
+global using SharedModels.Data;
+global using SharedModels.Models.Entities;
+global using SharedModels.Models.Utils;
+global using System.ComponentModel.DataAnnotations;
+global using System.Text.Json.Serialization;

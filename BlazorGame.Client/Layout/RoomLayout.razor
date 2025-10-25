@@ -1,6 +1,7 @@
 @inherits LayoutComponentBase
 @using SharedModels.Enums
 @using System.ComponentModel.DataAnnotations
+@using SharedModels.Enums.Environment
 
 <div class="room-container">
     <div class="room-header">
@@ -40,11 +41,11 @@
     public string? Description { get; set; }
 
     [Parameter]
-    public IReadOnlyList<PlayerAction>? AvailableActions { get; set; }
+    public IReadOnlyList<AvailableActions>? AvailableActions { get; set; }
 
     // Récupère le nom d'affichage d'une action à partir de son attribut Display
     // Si aucun attribut Display n'est défini, retourne le nom de l'énumération
-    private static string GetActionDisplayName(PlayerAction action)
+    private static string GetActionDisplayName(AvailableActions action)
     {
         var displayName = action.GetType()
         .GetMember(action.ToString())

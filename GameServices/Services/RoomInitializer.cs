@@ -1,7 +1,3 @@
-using GameServices.Interfaces;
-using SharedModels.Enums;
-using SharedModels.Models;
-
 namespace GameServices.Services;
 
 /// <summary>
@@ -20,30 +16,54 @@ public class RoomInitializer : IRoomInitializer
     /// </returns>
     public IReadOnlyList<Room> InitializeRooms()
     {
-        return new List<Room>
+        var zombie = new Monster
+        {
+            CharacterId = 1,
+            Type = MonsterType.Zombie,
+            Strength = 12,
+            Armor = 6,
+            Weapon = new Weapon
             {
+                WeaponId = 1,
+                Type = WeaponType.Sword
+            }
+        };
+
+        var chest = new Chest
+        {
+            ChestId = 1,
+            Potion = new Potion
+            {
+                PotionId = 1,
+                Type = PotionType.Health
+            }
+        };
+        
+        return new List<Room>
+        {
                 new()
                 {
-                    Id = 1,
-                    Description = $"Un {MonsterType.Goblin} apparaît. Que faites-vous ?",
-                    Monster = MonsterType.Goblin,
-                    AvailableActions =
+                    RoomId = 1,
+                    Description = $"Un {zombie.Type.ToString().ToLower()} apparaît. Que faites-vous ?",
+                    Monster = zombie,
+                    Actions =
                     [
-                        PlayerAction.Fight,
-                        PlayerAction.RunAway,
-                        PlayerAction.Search
+                        AvailableActions.Fight,
+                        AvailableActions.RunAway,
+                        AvailableActions.Search
                     ]
                 },
                 new()
                 {
-                    Id = 2,
+                    RoomId = 2,
                     Description = "Un coffre mystérieux !",
                     Monster = null,
-                    AvailableActions =
+                    Actions =
                     [
-                        PlayerAction.Open,
-                        PlayerAction.Ignore
-                    ]
+                        AvailableActions.Open,
+                        AvailableActions.Ignore
+                    ],
+                    Chest = chest
                 }
             }.AsReadOnly();
     }

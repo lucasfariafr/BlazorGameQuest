@@ -1,10 +1,5 @@
 @page "/new-adventure/room/{roomId:int}"
 @inject HttpClient Http
-@using SharedModels.Models
-@using SharedModels.Enums
-@using System.Text.Json
-@using System.Text.Json.Serialization
-@using System.ComponentModel.DataAnnotations
 
 <PageTitle>Bladebound · Salle @(roomId)</PageTitle>
 
@@ -16,7 +11,7 @@
 }
 else
 {
-    <RoomLayout RoomId="@roomId" Description="@room.Description" AvailableActions="@room.AvailableActions" />
+    <RoomLayout RoomId="@roomId" Description="@room.Description" AvailableActions="@room.Actions" />
 }
 
 @code {

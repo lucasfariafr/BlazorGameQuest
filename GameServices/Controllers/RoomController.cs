@@ -1,7 +1,3 @@
-using GameServices.Interfaces;
-using Microsoft.AspNetCore.Mvc;
-using SharedModels.Models;
-
 namespace GameServices.Controllers;
 
 /// <summary>
