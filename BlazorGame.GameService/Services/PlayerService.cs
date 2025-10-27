@@ -1,31 +1,48 @@
 namespace BlazorGame.GameService.Services;
 
 /// <summary>
-/// Service pour la gestion du joueur.
+/// Service pour gérer les joueurs.
 /// </summary>
 public class PlayerService
 {
     private readonly GameDatabaseContext _context;
 
+    /// <summary>
+    /// Initialise le service avec le contexte de la base de données.
+    /// </summary>
+    /// <param name="context">Le contexte de la base de données du jeu.</param>
     public PlayerService(GameDatabaseContext context)
     {
         _context = context;
     }
 
     /// <summary>
-    /// Récupère un joueur par son ID avec toutes ses relations.
+    /// Récupère un joueur par son identifiant.
     /// </summary>
-    public async Task<Player?> GetPlayerByIdAsync(int playerId)
+    /// <param name="playerId">Identifiant du monstre.</param>
+    /// <returns>Le monstre ou null s'il n'existe pas.</returns>
+    public async Task<IReadOnlyList<Player>> GetAllPlayersAsync()
     {
-        return await _context.Player
-            .Include(p => p.Weapon)
-            .Include(p => p.Potions)
-            .FirstOrDefaultAsync(p => p.CharacterId == playerId);
+        return await _context.Player.ToListAsync();
     }
 
     /// <summary>
-    /// Utilise une potion sur le joueur.
+    /// Récupère un joueur par son identifiant.
     /// </summary>
+    /// <param name="playerId">Identifiant du joueur.</param>
+    /// <returns>Le joueur ou null s'il n'existe pas.</returns>
+    public async Task<Player?> GetPlayerByIdAsync(int playerId)
+    {
+        return await _context.Player.FindAsync(playerId);
+    }
+
+    /// <summary>
+    /// Utilise une potion pour un joueur.
+    /// </summary>
+    /// <param name="playerId">Identifiant du joueur.</param>
+    /// <param name="potionId">Identifiant de la potion.</param>
+    /// <returns>Le joueur mis à jour.</returns>
+    /// <exception cref="KeyNotFoundException">Si le joueur ou la potion n'existe pas.</exception>
     public async Task<Player> UsePotionAsync(int playerId, int potionId)
     {
         var player = await GetPlayerByIdAsync(playerId);
@@ -49,8 +66,10 @@ public class PlayerService
     }
 
     /// <summary>
-    /// Applique l'effet d'une potion au joueur.
+    /// Applique l'effet d'une potion sur un joueur.
     /// </summary>
+    /// <param name="player">Le joueur.</param>
+    /// <param name="potion">La potion à appliquer.</param>
     private void ApplyPotionEffect(Player player, Potion potion)
     {
         switch (potion.Type)
@@ -69,8 +88,11 @@ public class PlayerService
     }
 
     /// <summary>
-    /// Met à jour la santé du joueur.
+    /// Met à jour la santé d'un joueur.
     /// </summary>
+    /// <param name="playerId">Identifiant du joueur.</param>
+    /// <param name="newHealth">Nouvelle valeur de santé.</param>
+    /// <returns>True si le joueur existe et a été mis à jour, sinon false.</returns>
     public async Task<bool> UpdatePlayerHealthAsync(int playerId, double newHealth)
     {
         var player = await _context.Player.FindAsync(playerId);
@@ -95,16 +117,10 @@ public class PlayerService
     }
 
     /// <summary>
-    /// Vérifie si le joueur existe.
+    /// Vérifie si un joueur est en vie.
     /// </summary>
-    public async Task<bool> PlayerExistsAsync(int playerId)
-    {
-        return await _context.Player.AnyAsync(p => p.CharacterId == playerId);
-    }
-
-    /// <summary>
-    /// Vérifie si le joueur est vivant (a des PV ou des cœurs).
-    /// </summary>
+    /// <param name="playerId">Identifiant du joueur.</param>
+    /// <returns>True si le joueur est vivant, sinon false.</returns>
     public async Task<bool> IsPlayerAliveAsync(int playerId)
     {
         var player = await _context.Player
@@ -115,8 +131,11 @@ public class PlayerService
     }
 
     /// <summary>
-    /// Ajoute une potion à l'inventaire du joueur.
+    /// Ajoute une potion à un joueur.
     /// </summary>
+    /// <param name="playerId">Identifiant du joueur.</param>
+    /// <param name="potion">Potion à ajouter.</param>
+    /// <returns>True si ajout réussi, sinon false.</returns>
     public async Task<bool> AddPotionAsync(int playerId, Potion potion)
     {
         var player = await GetPlayerByIdAsync(playerId);
@@ -130,12 +149,14 @@ public class PlayerService
 
         await _context.SaveChangesAsync();
         return true;
-
     }
 
     /// <summary>
-    /// Équipe une arme au joueur.
+    /// Équipe une arme pour un joueur.
     /// </summary>
+    /// <param name="playerId">Identifiant du joueur.</param>
+    /// <param name="weaponId">Identifiant de l'arme.</param>
+    /// <returns>True si l'arme est équipée, sinon false.</returns>
     public async Task<bool> EquipWeaponAsync(int playerId, int weaponId)
     {
         var player = await _context.Player.FindAsync(playerId);

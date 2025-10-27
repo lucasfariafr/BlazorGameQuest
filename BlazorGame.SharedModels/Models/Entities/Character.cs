@@ -45,4 +45,5 @@ public abstract class Character
     /// </summary>
     [JsonPropertyOrder(6)]
     public double Damage => (Weapon?.Damage ?? 0) + Strength;
+    
 }

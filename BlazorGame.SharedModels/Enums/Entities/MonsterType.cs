@@ -23,4 +23,5 @@ public enum MonsterType
     /// </summary>
     [Display(Name = "Zombie")]
     Zombie = 3
+    
 }

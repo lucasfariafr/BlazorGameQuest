@@ -40,4 +40,5 @@ public static class GameConstants
     /// Effet de la potion de force.
     /// </summary>
     public const double StrengthPotion = 10;
+    
 }

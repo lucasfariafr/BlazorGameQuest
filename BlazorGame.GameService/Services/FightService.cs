@@ -1,7 +1,7 @@
 namespace BlazorGame.GameService.Services;
 
 /// <summary>
-/// Service pour la gestion des combats.
+/// Service pour gérer les combats entre joueurs et monstres.
 /// </summary>
 public class FightService
 {
@@ -9,6 +9,10 @@ public class FightService
     private readonly MonstersService _monsterService;
     private readonly GameDatabaseContext _context;
 
+    /// <summary>
+    /// Initialise le service avec les services de joueur, monstre et le contexte.
+    /// </summary>
+    /// <param name="context">Le contexte de la base de données du jeu.</param>
     public FightService(PlayerService playerService, MonstersService monsterService, GameDatabaseContext context)
     {
         _playerService = playerService;
@@ -17,32 +21,35 @@ public class FightService
     }
 
     /// <summary>
-    /// Lance un combat entre un joueur et un monstre.
+    /// Exécute un combat entre un joueur et un monstre.
     /// </summary>
+    /// <param name="playerId">Identifiant du joueur.</param>
+    /// <param name="monsterId">Identifiant du monstre.</param>
+    /// <returns>Résultat complet du combat.</returns>
+    /// <exception cref="KeyNotFoundException">Si le joueur ou le monstre n'existe pas.</exception>
     public async Task<FightResultDto> ExecuteFightAsync(int playerId, int monsterId)
     {
+        var player = await _playerService.GetPlayerByIdAsync(playerId);
+        if (player == null)
+        {
+            throw new KeyNotFoundException($"Le joueur {playerId} n'existe pas.");
+        }
 
-            var player = await _playerService.GetPlayerByIdAsync(playerId);
-            if (player == null)
-            {
-                throw new KeyNotFoundException($"Le joueur {playerId} n'existe pas.");
-            }
+        var monster = await _monsterService.GetMonsterByIdAsync(monsterId);
+        if (monster == null)
+        {
+            throw new KeyNotFoundException($"Le monstre {monsterId} n'existe pas.");
+        }
 
-            var monster = await _monsterService.GetMonsterByIdAsync(monsterId);
-            if (monster == null)
-            {
-                throw new KeyNotFoundException($"Le monstre {monsterId} n'existe pas.");
-            }
+        var result = SimulateFight(player, monster);
 
-            var result = SimulateFight(player, monster);
-            
-            await SaveFightResultAsync(player, monster);
+        await SaveFightResultAsync(player, monster);
 
-            return result;
+        return result;
     }
 
     /// <summary>
-    /// Simule le combat tour par tour.
+    /// Simule le combat et enregistre chaque tour.
     /// </summary>
     private FightResultDto SimulateFight(Player player, Monster monster)
     {
@@ -52,7 +59,7 @@ public class FightService
         while (player.Health > 0 && monster.Health > 0)
         {
             turnNumber++;
-            
+
             var (damageToMonster, damageToPlayer) = CalculateDamages(player, monster);
 
             monster.Health = Math.Max(monster.Health - damageToMonster, 0);
@@ -81,7 +88,7 @@ public class FightService
     }
 
     /// <summary>
-    /// Calcule les dégâts infligés par chaque combattant.
+    /// Calcule les dégâts infligés par le joueur et le monstre.
     /// </summary>
     private (double damageToMonster, double damageToPlayer) CalculateDamages(Player player, Monster monster)
     {
@@ -92,7 +99,7 @@ public class FightService
     }
 
     /// <summary>
-    /// Détermine le résultat du combat.
+    /// Détermine le résultat final du combat.
     /// </summary>
     private string DetermineFightOutcome(Player player, Monster monster)
     {
@@ -100,17 +107,17 @@ public class FightService
         {
             return "Égalité : les deux combattants sont morts !";
         }
-        
+
         if (player.Health <= 0)
         {
             return $"Défaite : le joueur a été vaincu par le {monster.Type} !";
         }
-        
+
         return $"Victoire : le {monster.Type} a été vaincu !";
     }
 
     /// <summary>
-    /// Sauvegarde les résultats du combat en base.
+    /// Sauvegarde les modifications du combat dans la base de données.
     /// </summary>
     private async Task SaveFightResultAsync(Player player, Monster monster)
     {
@@ -118,7 +125,7 @@ public class FightService
     }
 
     /// <summary>
-    /// Crée un snapshot du joueur pour le résultat.
+    /// Crée un snapshot du joueur après le combat.
     /// </summary>
     private PlayerSnapshotDto CreatePlayerSnapshot(Player player)
     {
@@ -135,7 +142,7 @@ public class FightService
     }
 
     /// <summary>
-    /// Crée un snapshot du monstre pour le résultat.
+    /// Crée un snapshot du monstre après le combat.
     /// </summary>
     private MonsterSnapshotDto CreateMonsterSnapshot(Monster monster)
     {

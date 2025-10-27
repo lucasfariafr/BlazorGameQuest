@@ -1,34 +1,47 @@
 namespace BlazorGame.GameService.Controllers;
 
 /// <summary>
-/// Contrôleur pour la gestion du joueur.
+/// Contrôleur pour gérer les API liées aux salles.
 /// </summary>
 [Route("api/[controller]")]
 [ApiController]
 [Produces("application/json")]
 public class RoomsController : ControllerBase
 {
-    private readonly RoomsService _service;
+    private readonly RoomsService _roomsService;
 
-    public RoomsController(RoomsService service)
+    /// <summary>
+    /// Initialise le contrôleur avec le service des salles.
+    /// </summary>
+    /// <param name="roomsService">Service pour gérer les salles.</param>
+    public RoomsController(RoomsService roomsService)
     {
-        _service = service;
+        _roomsService = roomsService;
     }
 
+    /// <summary>
+    /// Récupère toutes les salles.
+    /// </summary>
+    /// <returns>Liste des salles.</returns>
     [HttpGet]
     public async Task<IActionResult> GetAll()
     {
-        var rooms = await _service.GetAllAsync();
+        var rooms = await _roomsService.GetAllRoomsAsync();
         return Ok(rooms);
     }
 
-    [HttpGet("{id:int}")]
-    public async Task<IActionResult> GetById(int id)
+    /// <summary>
+    /// Récupère une salle par son identifiant.
+    /// </summary>
+    /// <param name="id">Identifiant de la salle.</param>
+    /// <returns>La salle correspondante ou NotFound.</returns>
+    [HttpGet("{roomId:int}")]
+    public async Task<IActionResult> GetById(int roomId)
     {
-        var room = await _service.GetByIdAsync(id);
+        var room = await _roomsService.GetRoomByIdAsync(roomId);
         if (room is null)
         {
-            return NotFound(new { message = $"La salle avec l'ID {id} n'existe pas." });
+            return NotFound(new { message = $"La salle avec l'ID {roomId} n'existe pas." });
         }
 
         return Ok(room);

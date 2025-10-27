@@ -7,7 +7,7 @@ public class Player : Character
 {
 
     /// <summary>
-    /// Nombre de cœurs restants du joueur.
+    /// Nombre de coeurs restants du joueur.
     /// </summary>
     [JsonPropertyOrder(1)]
     public int HeartNumber { get; set; } = GameConstants.MaxHearts;
@@ -17,4 +17,5 @@ public class Player : Character
     /// </summary>
     [JsonPropertyOrder(7)]
     public virtual List<Potion>? Potions { get; set; }
+    
 }

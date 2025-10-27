@@ -33,4 +33,5 @@ public class Room
     /// Coffre présent dans la salle (peut être null).
     /// </summary>
     public virtual Chest? Chest { get; set; }
+    
 }

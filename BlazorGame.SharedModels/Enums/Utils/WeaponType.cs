@@ -5,6 +5,7 @@ namespace BlazorGame.SharedModels.Enums.Utils;
 /// </summary>
 public enum WeaponType
 {
+    
     /// <summary>
     /// Épée - arme de mêlée puissante.
     /// </summary>
@@ -22,4 +23,5 @@ public enum WeaponType
     /// </summary>
     [Display(Name = "Bâton de pouvoir")]
     Wand = 3
+
 }

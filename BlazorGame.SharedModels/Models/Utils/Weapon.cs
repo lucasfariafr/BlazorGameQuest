@@ -31,4 +31,5 @@ public class Weapon
             throw new InvalidOperationException($"Les dégâts n'ont pas été définis pour l'arme : {Type}");
         }
     }
+    
 }

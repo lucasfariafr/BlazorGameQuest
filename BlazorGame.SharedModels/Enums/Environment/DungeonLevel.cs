@@ -23,4 +23,5 @@ public enum DungeonLevel
     /// </summary>
     [Display(Name = "Difficile")]
     Difficult = 3,
+
 }

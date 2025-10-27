@@ -12,4 +12,5 @@ public class Monster : Character
     [Required]
     [JsonPropertyOrder(1)]
     public MonsterType Type { get; set; }
+    
 }

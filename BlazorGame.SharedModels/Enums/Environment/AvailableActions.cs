@@ -35,4 +35,5 @@ public enum AvailableActions
     /// </summary>
     [Display(Name = "Ignorer")]
     Ignore = 5
+    
 }

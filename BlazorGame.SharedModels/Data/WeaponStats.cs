@@ -16,4 +16,5 @@ public static class WeaponStats
             [WeaponType.Bow] = GameConstants.BowDamage,
             [WeaponType.Wand] = GameConstants.WandDamage
         };
+        
 }

@@ -41,4 +41,5 @@ public class Potion
         PotionType.Strength => $"Augmente la force de {Effect}.",
         _ => throw new InvalidOperationException($"La description n'est pas définie pour la potion : {Type}")
     };    
+    
 }

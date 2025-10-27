@@ -15,4 +15,5 @@ public static class PotionStats
             [PotionType.Health] = GameConstants.RecoveryPotion,
             [PotionType.Strength] = GameConstants.StrengthPotion
         };
+        
 }

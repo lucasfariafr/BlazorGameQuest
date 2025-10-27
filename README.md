@@ -22,7 +22,7 @@ cd GameServices
 dotnet build
 dotnet run
 ```
-Une fois le service lancé, ouvrez Swagger pour explorer l’API : http://localhost:5154/index.html
+Une fois le service lancé, ouvrez Swagger pour explorer l’API : http://localhost:5203/index.html
 
 ### 2. Lancer le client Blazor
 Dans un second terminal, exécutez :
@@ -43,23 +43,11 @@ Ensuite, ouvrez l’application à l’adresse suivante : http://localhost:5133/
 2. **Ouverture du coffre**  
    Vérifier que le joueur obtient la récompense lorsqu’il ouvre un coffre.
 
-3. **Perte de points de vie**  
-   Vérifier que les points de vie perdus sont effectivement déduits du total.
-
-4. **Utilisation de potion**  
-   Vérifier qu’une potion restaure correctement les points de vie du joueur.
-
-5. **Mort du joueur**  
+3. **Mort du joueur**  
    Vérifier que le joueur est déclaré perdant lorsqu’il n’a plus de points de vie.
 
 ### Logique du Jeu et des Salles
-6. **Validité des salles**  
-   Vérifier que toutes les salles du jeu sont bien non nulles.
-
-7. **Première salle correcte**  
-   Vérifier que la première salle définie est bien celle attendue.
-
-8. **Fin du jeu** 
+5. **Fin du jeu** 
    Vérifier que lorsque le joueur atteint la dernière salle, la fin du jeu est déclenchée.
 
 ## Notes

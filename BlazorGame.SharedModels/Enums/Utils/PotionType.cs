@@ -5,6 +5,7 @@ namespace BlazorGame.SharedModels.Enums.Utils;
 /// </summary>
 public enum PotionType
 {
+    
     /// <summary>
     /// Potion de vie - restaure les points de vie.
     /// </summary>
@@ -16,4 +17,5 @@ public enum PotionType
     /// </summary>
     [Display(Name = "Potion de dégat")]
     Strength = 2,
+
 }

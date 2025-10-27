@@ -26,4 +26,5 @@ public class Chest
     /// Potion contenue dans le coffre (peut être null).
     /// </summary>
     public virtual Potion? Potion { get; set; }
+    
 }

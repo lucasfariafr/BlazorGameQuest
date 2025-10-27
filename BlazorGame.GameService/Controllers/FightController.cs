@@ -1,20 +1,23 @@
 namespace BlazorGame.GameService.Controllers;
 
 /// <summary>
-/// Contrôleur pour la gestion des combats.
+/// Contrôleur pour gérer les combats entre joueurs et monstres.
 /// </summary>
 [Route("api/[controller]")]
 [ApiController]
 [Produces("application/json")]
 public class FightController : ControllerBase
 {
-    private readonly FightService _service;
+    private readonly FightService _fightService;
     private readonly PlayerService _playerService;
     private readonly MonstersService _monsterService;
 
-    public FightController(FightService service, PlayerService playerService, MonstersService monsterService)
+    /// <summary>
+    /// Initialise le contrôleur avec les services de combat, joueur et monstre.
+    /// </summary>
+    public FightController(FightService fightService, PlayerService playerService, MonstersService monsterService)
     {
-        _service = service;
+        _fightService = fightService;
         _playerService = playerService;
         _monsterService = monsterService;
     }
@@ -22,24 +25,25 @@ public class FightController : ControllerBase
     /// <summary>
     /// Lance un combat entre un joueur et un monstre.
     /// </summary>
+    /// <param name="playerId">Identifiant du joueur.</param>
+    /// <param name="monsterId">Identifiant du monstre.</param>
+    /// <returns>Résultat du combat.</returns>
     [HttpPost("{playerId:int}/vs/{monsterId:int}")]
     [ProducesResponseType(typeof(FightResultDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> Fight(int playerId, int monsterId)
     {
-        // Validation de l'existence des entités
-        var playerExists = await _playerService.PlayerExistsAsync(playerId);
-        if (!playerExists)
+        var player = await _playerService.GetPlayerByIdAsync(playerId);
+        if (player is null)
         {
             return NotFound(new { message = $"Le joueur avec l'ID {playerId} n'existe pas." });
         }
 
-        var monsterExists = await _monsterService.MonsterExistsAsync(monsterId);
-        if (!monsterExists)
+        var monster = await _monsterService.GetMonsterByIdAsync(monsterId);
+        if (monster is null)
         {
             return NotFound(new { message = $"Le monstre avec l'ID {monsterId} n'existe pas." });
         }
 
-        // Validation des conditions de combat
         var isPlayerAlive = await _playerService.IsPlayerAliveAsync(playerId);
         if (!isPlayerAlive)
         {
@@ -52,14 +56,13 @@ public class FightController : ControllerBase
             return BadRequest(new { message = "Le monstre est déjà mort." });
         }
 
-        // Exécution du combat
-        var result = await _service.ExecuteFightAsync(playerId, monsterId);
+        var result = await _fightService.ExecuteFightAsync(playerId, monsterId);
 
         return Ok(result);
     }
 
     /// <summary>
-    /// Simule un combat sans sauvegarder les résultats (mode preview).
+    /// Simule un combat entre un joueur et un monstre et fournit une estimation.
     /// </summary>
     [HttpGet("{playerId:int}/preview/{monsterId:int}")]
     [ProducesResponseType(typeof(object), StatusCodes.Status200OK)]
@@ -77,7 +80,6 @@ public class FightController : ControllerBase
             return NotFound(new { message = $"Le monstre avec l'ID {monsterId} n'existe pas." });
         }
 
-        // Calcul des chances de victoire
         var playerPower = player.Damage / (monster.Damage > 0 ? monster.Damage : 1);
         var winChance = Math.Min(playerPower * 50, 95);
 
@@ -107,7 +109,7 @@ public class FightController : ControllerBase
                                 winChance > 40 ? "Combat équilibré" : "Combat risqué"
             }
         };
-        
+
         return Ok(preview);
     }
 }

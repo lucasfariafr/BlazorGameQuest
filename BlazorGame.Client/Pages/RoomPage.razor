@@ -15,9 +15,9 @@ else
 }
 
 @code {
+
     /// <summary>
-    /// Identifiant de la salle à afficher.
-    /// Ce paramètre est passé au composant depuis le parent ou l'URL.
+    /// Identifiant unique de la salle.
     /// </summary>
     [Parameter]
     public int roomId { get; set; }
@@ -34,7 +34,7 @@ else
     /// <returns>Une <see cref="Task"/> représentant l'opération asynchrone.</returns>
     protected override async Task OnInitializedAsync()
     {
-        room = await Http.GetFromJsonAsync<Room>($"http://localhost:5154/api/Room/{roomId}", new JsonSerializerOptions
+        room = await Http.GetFromJsonAsync<Room>($"http://localhost:5203/api/Rooms/{roomId}", new JsonSerializerOptions
         {
             Converters = { new JsonStringEnumConverter() },
             PropertyNameCaseInsensitive = true

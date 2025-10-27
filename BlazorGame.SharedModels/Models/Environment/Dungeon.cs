@@ -28,4 +28,5 @@ public class Dungeon
     /// Indique si le donjon a été complété.
     /// </summary>
     public bool IsCompleted { get; set; } = false;   
+    
 }

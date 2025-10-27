@@ -1,44 +1,31 @@
 namespace BlazorGame.GameService.Data;
 
+/// <summary>
+/// Initialise la base de données avec des données par défaut.
+/// </summary>
 public static class DatabaseInitializer
 {
+    /// <summary>
+    /// Ajoute des donjons, salles, monstres, joueurs, armes et potions si la base est vide.
+    /// </summary>
+    /// <param name="context">Contexte de la base de données du jeu.</param>
     public static void Initialize(GameDatabaseContext context)
     {
         if (context.Dungeons.Any())
         {
-            return;
+            return; // La base est déjà initialisée
         }
 
-        var sword = new Weapon
-        {
-            WeaponId = 1,
-            Type = WeaponType.Sword
-        };
+        // Création des armes
+        var sword = new Weapon { WeaponId = 1, Type = WeaponType.Sword };
+        var bow = new Weapon { WeaponId = 2, Type = WeaponType.Bow };
+        var wand = new Weapon { WeaponId = 3, Type = WeaponType.Wand };
 
-        var bow = new Weapon
-        {
-            WeaponId = 2,
-            Type = WeaponType.Bow
-        };
+        // Création des potions
+        var healthPotion = new Potion { PotionId = 1, Type = PotionType.Health };
+        var strengthPotion = new Potion { PotionId = 2, Type = PotionType.Strength };
 
-        var wand = new Weapon
-        {
-            WeaponId = 3,
-            Type = WeaponType.Wand
-        };
-
-        var healthPotion = new Potion
-        {
-            PotionId = 1,
-            Type = PotionType.Health
-        };
-
-        var strengthPotion = new Potion
-        {
-            PotionId = 2,
-            Type = PotionType.Strength
-        };
-        
+        // Création du joueur
         var player = new Player
         {
             CharacterId = 1,
@@ -48,6 +35,7 @@ public static class DatabaseInitializer
             Potions = new List<Potion> { healthPotion, strengthPotion }
         };
 
+        // Création des monstres
         var zombie = new Monster
         {
             CharacterId = 2,
@@ -66,6 +54,7 @@ public static class DatabaseInitializer
             Weapon = bow
         };
 
+        // Création d'un coffre
         var chest1 = new Chest
         {
             ChestId = 1,
@@ -73,16 +62,17 @@ public static class DatabaseInitializer
             Potion = healthPotion
         };
 
+        // Création des salles
         var room1 = new Room
         {
             RoomId = 1,
             Description = $"Un {zombie.Type.ToString().ToLower()} apparaît. Que faites-vous ?",
             Actions = new List<AvailableActions>
-            {
-                AvailableActions.Fight,
-                AvailableActions.RunAway,
-                AvailableActions.Search
-            },
+                {
+                    AvailableActions.Fight,
+                    AvailableActions.RunAway,
+                    AvailableActions.Search
+                },
             Monster = zombie
         };
 
@@ -91,13 +81,14 @@ public static class DatabaseInitializer
             RoomId = 2,
             Description = "Un coffre mystérieux !",
             Actions = new List<AvailableActions>
-            {
-                AvailableActions.Open,
-                AvailableActions.Ignore
-            },
+                {
+                    AvailableActions.Open,
+                    AvailableActions.Ignore
+                },
             Chest = chest1
         };
 
+        // Création d'un donjon
         var dungeon = new Dungeon
         {
             DungeonId = 1,
@@ -106,8 +97,8 @@ public static class DatabaseInitializer
             Rooms = new List<Room> { room1, room2 }
         };
 
+        // Ajout de toutes les entités à la base
         context.AddRange(
-        [
             sword, bow, wand,
             healthPotion, strengthPotion,
             player,
@@ -115,8 +106,8 @@ public static class DatabaseInitializer
             chest1,
             room1, room2,
             dungeon
-        ]);
-        
+        );
+
         context.SaveChanges();
     }
 }

@@ -34,17 +34,31 @@
 </div>
 
 @code {
+
+    /// <summary>
+    /// Identifiant unique de la salle.
+    /// </summary>
     [Parameter]
     public int RoomId { get; set; }
 
+    /// <summary>
+    /// Description pour une salle.
+    /// </summary> 
     [Parameter]
     public string? Description { get; set; }
 
+
+    /// <summary>
+    /// Liste des actions disponibles dans une salle.
+    /// </summary>
     [Parameter]
     public IReadOnlyList<AvailableActions>? AvailableActions { get; set; }
 
-    // Récupère le nom d'affichage d'une action à partir de son attribut Display
-    // Si aucun attribut Display n'est défini, retourne le nom de l'énumération
+    /// <summary>
+    /// Récupère le nom d'affichage d'une action.
+    /// </summary>
+    /// <param name="action"></param>
+    /// <returns></returns>n
     private static string GetActionDisplayName(AvailableActions action)
     {
         var displayName = action.GetType()
@@ -54,5 +68,5 @@
         .FirstOrDefault() as DisplayAttribute;
 
         return displayName?.Name ?? action.ToString();
-    }
+    }  
 }

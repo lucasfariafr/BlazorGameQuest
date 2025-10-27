@@ -1,38 +1,40 @@
-using BlazorGame.GameService.Data;
-
 var builder = WebApplication.CreateBuilder(args);
 
+// Configurer les services et l'injection de dépendances
 ConfigureServices(builder.Services, builder.Configuration);
 
-// Charger en mémoire la base de données
+// Charger en mémoire la base de données avec EF Core et Lazy Loading
 builder.Services.AddDbContext<GameDatabaseContext>(opt =>
     opt.UseInMemoryDatabase("GameDb")
         .UseLazyLoadingProxies());
 
 var app = builder.Build();
 
-// Initialiser la base de données
+// Initialiser la base de données avec des données par défaut
 using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<GameDatabaseContext>();
     DatabaseInitializer.Initialize(db);
 }
 
+// Configurer le pipeline de traitement des requêtes HTTP
 ConfigureMiddleware(app);
 
 app.Run();
 
-// Configure les services de l'application et l'injection de dépendances
+/// <summary>
+/// Configure les services de l'application et l'injection de dépendances.
+/// </summary>
 static void ConfigureServices(IServiceCollection services, IConfiguration configuration)
 {
-    // Enregistrement des services
-    services.AddScoped<DungeonService>();
+    // Enregistrement des services métiers
+    services.AddScoped<DungeonsService>();
     services.AddScoped<FightService>();
-    services.AddScoped<MonstersService>();    
+    services.AddScoped<MonstersService>();
     services.AddScoped<PlayerService>();
     services.AddScoped<RoomsService>();
 
-    // Configuration des contrôleurs avec des options JSON personnalisées
+    // Configuration des contrôleurs avec options JSON
     services.AddControllers()
         .AddJsonOptions(options =>
         {
@@ -41,20 +43,18 @@ static void ConfigureServices(IServiceCollection services, IConfiguration config
             options.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
         });
 
-    // Configuration Cors pour autoriser les requêtes du client Blazor
+    // Configuration CORS pour autoriser le client Blazor
     services.AddCors(options =>
     {
         options.AddPolicy("AllowBlazorClient", policy =>
         {
-            policy.WithOrigins(
-                    "http://localhost:5133"
-                )
-                .AllowAnyHeader()
-                .AllowAnyMethod();
+            policy.WithOrigins("http://localhost:5133")
+                  .AllowAnyHeader()
+                  .AllowAnyMethod();
         });
     });
 
-    // Configuration de Swagger pour la documentation de l'API
+    // Configuration Swagger pour la documentation de l'API
     services.AddEndpointsApiExplorer();
     services.AddSwaggerGen(c =>
     {
@@ -64,10 +64,11 @@ static void ConfigureServices(IServiceCollection services, IConfiguration config
             Version = "v1",
         });
     });
-
 }
 
-// Configure le pipeline de traitement des requêtes HTTP
+/// <summary>
+/// Configure le pipeline de middleware HTTP.
+/// </summary>
 static void ConfigureMiddleware(WebApplication app)
 {
     if (app.Environment.IsDevelopment())
