@@ -47,7 +47,7 @@ Ensuite, ouvrez l’application à l’adresse suivante : http://localhost:5133/
    Vérifier que le joueur est déclaré perdant lorsqu’il n’a plus de points de vie.
 
 ### Logique du Jeu et des Salles
-5. **Fin du jeu** 
+4. **Fin du jeu** 
    Vérifier que lorsque le joueur atteint la dernière salle, la fin du jeu est déclenchée.
 
 ## Notes
