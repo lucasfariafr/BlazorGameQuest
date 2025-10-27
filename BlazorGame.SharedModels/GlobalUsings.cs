@@ -1,0 +1,9 @@
+global using BlazorGame.SharedModels.Constants;
+global using BlazorGame.SharedModels.Enums.Entities;
+global using BlazorGame.SharedModels.Enums.Environment;
+global using BlazorGame.SharedModels.Enums.Utils;
+global using BlazorGame.SharedModels.Data;
+global using BlazorGame.SharedModels.Models.Entities;
+global using BlazorGame.SharedModels.Models.Utils;
+global using System.ComponentModel.DataAnnotations;
+global using System.Text.Json.Serialization;

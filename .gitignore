@@ -1,3 +1,6 @@
 # .NET files
 **/bin/
 **/obj/
+
+# VS Code settings
+.vscode/
