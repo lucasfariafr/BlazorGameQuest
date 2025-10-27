@@ -18,4 +18,9 @@
     <Using Include="Xunit" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\BlazorGame.GameService\BlazorGame.GameService.csproj" />
+    <ProjectReference Include="..\BlazorGame.SharedModels\BlazorGame.SharedModels.csproj" />
+  </ItemGroup>
+
 </Project>
