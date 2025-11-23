@@ -2,6 +2,8 @@ global using System.Linq;
 global using BlazorGame.GameService.Data;
 global using BlazorGame.GameService.Services;
 global using BlazorGame.SharedModels.Constants;
+global using BlazorGame.SharedModels.DTOs;
+global using BlazorGame.SharedModels.Models;
 global using BlazorGame.SharedModels.Models.Entities;
 global using BlazorGame.SharedModels.Models.Utils;
 global using BlazorGame.SharedModels.Enums.Entities;

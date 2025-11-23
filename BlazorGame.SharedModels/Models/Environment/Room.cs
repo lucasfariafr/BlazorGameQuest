@@ -25,10 +25,20 @@ public class Room
     public required List<AvailableActions> Actions { get; set; } = new();
 
     /// <summary>
+    /// Identifiant du monstre présent dans la salle (peut être null).
+    /// </summary>
+    public int? MonsterId { get; set; }
+
+    /// <summary>
     /// Monstre présent dans la salle (peut être null).
     /// </summary>
     public virtual Monster? Monster { get; set; }
-    
+
+    /// <summary>
+    /// Identifiant du coffre présent dans la salle (peut être null).
+    /// </summary>
+    public int? ChestId { get; set; }
+
     /// <summary>
     /// Coffre présent dans la salle (peut être null).
     /// </summary>

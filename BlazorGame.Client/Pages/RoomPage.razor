@@ -1,5 +1,9 @@
 @page "/new-adventure/room/{roomId:int}"
 @inject HttpClient Http
+@inject NavigationManager Navigation
+@using BlazorGame.SharedModels.Enums.Environment
+@using BlazorGame.SharedModels.Models.Entities
+@using BlazorGame.SharedModels.DTOs
 
 <PageTitle>Bladebound · Salle @(roomId)</PageTitle>
 
@@ -11,11 +15,20 @@
 }
 else
 {
-    <RoomLayout RoomId="@roomId" Description="@room.Description" AvailableActions="@room.Actions" />
+    <RoomLayout
+        RoomId="@roomId"
+        DungeonId="@dungeonId"
+        PlayerId="@playerId"
+        Description="@room.Description"
+        AvailableActions="@room.Actions"
+        PlayerState="@playerState"
+        InitialScore="@currentScore"
+        SessionId="@sessionId"
+        OnActionCompleted="HandleActionCompleted"
+        OnPlayerStateChanged="HandlePlayerStateChanged" />
 }
 
 @code {
-
     /// <summary>
     /// Identifiant unique de la salle.
     /// </summary>
@@ -28,16 +41,158 @@ else
     private Room? room;
 
     /// <summary>
-    /// Méthode appelée lors de l'initialisation du composant Blazor.
-    /// Récupère les données de la salle depuis l'API en fonction de <see cref="roomId"/>.
+    /// État actuel du joueur.
     /// </summary>
-    /// <returns>Une <see cref="Task"/> représentant l'opération asynchrone.</returns>
-    protected override async Task OnInitializedAsync()
+    private PlayerSnapshotDto? playerState;
+
+    /// <summary>
+    /// Identifiant du donjon actuel.
+    /// </summary>
+    private int dungeonId = 1;
+
+    /// <summary>
+    /// Identifiant du joueur.
+    /// </summary>
+    private int playerId = 1;
+
+    /// <summary>
+    /// Identifiant de la session.
+    /// </summary>
+    private int? sessionId;
+
+    /// <summary>
+    /// Score actuel.
+    /// </summary>
+    private int? currentScore;
+
+    /// <summary>
+    /// Ancien roomId pour détecter les changements de salle.
+    /// </summary>
+    private int previousRoomId;
+
+    /// <summary>
+    /// Méthode appelée quand les paramètres changent (navigation entre salles).
+    /// </summary>
+    protected override async Task OnParametersSetAsync()
+    {
+        // Vérifier si on a changé de salle
+        if (previousRoomId != roomId)
+        {
+            previousRoomId = roomId;
+            room = null; // Réinitialiser pour afficher le spinner
+
+            // Récupérer les paramètres de l'URL
+            var uri = new Uri(Navigation.Uri);
+            var query = System.Web.HttpUtility.ParseQueryString(uri.Query);
+
+            if (int.TryParse(query["dungeonId"], out var dId))
+            {
+                dungeonId = dId;
+            }
+            if (int.TryParse(query["playerId"], out var pId))
+            {
+                playerId = pId;
+            }
+            if (int.TryParse(query["sessionId"], out var sId))
+            {
+                sessionId = sId;
+            }
+            if (int.TryParse(query["score"], out var score))
+            {
+                currentScore = score;
+            }
+            else
+            {
+                currentScore = 0; // Score par défaut
+            }
+
+            await LoadRoom();
+            await LoadPlayerState();
+        }
+    }
+
+    /// <summary>
+    /// Charge l'état du joueur depuis l'API.
+    /// </summary>
+    private async Task LoadPlayerState()
+    {
+        try
+        {
+            var player = await Http.GetFromJsonAsync<Player>($"http://localhost:5203/api/Player/{playerId}", new JsonSerializerOptions
+            {
+                Converters = { new JsonStringEnumConverter() },
+                PropertyNameCaseInsensitive = true
+            });
+
+            if (player != null)
+            {
+                playerState = new PlayerSnapshotDto
+                {
+                    CharacterId = player.CharacterId,
+                    Health = player.Health,
+                    Strength = player.Strength,
+                    Armor = player.Armor,
+                    HeartNumber = player.HeartNumber,
+                    Damage = player.Damage,
+                    WeaponType = player.Weapon?.Type.ToString(),
+                    Potions = player.Potions?.Select(p => new PotionDto
+                    {
+                        PotionId = p.PotionId,
+                        Type = p.Type.ToString(),
+                        Effect = p.Effect
+                    }).ToList()
+                };
+            }
+        }
+        catch
+        {
+            // Ignorer les erreurs de chargement
+        }
+    }
+
+    /// <summary>
+    /// Charge les données de la salle.
+    /// </summary>
+    private async Task LoadRoom()
     {
         room = await Http.GetFromJsonAsync<Room>($"http://localhost:5203/api/Rooms/{roomId}", new JsonSerializerOptions
         {
             Converters = { new JsonStringEnumConverter() },
             PropertyNameCaseInsensitive = true
         });
+    }
+
+    /// <summary>
+    /// Callback appelé quand une action est terminée.
+    /// </summary>
+    private void HandleActionCompleted(ActionCompletedEventArgs args)
+    {
+        // Mettre à jour le score local
+        if (args.Score.HasValue)
+        {
+            currentScore = args.Score;
+        }
+
+        if (args.IsGameOver)
+        {
+            Navigation.NavigateTo($"/game-over?score={currentScore ?? 0}");
+        }
+        else if (args.IsDungeonCompleted)
+        {
+            Navigation.NavigateTo($"/victory?score={currentScore ?? 0}");
+        }
+        else if (args.NextRoomId.HasValue)
+        {
+            Navigation.NavigateTo($"/new-adventure/room/{args.NextRoomId}?dungeonId={dungeonId}&playerId={playerId}&sessionId={sessionId}&score={currentScore ?? 0}");
+        }
+    }
+
+    /// <summary>
+    /// Callback appelé quand l'état du joueur change.
+    /// </summary>
+    private void HandlePlayerStateChanged(PlayerSnapshotDto newState)
+    {
+        playerState = newState;
+        StateHasChanged();
     }
 }

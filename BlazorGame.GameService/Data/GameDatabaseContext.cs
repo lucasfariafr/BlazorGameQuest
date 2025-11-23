@@ -27,6 +27,9 @@ public class GameDatabaseContext : DbContext
     /// <summary>Table des donjons.</summary>
     public DbSet<Dungeon> Dungeons { get; set; } = null!;
 
+    /// <summary>Table des sessions de jeu.</summary>
+    public DbSet<GameSession> GameSessions { get; set; } = null!;
+
     /// <summary>
     /// Initialise le contexte avec les options spécifiées.
     /// </summary>

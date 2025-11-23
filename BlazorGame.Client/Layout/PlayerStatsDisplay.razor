@@ -1,0 +1,187 @@
+@using BlazorGame.SharedModels.DTOs
+@using BlazorGame.SharedModels.Models.Entities
+@using System.Text.Json
+@inject HttpClient Http
+
+<div class="player-stats-container">
+    @if (Score.HasValue)
+    {
+        <div class="score-card">
+            <h5>Score</h5>
+            <div class="score-value">@Score.Value</div>
+        </div>
+    }
+
+    <div class="stats-card">
+        <h5>Statistiques</h5>
+
+        @if (PlayerState != null)
+        {
+            <div class="stat-row">
+                <span class="stat-label">Vie</span>
+                <div class="health-bar-container">
+                    <div class="health-bar @GetHealthBarClass()" style="width: @GetHealthPercentage()%"></div>
+                    <span class="health-text">@Math.Max(0, PlayerState.Health).ToString("0") / 100</span>
+                </div>
+            </div>
+
+            <div class="stat-row">
+                <span class="stat-label">Coeurs</span>
+                <span class="stat-value hearts">
+                    @for (int i = 0; i < PlayerState.HeartNumber; i++)
+                    {
+                        <span class="heart">&#10084;</span>
+                    }
+                </span>
+            </div>
+
+            <div class="stat-row">
+                <span class="stat-label">Force</span>
+                <span class="stat-value">@PlayerState.Strength.ToString("0")</span>
+            </div>
+
+            <div class="stat-row">
+                <span class="stat-label">Armure</span>
+                <span class="stat-value">@PlayerState.Armor.ToString("0")</span>
+            </div>
+
+            <div class="stat-row">
+                <span class="stat-label">Dégâts</span>
+                <span class="stat-value">@PlayerState.Damage.ToString("0")</span>
+            </div>
+
+            <div class="stat-row">
+                <span class="stat-label">Arme</span>
+                <span class="stat-value">@(PlayerState.WeaponType ?? "Aucune")</span>
+            </div>
+        }
+        else
+        {
+            <p class="text-muted">Chargement...</p>
+        }
+    </div>
+
+    <div class="inventory-card">
+        <h5>Inventaire</h5>
+
+        @if (PlayerState?.Potions != null && PlayerState.Potions.Any())
+        {
+            <ul class="potion-list">
+                @foreach (var potion in PlayerState.Potions)
+                {
+                    <li class="potion-item @(potion.Type == "Health" ? "health-potion" : "strength-potion")">
+                        <span class="potion-icon">@(potion.Type == "Health" ? "&#128153;" : "&#128170;")</span>
+                        <span class="potion-name">@(potion.Type == "Health" ? "Vie" : "Force")</span>
+                        <span class="potion-effect">+@potion.Effect.ToString("0")</span>
+                        <button class="btn btn-sm btn-outline-light use-potion-btn"
+                                @onclick="() => UsePotion(potion.PotionId)"
+                                disabled="@isUsingPotion">
+                            Utiliser
+                        </button>
+                    </li>
+                }
+            </ul>
+        }
+        else
+        {
+            <p class="text-muted">Inventaire vide</p>
+        }
+    </div>
+</div>
+
+@code {
+    /// <summary>
+    /// État actuel du joueur.
+    /// </summary>
+    [Parameter]
+    public PlayerSnapshotDto? PlayerState { get; set; }
+
+    /// <summary>
+    /// Identifiant du joueur.
+    /// </summary>
+    [Parameter]
+    public int PlayerId { get; set; }
+
+    /// <summary>
+    /// Score actuel du joueur.
+    /// </summary>
+    [Parameter]
+    public int? Score { get; set; }
+
+    /// <summary>
+    /// Callback appelé quand l'état du joueur change.
+    /// </summary>
+    [Parameter]
+    public EventCallback<PlayerSnapshotDto> OnPlayerStateChanged { get; set; }
+
+    private bool isUsingPotion = false;
+
+    /// <summary>
+    /// Calcule le pourcentage de vie (entre 0 et 100).
+    /// </summary>
+    private double GetHealthPercentage()
+    {
+        if (PlayerState == null) return 0;
+        return Math.Max(0, Math.Min(100, PlayerState.Health));
+    }
+
+    /// <summary>
+    /// Retourne la classe CSS selon le niveau de vie.
+    /// </summary>
+    private string GetHealthBarClass()
+    {
+        if (PlayerState == null) return "";
+        if (PlayerState.Health <= 25) return "health-critical";
+        if (PlayerState.Health <= 50) return "health-low";
+        return "";
+    }
+
+    /// <summary>
+    /// Utilise une potion.
+    /// </summary>
+    private async Task UsePotion(int potionId)
+    {
+        isUsingPotion = true;
+
+        try
+        {
+            var response = await Http.PostAsync(
+                $"http://localhost:5203/api/Player/{PlayerId}/use-potion/{potionId}",
+                null);
+
+            if (response.IsSuccessStatusCode)
+            {
+                var player = await response.Content.ReadFromJsonAsync<Player>(new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = true
+                });
+
+                if (player != null)
+                {
+                    var newState = new PlayerSnapshotDto
+                    {
+                        CharacterId = player.CharacterId,
+                        Health = player.Health,
+                        Strength = player.Strength,
+                        Armor = player.Armor,
+                        HeartNumber = player.HeartNumber,
+                        Damage = player.Damage,
+                        WeaponType = player.Weapon?.Type.ToString(),
+                        Potions = player.Potions?.Select(p => new PotionDto
+                        {
+                            PotionId = p.PotionId,
+                            Type = p.Type.ToString(),
+                            Effect = p.Effect
+                        }).ToList()
+                    };
+
+                    await OnPlayerStateChanged.InvokeAsync(newState);
+                }
+            }
+        }
+        finally
+        {
+            isUsingPotion = false;
+        }
+    }
+}

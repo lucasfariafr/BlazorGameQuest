@@ -5,6 +5,7 @@ global using BlazorGame.SharedModels.DTOs;
 global using BlazorGame.SharedModels.Enums.Entities;
 global using BlazorGame.SharedModels.Enums.Environment;
 global using BlazorGame.SharedModels.Enums.Utils;
+global using BlazorGame.SharedModels.Models;
 global using BlazorGame.SharedModels.Models.Entities;
 global using BlazorGame.SharedModels.Models.Environment;
 global using BlazorGame.SharedModels.Models.Utils;

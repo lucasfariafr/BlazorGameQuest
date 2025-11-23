@@ -145,6 +145,14 @@ public class PlayerService
         }
 
         player.Potions ??= new List<Potion>();
+
+        // Ajouter la potion au contexte si elle n'est pas déjà trackée
+        var existingPotion = await _context.Potions.FindAsync(potion.PotionId);
+        if (existingPotion == null)
+        {
+            _context.Potions.Add(potion);
+        }
+
         player.Potions.Add(potion);
 
         await _context.SaveChangesAsync();

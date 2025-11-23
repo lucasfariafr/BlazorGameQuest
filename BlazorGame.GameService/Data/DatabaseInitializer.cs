@@ -73,7 +73,10 @@ public static class DatabaseInitializer
                     AvailableActions.RunAway,
                     AvailableActions.Search
                 },
-            Monster = zombie
+            MonsterId = zombie.CharacterId,
+            Monster = zombie,
+            ChestId = null,
+            Chest = null
         };
 
         var room2 = new Room
@@ -85,6 +88,9 @@ public static class DatabaseInitializer
                     AvailableActions.Open,
                     AvailableActions.Ignore
                 },
+            MonsterId = null,
+            Monster = null,
+            ChestId = chest1.ChestId,
             Chest = chest1
         };
 

@@ -1,0 +1,78 @@
+.gameover-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 60vh;
+    padding: 2rem;
+}
+
+.gameover-content {
+    text-align: center;
+    max-width: 500px;
+}
+
+.gameover-icon {
+    font-size: 5rem;
+    margin-bottom: 1rem;
+    animation: shake 0.5s ease-in-out infinite;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+.gameover-content h1 {
+    color: #ef4444;
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.gameover-message {
+    font-size: 1.5rem;
+    color: #a0a0a0;
+    margin-bottom: 0.5rem;
+}
+
+.gameover-description {
+    color: #666;
+    margin-bottom: 1.5rem;
+}
+
+.score-display {
+    background: linear-gradient(135deg, #666 0%, #333 100%);
+    border-radius: 12px;
+    padding: 1.5rem 2rem;
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.score-label {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.score-value {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.gameover-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+}
+
+.gameover-actions .btn-lg {
+    padding: 0.75rem 2rem;
+    font-size: 1.1rem;
+}

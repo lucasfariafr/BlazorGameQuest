@@ -33,6 +33,8 @@ static void ConfigureServices(IServiceCollection services, IConfiguration config
     services.AddScoped<MonstersService>();
     services.AddScoped<PlayerService>();
     services.AddScoped<RoomsService>();
+    services.AddScoped<ActionService>();
+    services.AddScoped<GameSessionService>();
 
     // Configuration des contrôleurs avec options JSON
     services.AddControllers()

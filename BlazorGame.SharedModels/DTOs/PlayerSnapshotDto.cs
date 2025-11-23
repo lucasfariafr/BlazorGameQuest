@@ -41,4 +41,8 @@ public record PlayerSnapshotDto
     /// </summary>
     public string? WeaponType { get; init; }
 
+    /// <summary>
+    /// Liste des potions du joueur.
+    /// </summary>
+    public List<PotionDto>? Potions { get; init; }
 }

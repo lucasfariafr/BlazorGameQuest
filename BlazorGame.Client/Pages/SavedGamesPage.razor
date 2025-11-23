@@ -1,0 +1,162 @@
+@page "/saved-games"
+@using BlazorGame.SharedModels.DTOs
+@inject NavigationManager Navigation
+@inject HttpClient Http
+
+<PageTitle>Bladebound · Parties sauvegardées</PageTitle>
+
+<div class="saved-games-container">
+    <h2>Parties sauvegardées</h2>
+
+    @if (isLoading)
+    {
+        <div class="d-flex justify-content-center">
+            <div class="spinner-border text-primary" role="status"></div>
+        </div>
+    }
+    else if (savedGames == null || !savedGames.Any())
+    {
+        <div class="no-saves">
+            <p>Aucune partie sauvegardée.</p>
+            <button class="btn btn-primary" @onclick="StartNewGame">Nouvelle aventure</button>
+        </div>
+    }
+    else
+    {
+        <div class="saved-games-list">
+            @foreach (var game in savedGames)
+            {
+                <div class="saved-game-card">
+                    <div class="game-info">
+                        <div class="game-header">
+                            <span class="game-title">Partie #@game.SessionId</span>
+                            <span class="game-date">@game.SavedAt.ToLocalTime().ToString("dd/MM/yyyy HH:mm")</span>
+                        </div>
+                        <div class="game-details">
+                            <span class="detail-item">
+                                <span class="label">Score:</span>
+                                <span class="value">@game.Score</span>
+                            </span>
+                            <span class="detail-item">
+                                <span class="label">Salle:</span>
+                                <span class="value">@game.CurrentRoomId</span>
+                            </span>
+                            @if (game.PlayerState != null)
+                            {
+                                <span class="detail-item">
+                                    <span class="label">Vies:</span>
+                                    <span class="value hearts">@(new string('♥', game.PlayerState.HeartNumber))</span>
+                                </span>
+                            }
+                        </div>
+                    </div>
+                    <div class="game-actions">
+                        <button class="btn btn-success btn-sm" @onclick="() => ResumeGame(game)" disabled="@isResuming">
+                            @if (isResuming && resumingSessionId == game.SessionId)
+                            {
+                                <span class="spinner-border spinner-border-sm"></span>
+                            }
+                            else
+                            {
+                                <span>Reprendre</span>
+                            }
+                        </button>
+                        <button class="btn btn-outline-danger btn-sm" @onclick="() => DeleteGame(game.SessionId)" disabled="@isDeleting">
+                            Supprimer
+                        </button>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+
+    <div class="page-actions">
+        <button class="btn btn-outline-secondary" @onclick="GoHome">Retour à l'accueil</button>
+    </div>
+</div>
+
+@code {
+    private List<SavedGameDto>? savedGames;
+    private bool isLoading = true;
+    private bool isResuming = false;
+    private bool isDeleting = false;
+    private int? resumingSessionId;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadSavedGames();
+    }
+
+    private async Task LoadSavedGames()
+    {
+        isLoading = true;
+        try
+        {
+            savedGames = await Http.GetFromJsonAsync<List<SavedGameDto>>(
+                "http://localhost:5203/api/GameSession/saved",
+                new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+        }
+        catch
+        {
+            savedGames = new List<SavedGameDto>();
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+
+    private async Task ResumeGame(SavedGameDto game)
+    {
+        isResuming = true;
+        resumingSessionId = game.SessionId;
+
+        try
+        {
+            var response = await Http.PostAsync(
+                $"http://localhost:5203/api/GameSession/{game.SessionId}/resume",
+                null);
+
+            if (response.IsSuccessStatusCode)
+            {
+                var session = await response.Content.ReadFromJsonAsync<GameSessionDto>(
+                    new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+
+                if (session != null)
+                {
+                    Navigation.NavigateTo(
+                        $"/new-adventure/room/{session.CurrentRoomId}?dungeonId={session.DungeonId}&playerId={session.PlayerId}&sessionId={session.SessionId}&score={session.Score}");
+                }
+            }
+        }
+        finally
+        {
+            isResuming = false;
+            resumingSessionId = null;
+        }
+    }
+
+    private async Task DeleteGame(int sessionId)
+    {
+        isDeleting = true;
+        try
+        {
+            await Http.DeleteAsync($"http://localhost:5203/api/GameSession/{sessionId}");
+            await LoadSavedGames();
+        }
+        finally
+        {
+            isDeleting = false;
+        }
+    }
+
+    private void StartNewGame()
+    {
+        Navigation.NavigateTo("/new-adventure");
+    }
+
+    private void GoHome()
+    {
+        Navigation.NavigateTo("/home");
+    }
+}

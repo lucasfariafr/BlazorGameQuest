@@ -1,0 +1,51 @@
+@page "/victory"
+@inject NavigationManager Navigation
+
+<PageTitle>Bladebound · Victoire</PageTitle>
+
+<div class="victory-container">
+    <div class="victory-content">
+        <div class="victory-icon">&#127942;</div>
+        <h1>Victoire !</h1>
+        <p class="victory-message">Félicitations, brave aventurier !</p>
+        <p class="victory-description">Vous avez triomphé de tous les dangers du donjon et êtes ressorti victorieux.</p>
+
+        <div class="score-display">
+            <span class="score-label">Score final</span>
+            <span class="score-value">@score</span>
+        </div>
+
+        <div class="victory-actions">
+            <button class="btn btn-primary btn-lg" @onclick="StartNewAdventure">
+                Nouvelle aventure
+            </button>
+            <button class="btn btn-outline-secondary" @onclick="GoHome">
+                Retour à l'accueil
+            </button>
+        </div>
+    </div>
+</div>
+
+@code {
+    private int score = 0;
+
+    protected override void OnInitialized()
+    {
+        var uri = new Uri(Navigation.Uri);
+        var query = System.Web.HttpUtility.ParseQueryString(uri.Query);
+        if (int.TryParse(query["score"], out var s))
+        {
+            score = s;
+        }
+    }
+
+    private void StartNewAdventure()
+    {
+        Navigation.NavigateTo("/new-adventure");
+    }
+
+    private void GoHome()
+    {
+        Navigation.NavigateTo("/home");
+    }
+}

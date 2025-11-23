@@ -1,40 +1,84 @@
-@inherits LayoutComponentBase
-@using SharedModels.Enums
 @using System.ComponentModel.DataAnnotations
-@using SharedModels.Enums.Environment
+@using BlazorGame.SharedModels.Enums.Environment
+@using BlazorGame.SharedModels.DTOs
+@using ActionEnum = BlazorGame.SharedModels.Enums.Environment.AvailableActions
+@inject HttpClient Http
+@inject NavigationManager Navigation
 
-<div class="room-container">
-    <div class="room-header">
-        <h4>Salle @RoomId</h4>
-        @if (!string.IsNullOrEmpty(Description))
+<div class="game-layout">
+    <div class="room-container">
+        <div class="room-header">
+            <div class="room-title-row">
+                <h4>Salle @RoomId</h4>
+                <button class="btn btn-outline-warning btn-sm save-quit-btn" @onclick="SaveAndQuit" disabled="@isSaving">
+                    @if (isSaving)
+                    {
+                        <span class="spinner-border spinner-border-sm"></span>
+                    }
+                    else
+                    {
+                        <span>Sauvegarder & Quitter</span>
+                    }
+                </button>
+            </div>
+            @if (!string.IsNullOrEmpty(Description))
+            {
+                <p class="room-description">@Description</p>
+            }
+        </div>
+
+        @if (!hasEnteredRoom)
         {
-            <p class="room-description">@Description</p>
+            <div class="room-entrance">
+                <div class="alert alert-info" role="alert">
+                    Vous arrivez devant la salle @RoomId...
+                </div>
+                <button class="btn btn-success btn-lg" @onclick="EnterRoom">
+                    Entrer dans la salle
+                </button>
+            </div>
+        }
+        else
+        {
+            @if (!string.IsNullOrEmpty(actionMessage))
+            {
+                <div class="alert @(actionSuccess ? "alert-success" : "alert-danger")" role="alert">
+                    @actionMessage
+                </div>
+            }
+
+            @if (AvailableActions != null && AvailableActions.Any())
+            {
+                <div class="room-actions">
+                    <ul class="action-list">
+                        @foreach (var action in AvailableActions)
+                        {
+                            <li>
+                                <button class="btn btn-primary" @onclick="() => ExecuteAction(action)" disabled="@isLoading">
+                                    @if (isLoading && currentAction == action)
+                                    {
+                                        <span class="spinner-border spinner-border-sm" role="status"></span>
+                                    }
+                                    @GetActionDisplayName(action)
+                                </button>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            }
         }
     </div>
 
-    <div class="room-content">
-        @Body
+    <div class="player-panel">
+        <PlayerStatsDisplay
+            PlayerState="@currentPlayerState"
+            PlayerId="@PlayerId"
+            Score="@currentScore"
+            OnPlayerStateChanged="HandlePotionUsed" />
     </div>
-
-    @if (AvailableActions != null && AvailableActions.Any())
-    {
-        <div class="room-actions">
-            <ul class="action-list">
-                @foreach (var action in AvailableActions)
-                {
-                    <li>
-                        <button class="btn btn-primary">
-                            @GetActionDisplayName(action)
-                        </button>
-                    </li>
-                }
-            </ul>
-        </div>
-    }
 </div>
 
 @code {
-
     /// <summary>
     /// Identifiant unique de la salle.
     /// </summary>
@@ -42,11 +86,22 @@
     public int RoomId { get; set; }
 
     /// <summary>
+    /// Identifiant du donjon.
+    /// </summary>
+    [Parameter]
+    public int DungeonId { get; set; }
+
+    /// <summary>
+    /// Identifiant du joueur.
+    /// </summary>
+    [Parameter]
+    public int PlayerId { get; set; }
+
+    /// <summary>
     /// Description pour une salle.
-    /// </summary> 
+    /// </summary>
     [Parameter]
     public string? Description { get; set; }
-
 
     /// <summary>
     /// Liste des actions disponibles dans une salle.
@@ -55,18 +110,207 @@
     public IReadOnlyList<AvailableActions>? AvailableActions { get; set; }
 
     /// <summary>
+    /// Callback appelé quand une action est terminée.
+    /// </summary>
+    [Parameter]
+    public EventCallback<ActionCompletedEventArgs> OnActionCompleted { get; set; }
+
+    /// <summary>
+    /// État actuel du joueur.
+    /// </summary>
+    [Parameter]
+    public PlayerSnapshotDto? PlayerState { get; set; }
+
+    /// <summary>
+    /// Callback appelé quand l'état du joueur change.
+    /// </summary>
+    [Parameter]
+    public EventCallback<PlayerSnapshotDto> OnPlayerStateChanged { get; set; }
+
+    /// <summary>
+    /// Score initial de la session.
+    /// </summary>
+    [Parameter]
+    public int? InitialScore { get; set; }
+
+    /// <summary>
+    /// Identifiant de la session de jeu.
+    /// </summary>
+    [Parameter]
+    public int? SessionId { get; set; }
+
+    private bool isLoading = false;
+    private bool isSaving = false;
+    private AvailableActions? currentAction;
+    private string? actionMessage;
+    private bool actionSuccess;
+    private PlayerSnapshotDto? currentPlayerState;
+    private bool hasEnteredRoom = false;
+    private int previousRoomId;
+    private int? currentScore;
+
+    protected override void OnParametersSet()
+    {
+        currentPlayerState = PlayerState;
+        currentScore ??= InitialScore;
+
+        // Réinitialiser l'état si on change de salle
+        if (previousRoomId != RoomId)
+        {
+            hasEnteredRoom = false;
+            actionMessage = null;
+            previousRoomId = RoomId;
+        }
+    }
+
+    /// <summary>
+    /// Entre dans la salle et affiche les actions disponibles.
+    /// </summary>
+    private void EnterRoom()
+    {
+        hasEnteredRoom = true;
+    }
+
+    /// <summary>
+    /// Callback quand une potion est utilisée.
+    /// </summary>
+    private async Task HandlePotionUsed(PlayerSnapshotDto newState)
+    {
+        currentPlayerState = newState;
+        await OnPlayerStateChanged.InvokeAsync(newState);
+    }
+
+    /// <summary>
+    /// Exécute une action sur l'API.
+    /// </summary>
+    private async Task ExecuteAction(AvailableActions action)
+    {
+        isLoading = true;
+        currentAction = action;
+        actionMessage = null;
+
+        try
+        {
+            var endpoint = action switch
+            {
+                ActionEnum.Fight => "fight",
+                ActionEnum.RunAway => "run-away",
+                ActionEnum.Search => "search",
+                ActionEnum.Open => "open",
+                ActionEnum.Ignore => "ignore",
+                _ => throw new InvalidOperationException($"Action non supportée: {action}")
+            };
+
+            var response = await Http.PostAsync(
+                $"http://localhost:5203/api/Action/{endpoint}?playerId={PlayerId}&roomId={RoomId}&dungeonId={DungeonId}",
+                null);
+
+            if (response.IsSuccessStatusCode)
+            {
+                var result = await response.Content.ReadFromJsonAsync<ActionResultDto>(new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = true
+                });
+
+                if (result != null)
+                {
+                    actionMessage = result.Message;
+                    actionSuccess = result.Success;
+
+                    // Mettre à jour le score
+                    if (result.Score.HasValue)
+                    {
+                        currentScore = result.Score;
+                    }
+
+                    // Mettre à jour l'état du joueur
+                    if (result.PlayerState != null)
+                    {
+                        currentPlayerState = result.PlayerState;
+                        await OnPlayerStateChanged.InvokeAsync(result.PlayerState);
+                    }
+
+                    // Attendre un peu pour que l'utilisateur voie le message
+                    await Task.Delay(1500);
+
+                    await OnActionCompleted.InvokeAsync(new ActionCompletedEventArgs
+                    {
+                        IsGameOver = result.IsGameOver,
+                        IsDungeonCompleted = result.IsDungeonCompleted,
+                        NextRoomId = result.NextRoomId,
+                        Message = result.Message,
+                        Score = currentScore
+                    });
+                }
+            }
+            else
+            {
+                actionMessage = "Erreur lors de l'exécution de l'action.";
+                actionSuccess = false;
+            }
+        }
+        catch (Exception ex)
+        {
+            actionMessage = $"Erreur: {ex.Message}";
+            actionSuccess = false;
+        }
+        finally
+        {
+            isLoading = false;
+            currentAction = null;
+        }
+    }
+
+    /// <summary>
     /// Récupère le nom d'affichage d'une action.
     /// </summary>
-    /// <param name="action"></param>
-    /// <returns></returns>n
     private static string GetActionDisplayName(AvailableActions action)
     {
         var displayName = action.GetType()
-        .GetMember(action.ToString())
-        .FirstOrDefault()?
-        .GetCustomAttributes(typeof(DisplayAttribute), false)
-        .FirstOrDefault() as DisplayAttribute;
+            .GetMember(action.ToString())
+            .FirstOrDefault()?
+            .GetCustomAttributes(typeof(DisplayAttribute), false)
+            .FirstOrDefault() as DisplayAttribute;
 
         return displayName?.Name ?? action.ToString();
-    }  
+    }
+
+    /// <summary>
+    /// Sauvegarde la partie et retourne à l'accueil.
+    /// </summary>
+    private async Task SaveAndQuit()
+    {
+        if (!SessionId.HasValue)
+        {
+            Navigation.NavigateTo("/home");
+            return;
+        }
+
+        isSaving = true;
+        try
+        {
+            var response = await Http.PostAsync(
+                $"http://localhost:5203/api/GameSession/{SessionId}/save?currentRoomId={RoomId}",
+                null);
+
+            if (response.IsSuccessStatusCode)
+            {
+                Navigation.NavigateTo("/saved-games");
+            }
+            else
+            {
+                actionMessage = "Erreur lors de la sauvegarde.";
+                actionSuccess = false;
+            }
+        }
+        catch (Exception ex)
+        {
+            actionMessage = $"Erreur: {ex.Message}";
+            actionSuccess = false;
+        }
+        finally
+        {
+            isSaving = false;
+        }
+    }
 }
