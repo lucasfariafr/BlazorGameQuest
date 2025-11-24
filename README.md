@@ -3,20 +3,15 @@
 BlazorGameQuest est un jeu d’aventure basé sur un système de donjons et de combats.
 
 ## Développeurs
-
-| Nom           |
-| ------------- |
-| Lucas Faria   |
-| El Hadj Sylla |
+- Lucas Faria
+- El Hadj Sylla
 
 ## Prérequis
 
 Avant de lancer le projet, assurez-vous d’avoir installé les éléments suivants :
 
-| Outil / Librairie     | Version / Lien                                                                   |
-| --------------------- | -------------------------------------------------------------------------------- |
-| .NET SDK              | [Télécharger .NET 9 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/9.0) |
-| Terminal / PowerShell | N/A                                                                              |
+- [.NET 9 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/9.0)
+- Un terminal ou PowerShell
 
 ## Choix d'architecture
 
