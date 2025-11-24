@@ -70,7 +70,6 @@
                 @foreach (var potion in PlayerState.Potions)
                 {
                     <li class="potion-item @(potion.Type == "Health" ? "health-potion" : "strength-potion")">
-                        <span class="potion-icon">@(potion.Type == "Health" ? "&#128153;" : "&#128170;")</span>
                         <span class="potion-name">@(potion.Type == "Health" ? "Vie" : "Force")</span>
                         <span class="potion-effect">+@potion.Effect.ToString("0")</span>
                         <button class="btn btn-sm btn-outline-light use-potion-btn"
@@ -84,7 +83,7 @@
         }
         else
         {
-            <p class="text-muted">Inventaire vide</p>
+            <p style="color: #a0a0a0; font-style: italic; font-size: 0.85rem;">Inventaire vide</p>
         }
     </div>
 </div>

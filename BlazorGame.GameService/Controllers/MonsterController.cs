@@ -1,3 +1,8 @@
+using BlazorGame.GameService.Services;
+using BlazorGame.SharedModels.Enums.Entities;
+using BlazorGame.SharedModels.Models.Entities;
+using Microsoft.AspNetCore.Mvc;
+
 namespace BlazorGame.GameService.Controllers;
 
 /// <summary>

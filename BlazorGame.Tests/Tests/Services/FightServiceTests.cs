@@ -1,3 +1,8 @@
+using BlazorGame.GameService.Data;
+using BlazorGame.GameService.Services;
+using BlazorGame.SharedModels.Models.Entities;
+using Microsoft.EntityFrameworkCore;
+
 namespace BlazorGame.Tests.Tests;
 
 /// <summary>
@@ -67,9 +72,9 @@ public class FightServiceTests
         var (service, player, monster) = CreateFightSetup(context);
 
         player.Strength = 5;
-        player.HeartNumber = 1; // Un seul cœur pour avoir une vraie défaite
+        player.HeartNumber = 1;
         monster.Strength = 40;
-        monster.Health = 200; // Monstre très résistant
+        monster.Health = 200; 
         context.SaveChanges();
 
         var result = await service.ExecuteFightAsync(player.CharacterId, monster.CharacterId);

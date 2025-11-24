@@ -11,6 +11,35 @@ Avant de lancer le projet, assurez-vous d’avoir installé les éléments suiva
 - [.NET 9 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/9.0)
 - Un terminal ou PowerShell
 
+## Choix d'architecture
+
+L'application suit une architecture en microservices avec une séparation des responsabilités :
+
+- **BlazorGame.Client** : Application Blazor WebAssembly pour l'interface utilisateur
+- **BlazorGame.GameService** : API REST (ASP.NET Core) gérant la logique métier du jeu, les sessions, les combats et la persistance
+- **BlazorGame.AuthenticationServices** : Service dédié à l'authentification des utilisateurs et de l'admin
+- **BlazorGame.SharedModels** : Bibliothèque partagée contenant les modèles, DTOs et constantes communes
+- **BlazorGame.Tests** : Projet de tests unitaires
+
+**Technologies principales** :
+- Entity Framework Core avec base de données en mémoire pour la persistance
+- Injection de dépendances pour la gestion des services
+- CORS configuré pour la communication entre le client et l'API
+- Swagger pour la documentation de l'API
+
+## Pages
+
+- **HomePage** (`/home`) : Page d'accueil permettant de démarrer une nouvelle aventure ou de reprendre une partie sauvegardée
+- **LoginPage** (`/login`) : Page de connexion avec authentification utilisateur
+- **AdventurePage** (`/new-adventure`) : Configuration d'une nouvelle partie (choix de la difficulté et du nombre de salles)
+- **RoomPage** (`/new-adventure/room/{roomId}`) : Page principale du jeu affichant la salle actuelle, les actions disponibles, l'état du joueur et gérant les interactions (combats, coffres, événements)
+- **SavedGamesPage** (`/saved-games`) : Liste des parties sauvegardées avec possibilité de reprendre ou supprimer une partie
+- **GameOverPage** (`/game-over`) : Page affichée en cas de défaite avec le score final
+- **VictoryPage** (`/victory`) : Page de victoire affichée lorsque le donjon est complété
+- **ScoresPage** (`/scores`) : Tableau des scores de tous les joueurs
+- **HistoryPage** (`/personal-history`) : Historique personnel des parties du joueur connecté
+- **RulesGame** (`/rules`) : Page présentant les règles du jeu et les mécaniques
+
 ## Lancer le projet
 
 ### 1. Lancer le service principal (API)
@@ -32,23 +61,15 @@ cd BlazorGame.Client
 dotnet build
 dotnet run
 ```
-Ensuite, ouvrez l’application à l’adresse suivante : http://localhost:5133/
+Ensuite, ouvrez l’application à l’adresse suivante : http://localhost:5000/
 
-## Tests Unitaires à venir 
+### 3. Lancer le test de couverture
+Dans un terminal, exécutez :
 
-### Logique du Joueur
-1. **Changement de salle**  
-   Vérifier que le joueur change bien de salle lorsque la salle actuelle est réussie.
-
-2. **Ouverture du coffre**  
-   Vérifier que le joueur obtient la récompense lorsqu’il ouvre un coffre.
-
-3. **Mort du joueur**  
-   Vérifier que le joueur est déclaré perdant lorsqu’il n’a plus de points de vie.
-
-### Logique du Jeu et des Salles
-4. **Fin du jeu** 
-   Vérifier que lorsque le joueur atteint la dernière salle, la fin du jeu est déclenchée.
+```bash
+cd BlazorGame.Tests
+dotnet dotnet test --collect:"XPlat Code Coverage"
+```
 
 ## Notes
 - Assurez-vous que GameService est lancé avant de démarrer le frontend.

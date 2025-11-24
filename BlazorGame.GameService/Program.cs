@@ -1,3 +1,8 @@
+using BlazorGame.GameService.Data;
+using BlazorGame.GameService.Services;
+using Microsoft.EntityFrameworkCore;
+using System.Text.Json.Serialization;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Configurer les services et l'injection de dépendances
@@ -9,13 +14,6 @@ builder.Services.AddDbContext<GameDatabaseContext>(opt =>
         .UseLazyLoadingProxies());
 
 var app = builder.Build();
-
-// Initialiser la base de données avec des données par défaut
-using (var scope = app.Services.CreateScope())
-{
-    var db = scope.ServiceProvider.GetRequiredService<GameDatabaseContext>();
-    DatabaseInitializer.Initialize(db);
-}
 
 // Configurer le pipeline de traitement des requêtes HTTP
 ConfigureMiddleware(app);
@@ -50,7 +48,7 @@ static void ConfigureServices(IServiceCollection services, IConfiguration config
     {
         options.AddPolicy("AllowBlazorClient", policy =>
         {
-            policy.WithOrigins("http://localhost:5133")
+            policy.WithOrigins("http://localhost:5000")
                   .AllowAnyHeader()
                   .AllowAnyMethod();
         });

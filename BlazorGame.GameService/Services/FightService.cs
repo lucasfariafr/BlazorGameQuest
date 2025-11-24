@@ -1,3 +1,8 @@
+using BlazorGame.GameService.Data;
+using BlazorGame.SharedModels.Constants;
+using BlazorGame.SharedModels.DTOs;
+using BlazorGame.SharedModels.Models.Entities;
+
 namespace BlazorGame.GameService.Services;
 
 /// <summary>

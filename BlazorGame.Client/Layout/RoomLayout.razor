@@ -10,14 +10,14 @@
         <div class="room-header">
             <div class="room-title-row">
                 <h4>Salle @RoomId</h4>
-                <button class="btn btn-outline-warning btn-sm save-quit-btn" @onclick="SaveAndQuit" disabled="@isSaving">
+                <button class="btn btn-primary" @onclick="SaveAndQuit" disabled="@isSaving">
                     @if (isSaving)
                     {
                         <span class="spinner-border spinner-border-sm"></span>
                     }
                     else
                     {
-                        <span>Sauvegarder & Quitter</span>
+                        <span>Sauvegarder et quitter</span>
                     }
                 </button>
             </div>

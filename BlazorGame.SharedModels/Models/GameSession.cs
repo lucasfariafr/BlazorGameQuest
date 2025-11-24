@@ -1,3 +1,7 @@
+using System.ComponentModel.DataAnnotations;
+using BlazorGame.SharedModels.Models.Entities;
+using BlazorGame.SharedModels.Models.Environment;
+
 namespace BlazorGame.SharedModels.Models;
 
 /// <summary>

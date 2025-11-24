@@ -1,3 +1,10 @@
+using BlazorGame.SharedModels.Enums.Entities;
+using BlazorGame.SharedModels.Enums.Environment;
+using BlazorGame.SharedModels.Enums.Utils;
+using BlazorGame.SharedModels.Models.Entities;
+using BlazorGame.SharedModels.Models.Environment;
+using BlazorGame.SharedModels.Models.Utils;
+
 namespace BlazorGame.GameService.Data;
 
 /// <summary>

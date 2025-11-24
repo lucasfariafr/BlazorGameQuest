@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace BlazorGame.SharedModels.Enums.Entities;
 
 /// <summary>

@@ -1,5 +1,9 @@
 using BlazorGame.GameService.Controllers;
+using BlazorGame.GameService.Data;
+using BlazorGame.GameService.Services;
+using BlazorGame.SharedModels.Enums.Entities;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace BlazorGame.Tests.Tests.Controllers;
 

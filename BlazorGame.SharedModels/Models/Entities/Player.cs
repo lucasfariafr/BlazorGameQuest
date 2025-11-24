@@ -1,3 +1,7 @@
+using System.Text.Json.Serialization;
+using BlazorGame.SharedModels.Constants;
+using BlazorGame.SharedModels.Models.Utils;
+
 namespace BlazorGame.SharedModels.Models.Entities;
 
 /// <summary>

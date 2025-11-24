@@ -1,3 +1,7 @@
+using BlazorGame.GameService.Data;
+using BlazorGame.GameService.Services;
+using Microsoft.EntityFrameworkCore;
+
 namespace BlazorGame.Tests.Tests;
 
 /// <summary>

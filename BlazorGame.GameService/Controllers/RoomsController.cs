@@ -1,3 +1,6 @@
+using BlazorGame.GameService.Services;
+using Microsoft.AspNetCore.Mvc;
+
 namespace BlazorGame.GameService.Controllers;
 
 /// <summary>
