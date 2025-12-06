@@ -21,5 +21,17 @@ public class Player : Character
     /// </summary>
     [JsonPropertyOrder(7)]
     public virtual List<Potion>? Potions { get; set; }
-    
+
+    /// <summary>
+    /// Indique si le joueur est actif (non banni/désactivé).
+    /// </summary>
+    [JsonPropertyOrder(8)]
+    public bool IsActive { get; set; } = true;
+
+    /// <summary>
+    /// Date de création du compte joueur.
+    /// </summary>
+    [JsonPropertyOrder(9)]
+    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+
 }

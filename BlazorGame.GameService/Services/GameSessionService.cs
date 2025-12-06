@@ -117,6 +117,18 @@ public class GameSessionService
     }
 
     /// <summary>
+    /// Récupère toutes les sessions de jeu (en cours, terminées, abandonnées, sauvegardées).
+    /// </summary>
+    public async Task<IReadOnlyList<GameSession>> GetAllSessionsAsync()
+    {
+        return await _context.GameSessions
+            .Include(s => s.Player)
+            .Include(s => s.Dungeon)
+            .OrderByDescending(s => s.UpdatedAt)
+            .ToListAsync();
+    }
+
+    /// <summary>
     /// Ajoute des points au score de la session.
     /// </summary>
     public async Task<int> AddScoreAsync(int sessionId, int points)

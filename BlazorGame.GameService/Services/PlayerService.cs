@@ -191,4 +191,24 @@ public class PlayerService
 
         return true;
     }
+
+    /// <summary>
+    /// Active ou désactive un joueur.
+    /// </summary>
+    /// <param name="playerId">Identifiant du joueur.</param>
+    /// <param name="isActive">True pour activer, false pour désactiver.</param>
+    /// <returns>True si succès, sinon false.</returns>
+    public async Task<bool> SetPlayerActiveStatusAsync(int playerId, bool isActive)
+    {
+        var player = await _context.Player.FindAsync(playerId);
+        if (player == null)
+        {
+            return false;
+        }
+
+        player.IsActive = isActive;
+        await _context.SaveChangesAsync();
+
+        return true;
+    }
 }

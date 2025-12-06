@@ -62,7 +62,16 @@ static void ConfigureServices(IServiceCollection services, IConfiguration config
         {
             Title = "Bladebound API v1",
             Version = "v1",
+            Description = "API REST pour le jeu Bladebound - Gestion des donjons, joueurs, monstres et sessions de jeu",
         });
+
+        // Inclure les commentaires XML pour la documentation
+        var xmlFile = $"{System.Reflection.Assembly.GetExecutingAssembly().GetName().Name}.xml";
+        var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+        if (File.Exists(xmlPath))
+        {
+            c.IncludeXmlComments(xmlPath);
+        }
     });
 }
 

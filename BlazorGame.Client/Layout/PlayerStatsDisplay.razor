@@ -177,6 +177,15 @@
                     await OnPlayerStateChanged.InvokeAsync(newState);
                 }
             }
+            else
+            {
+                var errorContent = await response.Content.ReadAsStringAsync();
+                Console.WriteLine($"Erreur lors de l'utilisation de la potion: {response.StatusCode} - {errorContent}");
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Exception lors de l'utilisation de la potion: {ex.Message}");
         }
         finally
         {
