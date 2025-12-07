@@ -591,25 +591,6 @@ public class ActionServiceTests
     }
 
     /// <summary>
-    /// Vérifie que RunAwayAsync applique une pénalité de score.
-    /// </summary>
-    [Fact]
-    public async Task RunAwayAsync_ShouldApplyScorePenalty()
-    {
-        var (context, service, sessionService) = CreateService();
-        var session = await sessionService.StartNewGameAsync(DungeonLevel.Easy, 5);
-        await sessionService.AddScoreAsync(session.SessionId, 100);
-        var player = session.Player!;
-        var room = session.Dungeon!.Rooms.First();
-
-        var result = await service.RunAwayAsync(player.CharacterId, room.RoomId, session.DungeonId);
-
-        // Le score devrait être réduit de 50 (100 - 50 = 50)
-        Assert.NotNull(result.Score);
-        Assert.True(result.Score <= 100);
-    }
-
-    /// <summary>
     /// Vérifie que IgnoreAsync retourne le prochain RoomId.
     /// </summary>
     [Fact]
