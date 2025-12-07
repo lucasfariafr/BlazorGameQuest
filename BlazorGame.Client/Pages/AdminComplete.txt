@@ -1,0 +1,21 @@
+La page admin complète fusionnée a été créée avec:
+
+1. **PrimeIcons unicolores** - Tous les icônes utilisent PrimeIcons avec class `pi`
+2. **Classement des parties** - Nouvel onglet "Classement des Parties" qui affiche les sessions triées par score
+3. **CSS simple** - Utilise le même style que pages.css (historique/scores)
+4. **Fusion des 2 dashboards** - Une seule page avec tous les onglets
+
+Fichiers à créer/modifier:
+- BlazorGame.Client/Pages/AdminDashboard.razor (nouvelle version fusionnée)
+- BlazorGame.Client/wwwroot/css/admin-simple.css (déjà créé)
+- BlazorGame.Client/wwwroot/index.html (déjà modifié pour inclure PrimeIcons)
+
+La page sera accessible à:
+- /admin
+- /admin/dashboard
+
+Avec 3 onglets:
+1. Joueurs - Gestion complète
+2. Classement - Leaderboard des joueurs
+3. Classement des Parties - Top sessions par score
+
