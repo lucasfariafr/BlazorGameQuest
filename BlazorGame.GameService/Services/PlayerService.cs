@@ -44,6 +44,90 @@ public class PlayerService
     }
 
     /// <summary>
+    /// Récupère un joueur par l'identifiant de son utilisateur Keycloak.
+    /// </summary>
+    /// <param name="userId">Identifiant de l'utilisateur Keycloak.</param>
+    /// <returns>Le joueur ou null s'il n'existe pas.</returns>
+    public async Task<Player?> GetPlayerByUserIdAsync(string userId)
+    {
+        return await _context.Player.FirstOrDefaultAsync(p => p.UserId == userId);
+    }
+
+    /// <summary>
+    /// Crée ou récupère un joueur pour un utilisateur Keycloak.
+    /// Garantit qu'un utilisateur ne peut avoir qu'un seul joueur.
+    /// </summary>
+    /// <param name="userId">Identifiant de l'utilisateur Keycloak.</param>
+    /// <returns>Le joueur associé à cet utilisateur.</returns>
+    public async Task<Player> GetOrCreatePlayerForUserAsync(string userId)
+    {
+        var existingPlayer = await GetPlayerByUserIdAsync(userId);
+        if (existingPlayer != null)
+        {
+            return existingPlayer;
+        }
+
+        var defaultWeapon = new Weapon
+        {
+            WeaponId = 0,
+            Type = WeaponType.Sword
+        };
+
+        var newPlayer = new Player
+        {
+            CharacterId = 0,
+            UserId = userId,
+            Health = GameConstants.MaxHealth,
+            Strength = 10,
+            Armor = 5,
+            HeartNumber = GameConstants.MaxHearts,
+            Weapon = defaultWeapon,
+            Potions = new List<Potion>(),
+            IsActive = true,
+            CreatedAt = DateTime.UtcNow
+        };
+
+        _context.Player.Add(newPlayer);
+        await _context.SaveChangesAsync();
+
+        return newPlayer;
+    }
+
+    /// <summary>
+    /// Crée un nouveau personnage pour un utilisateur (pour une nouvelle partie).
+    /// Chaque partie a son propre personnage avec des stats neuves.
+    /// </summary>
+    /// <param name="userId">Identifiant de l'utilisateur Keycloak.</param>
+    /// <returns>Le nouveau joueur créé.</returns>
+    public async Task<Player> CreateNewPlayerForUserAsync(string userId)
+    {
+        var defaultWeapon = new Weapon
+        {
+            WeaponId = 0,
+            Type = WeaponType.Sword
+        };
+
+        var newPlayer = new Player
+        {
+            CharacterId = 0,
+            UserId = userId,
+            Health = GameConstants.MaxHealth,
+            Strength = 10,
+            Armor = 5,
+            HeartNumber = GameConstants.MaxHearts,
+            Weapon = defaultWeapon,
+            Potions = new List<Potion>(),
+            IsActive = true,
+            CreatedAt = DateTime.UtcNow
+        };
+
+        _context.Player.Add(newPlayer);
+        await _context.SaveChangesAsync();
+
+        return newPlayer;
+    }
+
+    /// <summary>
     /// Utilise une potion pour un joueur.
     /// </summary>
     /// <param name="playerId">Identifiant du joueur.</param>
@@ -187,6 +271,26 @@ public class PlayerService
         }
 
         player.Weapon = weapon;
+        await _context.SaveChangesAsync();
+
+        return true;
+    }
+
+    /// <summary>
+    /// Active ou désactive un joueur.
+    /// </summary>
+    /// <param name="playerId">Identifiant du joueur.</param>
+    /// <param name="isActive">True pour activer, false pour désactiver.</param>
+    /// <returns>True si succès, sinon false.</returns>
+    public async Task<bool> SetPlayerActiveStatusAsync(int playerId, bool isActive)
+    {
+        var player = await _context.Player.FindAsync(playerId);
+        if (player == null)
+        {
+            return false;
+        }
+
+        player.IsActive = isActive;
         await _context.SaveChangesAsync();
 
         return true;

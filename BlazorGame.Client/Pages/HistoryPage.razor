@@ -1,47 +1,368 @@
 @page "/personal-history"
 @inject NavigationManager Navigation
+@inject HttpClient Http
+@inject IJSRuntime JS
 
 <PageTitle>Bladebound · Historique personnel</PageTitle>
 
-<div class="table-container">
-    <div class="header">
-        <div class="header-actions">
-            <button class="btn filter">Filter</button>
-            <button class="btn export">Exporter</button>
+<div class="history-page">
+    <!-- En-tête -->
+    <div class="page-header">
+        <div class="container-fluid">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <h1 class="page-title">
+                        <span class="title-icon">📜</span>
+                        Mon Historique
+                    </h1>
+                    <p class="page-subtitle">Vos parties précédentes et statistiques personnelles</p>
+                </div>
+                <div class="col-md-6 text-end">
+                    <button class="btn btn-light" @onclick="LoadPlayerHistory">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2z"/>
+                            <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466"/>
+                        </svg>
+                        Actualiser
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
 
-    <table class="table-content">
-        <thead>
-            <tr>
-                <th>Joueur</th>
-                <th>Niveau</th>
-                <th>Score</th>
-                <th class="center">Salles explorées</th>
-                <th class="center">Trésors trouvés</th>
-                <th class="center">Ennemies vaincues</th>
-                <th class="center">Status</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><span class="player-name">Fafa</span></td>
-                <td>Facile</td>
-                <td>1550</td>
-                <td class="center">12</td>
-                <td class="center">2</td>
-                <td class="center">10</td>
-                <td class="center"><span class="status survived">Victoire</span></td>
-            </tr>
-            <tr>
-                <td><span class="player-name">Fafa</span></td>
-                <td>Moyen</td>
-                <td>2650</td>
-                <td class="center">12</td>
-                <td class="center">4</td>
-                <td class="center">8</td>
-                <td class="center"><span class="status survived">Victoire</span></td>
-            </tr>
-        </tbody>
-    </table>
+    @if (isLoading)
+    {
+        <div class="loading-container">
+            <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Chargement...</span>
+            </div>
+            <p class="mt-3">Chargement de votre historique...</p>
+        </div>
+    }
+    else
+    {
+        <div class="container-fluid py-4">
+            <!-- Statistiques personnelles -->
+            <div class="row g-4 mb-4">
+                <div class="col-xl-3 col-md-6">
+                    <div class="stat-card primary">
+                        <div class="stat-icon">🎮</div>
+                        <div class="stat-content">
+                            <div class="stat-value">@(playerSessions?.Count ?? 0)</div>
+                            <div class="stat-label">Parties Jouées</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-md-6">
+                    <div class="stat-card success">
+                        <div class="stat-icon">🏆</div>
+                        <div class="stat-content">
+                            <div class="stat-value">@GetVictoryCount()</div>
+                            <div class="stat-label">Victoires</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-md-6">
+                    <div class="stat-card warning">
+                        <div class="stat-icon">⭐</div>
+                        <div class="stat-content">
+                            <div class="stat-value">@GetBestScore()</div>
+                            <div class="stat-label">Meilleur Score</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-md-6">
+                    <div class="stat-card info">
+                        <div class="stat-icon">📊</div>
+                        <div class="stat-content">
+                            <div class="stat-value">@GetAverageScore().ToString("F0")</div>
+                            <div class="stat-label">Score Moyen</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Liste des parties -->
+            <div class="card history-card">
+                <div class="card-header">
+                    <h5>📋 Historique des Parties</h5>
+                    <div class="header-actions">
+                        <button class="btn btn-sm btn-outline-primary" @onclick="ExportHistory">
+                            📥 Exporter
+                        </button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    @if (playerSessions != null && playerSessions.Any())
+                    {
+                        <div class="sessions-list">
+                            @foreach (var session in playerSessions.OrderByDescending(s => s.UpdatedAt))
+                            {
+                                <div class="session-item @session.Status">
+                                    <div class="session-rank">
+                                        <span class="rank-icon">@GetSessionIcon(session.Status)</span>
+                                    </div>
+                                    <div class="session-details">
+                                        <div class="session-header-row">
+                                            <h6 class="session-title">Session #@session.SessionId</h6>
+                                            <span class="badge @GetSessionBadgeClass(session.Status)">
+                                                @GetSessionStatusText(session.Status)
+                                            </span>
+                                        </div>
+                                        <div class="session-info-row">
+                                            <div class="info-group">
+                                                <span class="info-icon">🏰</span>
+                                                <span class="info-text">Donjon #@session.DungeonId</span>
+                                            </div>
+                                            <div class="info-group">
+                                                <span class="info-icon">📅</span>
+                                                <span class="info-text">@session.CreatedAt.ToString("dd/MM/yyyy HH:mm")</span>
+                                            </div>
+                                            <div class="info-group">
+                                                <span class="info-icon">⏱️</span>
+                                                <span class="info-text">@GetDuration(session.CreatedAt, session.UpdatedAt)</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="session-score">
+                                        <div class="score-value">@session.Score</div>
+                                        <div class="score-label">points</div>
+                                    </div>
+                                    @if (session.Status == "Saved" || session.Status == "InProgress")
+                                    {
+                                        <div class="session-actions">
+                                            <button class="btn btn-sm btn-primary" @onclick="() => ResumeGame(session.SessionId)">
+                                                ▶️ Reprendre
+                                            </button>
+                                            <button class="btn btn-sm btn-danger" @onclick="() => DeleteGame(session.SessionId)">
+                                                🗑️ Supprimer
+                                            </button>
+                                        </div>
+                                    }
+                                </div>
+                            }
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="empty-state">
+                            <div class="empty-icon">🎮</div>
+                            <h5>Aucune partie jouée</h5>
+                            <p>Commencez votre première aventure pour voir votre historique ici</p>
+                            <button class="btn btn-primary" @onclick='() => Navigation.NavigateTo("/new-adventure")'>
+                                Nouvelle Aventure
+                            </button>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    }
+
+    @if (!string.IsNullOrEmpty(errorMessage))
+    {
+        <div class="toast-notification error">
+            ❌ @errorMessage
+        </div>
+    }
 </div>
+
+@code {
+    private bool isLoading = true;
+    private string? errorMessage;
+    private List<GameSessionDto>? playerSessions;
+    private int? currentPlayerId;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadPlayerHistory();
+    }
+
+    private async Task LoadPlayerHistory()
+    {
+        isLoading = true;
+        errorMessage = null;
+
+        try
+        {
+            // Récupérer le joueur de l'utilisateur connecté (le token est ajouté automatiquement)
+            var player = await Http.GetFromJsonAsync<PlayerDto>($"http://localhost:5203/api/Player/me");
+            if (player != null)
+            {
+                currentPlayerId = player.CharacterId;
+
+                // Récupérer toutes les sessions et filtrer par joueur
+                var response = await Http.GetFromJsonAsync<SessionsResponse>($"http://localhost:5203/api/Admin/sessions");
+                if (response?.Data != null)
+                {
+                    playerSessions = response.Data.Where(s => s.PlayerId == currentPlayerId).ToList();
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Erreur lors du chargement de l'historique: {ex.Message}";
+            Console.WriteLine($"Erreur: {ex.Message}");
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+
+    private async Task ResumeGame(int sessionId)
+    {
+        try
+        {
+            var response = await Http.PostAsync($"http://localhost:5203/api/GameSession/{sessionId}/resume", null);
+            if (response.IsSuccessStatusCode)
+            {
+                var session = await response.Content.ReadFromJsonAsync<GameSessionResumeDto>();
+                if (session != null)
+                {
+                    // Naviguer vers la salle actuelle de la session
+                    Navigation.NavigateTo($"/new-adventure/room/{session.CurrentRoomId}");
+                }
+            }
+            else
+            {
+                errorMessage = "Erreur lors de la reprise de la partie.";
+            }
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Erreur lors de la reprise: {ex.Message}";
+            Console.WriteLine($"Erreur: {ex.Message}");
+        }
+    }
+
+    private async Task DeleteGame(int sessionId)
+    {
+        if (!await JS.InvokeAsync<bool>("confirm", "Êtes-vous sûr de vouloir supprimer cette partie ?"))
+        {
+            return;
+        }
+
+        try
+        {
+            var response = await Http.DeleteAsync($"http://localhost:5203/api/GameSession/{sessionId}");
+            if (response.IsSuccessStatusCode)
+            {
+                // Recharger l'historique
+                await LoadPlayerHistory();
+            }
+            else
+            {
+                errorMessage = "Erreur lors de la suppression de la partie.";
+            }
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Erreur lors de la suppression: {ex.Message}";
+            Console.WriteLine($"Erreur: {ex.Message}");
+        }
+    }
+
+    private int GetVictoryCount()
+    {
+        return playerSessions?.Count(s => s.Status == "Victory") ?? 0;
+    }
+
+    private int GetBestScore()
+    {
+        if (playerSessions == null || !playerSessions.Any()) return 0;
+        return playerSessions.Max(s => s.Score);
+    }
+
+    private double GetAverageScore()
+    {
+        if (playerSessions == null || !playerSessions.Any()) return 0;
+        return playerSessions.Average(s => s.Score);
+    }
+
+    private string GetSessionIcon(string? status) => status switch
+    {
+        "Victory" => "🏆",
+        "Defeat" => "💀",
+        "InProgress" => "🎮",
+        "Saved" => "💾",
+        "Abandoned" => "🚪",
+        _ => "❓"
+    };
+
+    private string GetSessionBadgeClass(string? status) => status switch
+    {
+        "Victory" => "bg-success",
+        "Defeat" => "bg-danger",
+        "InProgress" => "bg-info",
+        "Saved" => "bg-warning text-dark",
+        "Abandoned" => "bg-secondary",
+        _ => "bg-secondary"
+    };
+
+    private string GetSessionStatusText(string? status) => status switch
+    {
+        "Victory" => "Victoire",
+        "Defeat" => "Défaite",
+        "InProgress" => "En cours",
+        "Saved" => "Sauvegardée",
+        "Abandoned" => "Abandonnée",
+        _ => status ?? "Inconnu"
+    };
+
+    private string GetDuration(DateTime start, DateTime end)
+    {
+        var duration = end - start;
+        if (duration.TotalMinutes < 1) return "< 1 min";
+        if (duration.TotalHours < 1) return $"{(int)duration.TotalMinutes} min";
+        return $"{(int)duration.TotalHours}h {duration.Minutes}min";
+    }
+
+    private async Task ExportHistory()
+    {
+        await JS.InvokeVoidAsync("alert", "Export fonctionnalité à venir");
+    }
+
+    // DTOs
+    public class GameSessionDto
+    {
+        public int SessionId { get; set; }
+        public int PlayerId { get; set; }
+        public int DungeonId { get; set; }
+        public int Score { get; set; }
+        public string? Status { get; set; }
+        public DateTime CreatedAt { get; set; }
+        public DateTime UpdatedAt { get; set; }
+    }
+
+    public class SessionsResponse
+    {
+        public int Count { get; set; }
+        public List<GameSessionDto>? Data { get; set; }
+    }
+
+    public class PlayerDto
+    {
+        public int CharacterId { get; set; }
+        public string? Name { get; set; }
+        public string? UserId { get; set; }
+        public int HeartNumber { get; set; }
+        public double Health { get; set; }
+        public int Strength { get; set; }
+        public int Armor { get; set; }
+        public int Damage { get; set; }
+        public bool IsActive { get; set; }
+        public DateTime CreatedAt { get; set; }
+    }
+
+    public class GameSessionResumeDto
+    {
+        public int SessionId { get; set; }
+        public int CurrentRoomId { get; set; }
+        public int PlayerId { get; set; }
+        public int DungeonId { get; set; }
+        public int Score { get; set; }
+        public string? Status { get; set; }
+        public DateTime CreatedAt { get; set; }
+    }
+}

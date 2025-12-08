@@ -33,30 +33,20 @@ public class GameSessionService
     }
 
     /// <summary>
-    /// Crée une nouvelle partie avec un nouveau joueur et un nouveau donjon.
+    /// Crée une nouvelle partie pour un joueur existant avec un nouveau donjon.
     /// </summary>
+    /// <param name="playerId">Identifiant du joueur.</param>
     /// <param name="dungeonLevel">Niveau de difficulté du donjon.</param>
     /// <param name="roomCount">Nombre de salles dans le donjon.</param>
     /// <returns>La session de jeu créée.</returns>
-    public async Task<GameSession> StartNewGameAsync(DungeonLevel dungeonLevel = DungeonLevel.Easy, int roomCount = 5)
+    public async Task<GameSession> StartNewGameAsync(int playerId, DungeonLevel dungeonLevel = DungeonLevel.Easy, int roomCount = 5)
     {
-        // Créer un nouveau joueur
-        var nextPlayerId = await _context.Player.AnyAsync()
-            ? await _context.Player.MaxAsync(p => p.CharacterId) + 1
-            : 1;
-
-        var player = new Player
+        // Récupérer le joueur existant
+        var player = await _context.Player.FindAsync(playerId);
+        if (player == null)
         {
-            CharacterId = nextPlayerId,
-            Strength = 10,
-            Armor = 5,
-            Health = GameConstants.MaxHealth,
-            HeartNumber = GameConstants.MaxHearts,
-            Potions = new List<Potion>()
-        };
-
-        _context.Player.Add(player);
-        await _context.SaveChangesAsync();
+            throw new ArgumentException($"Le joueur avec l'ID {playerId} n'existe pas.", nameof(playerId));
+        }
 
         // Générer un nouveau donjon
         var dungeon = await _dungeonsService.GenerateRandomDungeonAsync(dungeonLevel, roomCount);
@@ -113,6 +103,18 @@ public class GameSessionService
             .Where(s => s.Status == GameSessionStatus.Victory || s.Status == GameSessionStatus.Defeat)
             .OrderByDescending(s => s.Score)
             .ThenByDescending(s => s.UpdatedAt)
+            .ToListAsync();
+    }
+
+    /// <summary>
+    /// Récupère toutes les sessions de jeu (en cours, terminées, abandonnées, sauvegardées).
+    /// </summary>
+    public async Task<IReadOnlyList<GameSession>> GetAllSessionsAsync()
+    {
+        return await _context.GameSessions
+            .Include(s => s.Player)
+            .Include(s => s.Dungeon)
+            .OrderByDescending(s => s.UpdatedAt)
             .ToListAsync();
     }
 
@@ -236,11 +238,16 @@ public class GameSessionService
 
     /// <summary>
     /// Sauvegarde une partie en cours pour la reprendre plus tard.
+    /// Accepte les parties InProgress et Saved (pour re-sauvegarder une partie reprise).
     /// </summary>
     public async Task<GameSession?> SaveGameAsync(int sessionId, int currentRoomId)
     {
         var session = await _context.GameSessions.FindAsync(sessionId);
-        if (session == null || session.Status != GameSessionStatus.InProgress) return null;
+        if (session == null) return null;
+
+        // On peut sauvegarder une partie InProgress ou Saved (reprise puis re-sauvegardée)
+        if (session.Status != GameSessionStatus.InProgress && session.Status != GameSessionStatus.Saved)
+            return null;
 
         session.CurrentRoomId = currentRoomId;
         session.Status = GameSessionStatus.Saved;

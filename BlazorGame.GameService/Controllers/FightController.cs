@@ -1,15 +1,19 @@
 using BlazorGame.GameService.Services;
+using BlazorGame.GameService.Helpers;
 using BlazorGame.SharedModels.DTOs;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BlazorGame.GameService.Controllers;
 
 /// <summary>
 /// Contrôleur pour gérer les combats entre joueurs et monstres.
+/// Réservé aux joueurs uniquement.
 /// </summary>
 [Route("api/[controller]")]
 [ApiController]
 [Produces("application/json")]
+[Authorize(Policy = "AdminOrPlayer")]
 public class FightController : ControllerBase
 {
     private readonly FightService _fightService;
@@ -27,20 +31,19 @@ public class FightController : ControllerBase
     }
 
     /// <summary>
-    /// Lance un combat entre un joueur et un monstre.
+    /// Lance un combat entre le joueur connecté et un monstre.
     /// </summary>
-    /// <param name="playerId">Identifiant du joueur.</param>
     /// <param name="monsterId">Identifiant du monstre.</param>
     /// <returns>Résultat du combat.</returns>
-    [HttpPost("{playerId:int}/vs/{monsterId:int}")]
+    [HttpPost("vs/{monsterId:int}")]
     [ProducesResponseType(typeof(FightResultDto), StatusCodes.Status200OK)]
-    public async Task<IActionResult> Fight(int playerId, int monsterId)
+    public async Task<IActionResult> Fight(int monsterId)
     {
-        var player = await _playerService.GetPlayerByIdAsync(playerId);
-        if (player is null)
-        {
-            return NotFound(new { message = $"Le joueur avec l'ID {playerId} n'existe pas." });
-        }
+        var userId = UserHelper.GetUserId(User);
+        if (string.IsNullOrEmpty(userId))
+            return Unauthorized(new { message = "Utilisateur non authentifié." });
+
+        var player = await _playerService.GetOrCreatePlayerForUserAsync(userId);
 
         var monster = await _monsterService.GetMonsterByIdAsync(monsterId);
         if (monster is null)
@@ -48,7 +51,7 @@ public class FightController : ControllerBase
             return NotFound(new { message = $"Le monstre avec l'ID {monsterId} n'existe pas." });
         }
 
-        var isPlayerAlive = await _playerService.IsPlayerAliveAsync(playerId);
+        var isPlayerAlive = await _playerService.IsPlayerAliveAsync(player.CharacterId);
         if (!isPlayerAlive)
         {
             return BadRequest(new { message = "Le joueur est déjà mort et ne peut pas combattre." });
@@ -60,23 +63,23 @@ public class FightController : ControllerBase
             return BadRequest(new { message = "Le monstre est déjà mort." });
         }
 
-        var result = await _fightService.ExecuteFightAsync(playerId, monsterId);
+        var result = await _fightService.ExecuteFightAsync(player.CharacterId, monsterId);
 
         return Ok(result);
     }
 
     /// <summary>
-    /// Simule un combat entre un joueur et un monstre et fournit une estimation.
+    /// Simule un combat entre le joueur connecté et un monstre et fournit une estimation.
     /// </summary>
-    [HttpGet("{playerId:int}/preview/{monsterId:int}")]
+    [HttpGet("preview/{monsterId:int}")]
     [ProducesResponseType(typeof(object), StatusCodes.Status200OK)]
-    public async Task<IActionResult> SimulateFight(int playerId, int monsterId)
+    public async Task<IActionResult> SimulateFight(int monsterId)
     {
-        var player = await _playerService.GetPlayerByIdAsync(playerId);
-        if (player == null)
-        {
-            return NotFound(new { message = $"Le joueur avec l'ID {playerId} n'existe pas." });
-        }
+        var userId = UserHelper.GetUserId(User);
+        if (string.IsNullOrEmpty(userId))
+            return Unauthorized(new { message = "Utilisateur non authentifié." });
+
+        var player = await _playerService.GetOrCreatePlayerForUserAsync(userId);
 
         var monster = await _monsterService.GetMonsterByIdAsync(monsterId);
         if (monster == null)

@@ -72,6 +72,14 @@ public class ActionService
         {
             var nextRoomId = await GetNextRoomIdAsync(dungeonId, roomId);
 
+            // Si le donjon est terminé, marquer la session comme victoire
+            if (session != null && nextRoomId == null)
+            {
+                await _sessionService.CompleteGameVictoryAsync(session.SessionId);
+                session = await _sessionService.GetSessionByIdAsync(session.SessionId);
+                currentScore = session?.Score;
+            }
+
             return new ActionResultDto
             {
                 Success = true,
@@ -95,6 +103,14 @@ public class ActionService
 
         var isAlive = await _playerService.IsPlayerAliveAsync(playerId);
 
+        // Si le joueur est mort, marquer la session comme défaite
+        if (!isAlive && session != null)
+        {
+            await _sessionService.CompleteGameDefeatAsync(session.SessionId);
+            session = await _sessionService.GetSessionByIdAsync(session.SessionId);
+            currentScore = session?.Score;
+        }
+
         return new ActionResultDto
         {
             Success = false,
@@ -102,7 +118,8 @@ public class ActionService
             ActionType = "RunAway",
             DamageTaken = damageTaken,
             IsGameOver = !isAlive,
-            PlayerState = CreatePlayerSnapshot(player!)
+            PlayerState = CreatePlayerSnapshot(player!),
+            Score = currentScore
         };
     }
 
@@ -152,6 +169,16 @@ public class ActionService
                 await _playerService.AddPotionAsync(playerId, potion);
                 player = await _playerService.GetPlayerByIdAsync(playerId);
 
+                // Si le donjon est terminé, marquer la session comme victoire
+                var session = await _sessionService.GetActiveSessionByPlayerIdAsync(playerId);
+                int? currentScore = null;
+                if (session != null && nextRoomId == null)
+                {
+                    await _sessionService.CompleteGameVictoryAsync(session.SessionId);
+                    session = await _sessionService.GetSessionByIdAsync(session.SessionId);
+                    currentScore = session?.Score;
+                }
+
                 return new ActionResultDto
                 {
                     Success = true,
@@ -160,9 +187,20 @@ public class ActionService
                     NextRoomId = nextRoomId,
                     IsDungeonCompleted = nextRoomId == null,
                     Reward = new { Type = "Potion", PotionType = potionType.ToString() },
-                    PlayerState = CreatePlayerSnapshot(player!)
+                    PlayerState = CreatePlayerSnapshot(player!),
+                    Score = currentScore
                 };
             }
+        }
+
+        // Si le donjon est terminé, marquer la session comme victoire
+        var searchSession = await _sessionService.GetActiveSessionByPlayerIdAsync(playerId);
+        int? searchScore = null;
+        if (searchSession != null && nextRoomId == null)
+        {
+            await _sessionService.CompleteGameVictoryAsync(searchSession.SessionId);
+            searchSession = await _sessionService.GetSessionByIdAsync(searchSession.SessionId);
+            searchScore = searchSession?.Score;
         }
 
         return new ActionResultDto
@@ -172,7 +210,8 @@ public class ActionService
             ActionType = "Search",
             NextRoomId = nextRoomId,
             IsDungeonCompleted = nextRoomId == null,
-            PlayerState = CreatePlayerSnapshot(player)
+            PlayerState = CreatePlayerSnapshot(player),
+            Score = searchScore
         };
     }
 
@@ -249,6 +288,14 @@ public class ActionService
             player = await _playerService.GetPlayerByIdAsync(playerId);
             var isAlive = await _playerService.IsPlayerAliveAsync(playerId);
 
+            // Si le joueur est mort, marquer la session comme défaite
+            if (!isAlive && session != null)
+            {
+                await _sessionService.CompleteGameDefeatAsync(session.SessionId);
+                session = await _sessionService.GetSessionByIdAsync(session.SessionId);
+                currentScore = session?.Score;
+            }
+
             return new ActionResultDto
             {
                 Success = false,
@@ -257,7 +304,8 @@ public class ActionService
                 DamageTaken = trapDamage,
                 IsGameOver = !isAlive,
                 NextRoomId = isAlive ? nextRoomId : null,
-                PlayerState = CreatePlayerSnapshot(player!)
+                PlayerState = CreatePlayerSnapshot(player!),
+                Score = currentScore
             };
         }
 
@@ -279,6 +327,14 @@ public class ActionService
         else
         {
             message = $"Le coffre était vide... (+25 points, Score: {currentScore ?? 0})";
+        }
+
+        // Si le donjon est terminé, marquer la session comme victoire
+        if (session != null && nextRoomId == null)
+        {
+            await _sessionService.CompleteGameVictoryAsync(session.SessionId);
+            session = await _sessionService.GetSessionByIdAsync(session.SessionId);
+            currentScore = session?.Score;
         }
 
         return new ActionResultDto
@@ -312,6 +368,16 @@ public class ActionService
 
         var nextRoomId = await GetNextRoomIdAsync(dungeonId, roomId);
 
+        // Si le donjon est terminé, marquer la session comme victoire
+        var session = await _sessionService.GetActiveSessionByPlayerIdAsync(playerId);
+        int? currentScore = null;
+        if (session != null && nextRoomId == null)
+        {
+            await _sessionService.CompleteGameVictoryAsync(session.SessionId);
+            session = await _sessionService.GetSessionByIdAsync(session.SessionId);
+            currentScore = session?.Score;
+        }
+
         return new ActionResultDto
         {
             Success = true,
@@ -319,7 +385,8 @@ public class ActionService
             ActionType = "Ignore",
             NextRoomId = nextRoomId,
             IsDungeonCompleted = nextRoomId == null,
-            PlayerState = CreatePlayerSnapshot(player)
+            PlayerState = CreatePlayerSnapshot(player),
+            Score = currentScore
         };
     }
 

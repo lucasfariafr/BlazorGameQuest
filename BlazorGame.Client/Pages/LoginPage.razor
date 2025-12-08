@@ -1,5 +1,12 @@
 @page "/login"
+
+@attribute [AllowAnonymous]
+
+@inject HttpClient Http
 @inject NavigationManager Navigation
+@inject AuthenticationStateProvider AuthProvider
+@inject IJSRuntime JS;
+@inject ITokenService localStorage;
 
 <PageTitle>Bladebound · Connexion</PageTitle>
 
@@ -10,12 +17,21 @@
         <p>Veuillez saisir vos informations pour vous connecter.</p>
     </div>
 
+    @if (!string.IsNullOrEmpty(errorMessage))
+    {
+        <div class="error-message">
+            @errorMessage
+        </div>
+    }
+
     <div class="inputs-container">
-        <div class="email-container">
-            <input type="email" id="email" placeholder="Entrez votre email..." name="email" required />
+        <div class="username-container">
+            <input type="text" id="username" placeholder="Entrez votre nom d'utilisateur" name="username" 
+                   @bind="credentials.Username" @bind:event="oninput" required />
         </div>
         <div class="password-wrapper">
-            <input type="@PasswordInputType" id="password" placeholder="Mot de passe" />
+            <input type="@PasswordInputType" id="password" placeholder="Mot de passe" 
+                   @bind="credentials.Password" @bind:event="oninput" required />
             <svg @onclick="TogglePassword" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                 class="bi bi-eye" viewBox="0 0 20 20">
                 @if (!isVisible)
@@ -43,11 +59,26 @@
     </div>
 
     <div class="footer-container">
-        <button @onclick="HandleLogin">Se connecter</button>
+        <button @onclick="HandleLogin" disabled="@isLoading">
+            @if (isLoading)
+            {
+                <span>Connexion en cours...</span>
+            }
+            else
+            {
+                <span>Se connecter</span>
+            }
+        </button>
     </div>
 </div>
 
 @code {
+
+    private UserCredentials credentials = new();
+
+    private string? errorMessage;
+
+    private bool isLoading = false;
 
     /// <summary>
     /// Visibilité du mot de passe.
@@ -68,10 +99,79 @@
     }
 
     /// <summary>
-    /// Navigue vers l'accueil.
+    /// Gère la connexion via Keycloak.
     /// </summary>
-    private void HandleLogin()
+    private async Task HandleLogin()
     {
-        Navigation.NavigateTo("/home");
+        // Réinitialiser le message d'erreur
+        errorMessage = null;
+        
+        if (string.IsNullOrWhiteSpace(credentials.Username) || string.IsNullOrWhiteSpace(credentials.Password))
+        {
+            errorMessage = "Veuillez remplir tous les champs.";
+            return;
+        }
+
+        isLoading = true;
+
+        try
+        {
+            var response = await Http.PostAsJsonAsync("http://localhost:5051/api/auth/login", credentials);
+            
+            if (response.IsSuccessStatusCode)
+            {
+                var result = await response.Content.ReadFromJsonAsync<LoginResponse>();
+                var token = result?.AccessToken;
+                
+                if (string.IsNullOrEmpty(token))
+                {
+                    errorMessage = "Erreur : aucun token reçu.";
+                    isLoading = false;
+                    return;
+                }
+
+                await localStorage.SetTokenAsync(token);
+
+                if (AuthProvider is CustomAuthStateProvider customProvider)
+                {
+                    customProvider.NotifyUserAuthentication(token);
+                }
+                
+                Navigation.NavigateTo("/");
+            }
+            else
+            {
+                var errorContent = await response.Content.ReadAsStringAsync();
+                errorMessage = "Échec de la connexion. Vérifiez vos identifiants.";
+                Console.WriteLine($"Erreur de connexion : {response.StatusCode} - {errorContent}");
+            }
+        }
+        catch (Exception ex)
+        {
+            errorMessage = "Une erreur s'est produite lors de la connexion. Veuillez réessayer.";
+            Console.WriteLine($"Exception lors de la connexion : {ex.Message}");
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+
+    public class UserCredentials
+    {
+        public string Username { get; set; } = "";
+        public string Password { get; set; } = "";
+    }
+
+    public class LoginResponse
+    {
+        [JsonPropertyName("access_token")]
+        public string? AccessToken { get; set; }
+
+        [JsonPropertyName("expires_in")]
+        public int ExpiresIn { get; set; }
+
+        [JsonPropertyName("refresh_token")]
+        public string? RefreshToken { get; set; }
     }
 }
