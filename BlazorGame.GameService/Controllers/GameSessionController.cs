@@ -30,7 +30,8 @@ public class GameSessionController : ControllerBase
         if (string.IsNullOrEmpty(userId))
             return Unauthorized(new { message = "Utilisateur non authentifié." });
 
-        var player = await _playerService.GetOrCreatePlayerForUserAsync(userId);
+        // Créer un NOUVEAU personnage pour chaque nouvelle partie
+        var player = await _playerService.CreateNewPlayerForUserAsync(userId);
 
         var level = (request?.DifficultyLevel?.ToLower()) switch
         {

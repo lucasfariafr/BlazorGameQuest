@@ -43,8 +43,9 @@ public class GameSessionServiceTests
     public async Task StartNewGameAsync_ShouldCreateNewSession()
     {
         var (context, service) = CreateService();
+        var player = context.Player.First();
 
-        var session = await service.StartNewGameAsync(DungeonLevel.Easy, 3);
+        var session = await service.StartNewGameAsync(player.CharacterId, DungeonLevel.Easy, 3);
 
         Assert.NotNull(session);
         Assert.True(session.SessionId > 0);
@@ -61,7 +62,8 @@ public class GameSessionServiceTests
     public async Task GetSessionByIdAsync_ShouldReturnSession_WhenExists()
     {
         var (context, service) = CreateService();
-        var session = await service.StartNewGameAsync();
+        var player = context.Player.First();
+        var session = await service.StartNewGameAsync(player.CharacterId);
 
         var found = await service.GetSessionByIdAsync(session.SessionId);
 
@@ -88,8 +90,9 @@ public class GameSessionServiceTests
     [Fact]
     public async Task AddScoreAsync_ShouldAddPoints()
     {
-        var (_, service) = CreateService();
-        var session = await service.StartNewGameAsync();
+        var (context, service) = CreateService();
+        var player = context.Player.First();
+        var session = await service.StartNewGameAsync(player.CharacterId);
 
         var newScore = await service.AddScoreAsync(session.SessionId, 100);
 
@@ -102,8 +105,9 @@ public class GameSessionServiceTests
     [Fact]
     public async Task AddMonsterKillScoreAsync_ShouldAdd100Points()
     {
-        var (_, service) = CreateService();
-        var session = await service.StartNewGameAsync();
+        var (context, service) = CreateService();
+        var player = context.Player.First();
+        var session = await service.StartNewGameAsync(player.CharacterId);
 
         var newScore = await service.AddMonsterKillScoreAsync(session.SessionId);
 
@@ -116,8 +120,9 @@ public class GameSessionServiceTests
     [Fact]
     public async Task AddChestOpenScoreAsync_ShouldAdd25Points()
     {
-        var (_, service) = CreateService();
-        var session = await service.StartNewGameAsync();
+        var (context, service) = CreateService();
+        var player = context.Player.First();
+        var session = await service.StartNewGameAsync(player.CharacterId);
 
         var newScore = await service.AddChestOpenScoreAsync(session.SessionId);
 
@@ -130,8 +135,9 @@ public class GameSessionServiceTests
     [Fact]
     public async Task ApplyRunAwayPenaltyAsync_ShouldSubtract50Points()
     {
-        var (_, service) = CreateService();
-        var session = await service.StartNewGameAsync();
+        var (context, service) = CreateService();
+        var player = context.Player.First();
+        var session = await service.StartNewGameAsync(player.CharacterId);
         await service.AddScoreAsync(session.SessionId, 100);
 
         var newScore = await service.ApplyRunAwayPenaltyAsync(session.SessionId);
@@ -145,8 +151,9 @@ public class GameSessionServiceTests
     [Fact]
     public async Task SaveGameAsync_ShouldSaveGame()
     {
-        var (_, service) = CreateService();
-        var session = await service.StartNewGameAsync();
+        var (context, service) = CreateService();
+        var player = context.Player.First();
+        var session = await service.StartNewGameAsync(player.CharacterId);
 
         var saved = await service.SaveGameAsync(session.SessionId, 5);
 
@@ -174,8 +181,9 @@ public class GameSessionServiceTests
     [Fact]
     public async Task ResumeGameAsync_ShouldResumeGame()
     {
-        var (_, service) = CreateService();
-        var session = await service.StartNewGameAsync();
+        var (context, service) = CreateService();
+        var player = context.Player.First();
+        var session = await service.StartNewGameAsync(player.CharacterId);
         await service.SaveGameAsync(session.SessionId, 5);
 
         var resumed = await service.ResumeGameAsync(session.SessionId);
@@ -190,8 +198,9 @@ public class GameSessionServiceTests
     [Fact]
     public async Task ResumeGameAsync_ShouldReturnNull_WhenNotSaved()
     {
-        var (_, service) = CreateService();
-        var session = await service.StartNewGameAsync();
+        var (context, service) = CreateService();
+        var player = context.Player.First();
+        var session = await service.StartNewGameAsync(player.CharacterId);
 
         var resumed = await service.ResumeGameAsync(session.SessionId);
 
@@ -204,9 +213,10 @@ public class GameSessionServiceTests
     [Fact]
     public async Task GetSavedGamesAsync_ShouldReturnSavedGames()
     {
-        var (_, service) = CreateService();
-        var session1 = await service.StartNewGameAsync();
-        var session2 = await service.StartNewGameAsync();
+        var (context, service) = CreateService();
+        var player = context.Player.First();
+        var session1 = await service.StartNewGameAsync(player.CharacterId);
+        var session2 = await service.StartNewGameAsync(player.CharacterId);
         await service.SaveGameAsync(session1.SessionId, 5);
         await service.SaveGameAsync(session2.SessionId, 3);
 
@@ -221,8 +231,9 @@ public class GameSessionServiceTests
     [Fact]
     public async Task DeleteSavedGameAsync_ShouldDeleteSavedGame()
     {
-        var (_, service) = CreateService();
-        var session = await service.StartNewGameAsync();
+        var (context, service) = CreateService();
+        var player = context.Player.First();
+        var session = await service.StartNewGameAsync(player.CharacterId);
         await service.SaveGameAsync(session.SessionId, 5);
 
         var deleted = await service.DeleteSavedGameAsync(session.SessionId);
@@ -238,8 +249,9 @@ public class GameSessionServiceTests
     [Fact]
     public async Task DeleteSavedGameAsync_ShouldReturnFalse_WhenNotSaved()
     {
-        var (_, service) = CreateService();
-        var session = await service.StartNewGameAsync();
+        var (context, service) = CreateService();
+        var player = context.Player.First();
+        var session = await service.StartNewGameAsync(player.CharacterId);
 
         var deleted = await service.DeleteSavedGameAsync(session.SessionId);
 
@@ -252,8 +264,9 @@ public class GameSessionServiceTests
     [Fact]
     public async Task CompleteGameVictoryAsync_ShouldMarkAsVictory()
     {
-        var (_, service) = CreateService();
-        var session = await service.StartNewGameAsync();
+        var (context, service) = CreateService();
+        var player = context.Player.First();
+        var session = await service.StartNewGameAsync(player.CharacterId);
 
         var completed = await service.CompleteGameVictoryAsync(session.SessionId);
 
@@ -268,8 +281,9 @@ public class GameSessionServiceTests
     [Fact]
     public async Task CompleteGameDefeatAsync_ShouldMarkAsDefeat()
     {
-        var (_, service) = CreateService();
-        var session = await service.StartNewGameAsync();
+        var (context, service) = CreateService();
+        var player = context.Player.First();
+        var session = await service.StartNewGameAsync(player.CharacterId);
 
         var completed = await service.CompleteGameDefeatAsync(session.SessionId);
 
@@ -283,8 +297,9 @@ public class GameSessionServiceTests
     [Fact]
     public async Task AbandonGameAsync_ShouldMarkAsAbandoned()
     {
-        var (_, service) = CreateService();
-        var session = await service.StartNewGameAsync();
+        var (context, service) = CreateService();
+        var player = context.Player.First();
+        var session = await service.StartNewGameAsync(player.CharacterId);
 
         var abandoned = await service.AbandonGameAsync(session.SessionId);
 
@@ -298,9 +313,10 @@ public class GameSessionServiceTests
     [Fact]
     public async Task GetTopScoresAsync_ShouldReturnTopScores()
     {
-        var (_, service) = CreateService();
-        var session1 = await service.StartNewGameAsync();
-        var session2 = await service.StartNewGameAsync();
+        var (context, service) = CreateService();
+        var player = context.Player.First();
+        var session1 = await service.StartNewGameAsync(player.CharacterId);
+        var session2 = await service.StartNewGameAsync(player.CharacterId);
         await service.AddScoreAsync(session1.SessionId, 200);
         await service.AddScoreAsync(session2.SessionId, 100);
         await service.CompleteGameVictoryAsync(session1.SessionId);
@@ -318,9 +334,10 @@ public class GameSessionServiceTests
     [Fact]
     public async Task GetCompletedSessionsAsync_ShouldReturnCompletedSessions()
     {
-        var (_, service) = CreateService();
-        var session1 = await service.StartNewGameAsync();
-        var session2 = await service.StartNewGameAsync();
+        var (context, service) = CreateService();
+        var player = context.Player.First();
+        var session1 = await service.StartNewGameAsync(player.CharacterId);
+        var session2 = await service.StartNewGameAsync(player.CharacterId);
         await service.CompleteGameVictoryAsync(session1.SessionId);
         await service.CompleteGameDefeatAsync(session2.SessionId);
 
@@ -335,8 +352,9 @@ public class GameSessionServiceTests
     [Fact]
     public async Task UpdateCurrentRoomAsync_ShouldUpdateCurrentRoom()
     {
-        var (_, service) = CreateService();
-        var session = await service.StartNewGameAsync();
+        var (context, service) = CreateService();
+        var player = context.Player.First();
+        var session = await service.StartNewGameAsync(player.CharacterId);
 
         await service.UpdateCurrentRoomAsync(session.SessionId, 10);
 
@@ -351,8 +369,9 @@ public class GameSessionServiceTests
     [Fact]
     public async Task AddRoomExploredScoreAsync_ShouldAdd10Points()
     {
-        var (_, service) = CreateService();
-        var session = await service.StartNewGameAsync();
+        var (context, service) = CreateService();
+        var player = context.Player.First();
+        var session = await service.StartNewGameAsync(player.CharacterId);
 
         var newScore = await service.AddRoomExploredScoreAsync(session.SessionId);
 
@@ -365,8 +384,9 @@ public class GameSessionServiceTests
     [Fact]
     public async Task GetActiveSessionByPlayerIdAsync_ShouldReturnActiveSession()
     {
-        var (_, service) = CreateService();
-        var session = await service.StartNewGameAsync();
+        var (context, service) = CreateService();
+        var player = context.Player.First();
+        var session = await service.StartNewGameAsync(player.CharacterId);
 
         var active = await service.GetActiveSessionByPlayerIdAsync(session.PlayerId);
 
@@ -380,8 +400,9 @@ public class GameSessionServiceTests
     [Fact]
     public async Task GetActiveSessionByPlayerIdAsync_ShouldReturnNull_WhenNoActiveSession()
     {
-        var (_, service) = CreateService();
-        var session = await service.StartNewGameAsync();
+        var (context, service) = CreateService();
+        var player = context.Player.First();
+        var session = await service.StartNewGameAsync(player.CharacterId);
         await service.CompleteGameVictoryAsync(session.SessionId);
 
         var active = await service.GetActiveSessionByPlayerIdAsync(session.PlayerId);
@@ -447,8 +468,9 @@ public class GameSessionServiceTests
     [Fact]
     public async Task Score_ShouldAccumulateCorrectly()
     {
-        var (_, service) = CreateService();
-        var session = await service.StartNewGameAsync();
+        var (context, service) = CreateService();
+        var player = context.Player.First();
+        var session = await service.StartNewGameAsync(player.CharacterId);
 
         await service.AddMonsterKillScoreAsync(session.SessionId); // +100
         await service.AddChestOpenScoreAsync(session.SessionId);    // +25
@@ -465,8 +487,9 @@ public class GameSessionServiceTests
     [Fact]
     public async Task Score_CanBeNegative_AfterRunAway()
     {
-        var (_, service) = CreateService();
-        var session = await service.StartNewGameAsync();
+        var (context, service) = CreateService();
+        var player = context.Player.First();
+        var session = await service.StartNewGameAsync(player.CharacterId);
 
         await service.ApplyRunAwayPenaltyAsync(session.SessionId);
 
@@ -481,9 +504,10 @@ public class GameSessionServiceTests
     [Fact]
     public async Task StartNewGameAsync_ShouldCreateSession_WithMediumLevel()
     {
-        var (_, service) = CreateService();
+        var (context, service) = CreateService();
+        var player = context.Player.First();
 
-        var session = await service.StartNewGameAsync(DungeonLevel.Medium, 3);
+        var session = await service.StartNewGameAsync(player.CharacterId, DungeonLevel.Medium, 3);
 
         Assert.NotNull(session);
         Assert.Equal(DungeonLevel.Medium, session.Dungeon!.DifficultyLevel);
@@ -495,9 +519,10 @@ public class GameSessionServiceTests
     [Fact]
     public async Task StartNewGameAsync_ShouldCreateSession_WithDifficultLevel()
     {
-        var (_, service) = CreateService();
+        var (context, service) = CreateService();
+        var player = context.Player.First();
 
-        var session = await service.StartNewGameAsync(DungeonLevel.Difficult, 3);
+        var session = await service.StartNewGameAsync(player.CharacterId, DungeonLevel.Difficult, 3);
 
         Assert.NotNull(session);
         Assert.Equal(DungeonLevel.Difficult, session.Dungeon!.DifficultyLevel);
@@ -509,8 +534,9 @@ public class GameSessionServiceTests
     [Fact]
     public async Task GetSessionByIdAsync_ShouldIncludePlayer()
     {
-        var (_, service) = CreateService();
-        var session = await service.StartNewGameAsync();
+        var (context, service) = CreateService();
+        var player = context.Player.First();
+        var session = await service.StartNewGameAsync(player.CharacterId);
 
         var found = await service.GetSessionByIdAsync(session.SessionId);
 
@@ -525,8 +551,9 @@ public class GameSessionServiceTests
     [Fact]
     public async Task GetSessionByIdAsync_ShouldIncludeDungeon()
     {
-        var (_, service) = CreateService();
-        var session = await service.StartNewGameAsync();
+        var (context, service) = CreateService();
+        var player = context.Player.First();
+        var session = await service.StartNewGameAsync(player.CharacterId);
 
         var found = await service.GetSessionByIdAsync(session.SessionId);
 
@@ -556,8 +583,9 @@ public class GameSessionServiceTests
     [Fact]
     public async Task GetCompletedSessionsAsync_ShouldNotIncludeInProgressSessions()
     {
-        var (_, service) = CreateService();
-        var session = await service.StartNewGameAsync();
+        var (context, service) = CreateService();
+        var player = context.Player.First();
+        var session = await service.StartNewGameAsync(player.CharacterId);
 
         var completed = await service.GetCompletedSessionsAsync();
 
@@ -570,10 +598,11 @@ public class GameSessionServiceTests
     [Fact]
     public async Task GetTopScoresAsync_ShouldReturnScoresInDescendingOrder()
     {
-        var (_, service) = CreateService();
-        var session1 = await service.StartNewGameAsync();
-        var session2 = await service.StartNewGameAsync();
-        var session3 = await service.StartNewGameAsync();
+        var (context, service) = CreateService();
+        var player = context.Player.First();
+        var session1 = await service.StartNewGameAsync(player.CharacterId);
+        var session2 = await service.StartNewGameAsync(player.CharacterId);
+        var session3 = await service.StartNewGameAsync(player.CharacterId);
 
         await service.AddScoreAsync(session1.SessionId, 100);
         await service.AddScoreAsync(session2.SessionId, 300);
@@ -621,8 +650,9 @@ public class GameSessionServiceTests
     [Fact]
     public async Task SaveGameAsync_ShouldReturnNull_WhenSessionNotInProgress()
     {
-        var (_, service) = CreateService();
-        var session = await service.StartNewGameAsync();
+        var (context, service) = CreateService();
+        var player = context.Player.First();
+        var session = await service.StartNewGameAsync(player.CharacterId);
         await service.CompleteGameVictoryAsync(session.SessionId);
 
         var saved = await service.SaveGameAsync(session.SessionId, 5);
@@ -636,9 +666,10 @@ public class GameSessionServiceTests
     [Fact]
     public async Task StartNewGameAsync_ShouldSetCreatedAt()
     {
-        var (_, service) = CreateService();
+        var (context, service) = CreateService();
+        var player = context.Player.First();
 
-        var session = await service.StartNewGameAsync();
+        var session = await service.StartNewGameAsync(player.CharacterId);
 
         Assert.True(session.CreatedAt != default);
     }
@@ -649,9 +680,10 @@ public class GameSessionServiceTests
     [Fact]
     public async Task StartNewGameAsync_ShouldSetUpdatedAt()
     {
-        var (_, service) = CreateService();
+        var (context, service) = CreateService();
+        var player = context.Player.First();
 
-        var session = await service.StartNewGameAsync();
+        var session = await service.StartNewGameAsync(player.CharacterId);
 
         Assert.True(session.UpdatedAt != default);
     }
@@ -662,9 +694,10 @@ public class GameSessionServiceTests
     [Fact]
     public async Task StartNewGameAsync_ShouldSetCurrentRoomId()
     {
-        var (_, service) = CreateService();
+        var (context, service) = CreateService();
+        var player = context.Player.First();
 
-        var session = await service.StartNewGameAsync(DungeonLevel.Easy, 5);
+        var session = await service.StartNewGameAsync(player.CharacterId, DungeonLevel.Easy, 5);
 
         Assert.True(session.CurrentRoomId > 0);
     }
@@ -675,8 +708,9 @@ public class GameSessionServiceTests
     [Fact]
     public async Task ApplyRunAwayPenaltyAsync_ShouldAccumulate()
     {
-        var (_, service) = CreateService();
-        var session = await service.StartNewGameAsync();
+        var (context, service) = CreateService();
+        var player = context.Player.First();
+        var session = await service.StartNewGameAsync(player.CharacterId);
 
         await service.ApplyRunAwayPenaltyAsync(session.SessionId);
         await service.ApplyRunAwayPenaltyAsync(session.SessionId);

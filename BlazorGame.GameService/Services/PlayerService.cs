@@ -94,6 +94,40 @@ public class PlayerService
     }
 
     /// <summary>
+    /// Crée un nouveau personnage pour un utilisateur (pour une nouvelle partie).
+    /// Chaque partie a son propre personnage avec des stats neuves.
+    /// </summary>
+    /// <param name="userId">Identifiant de l'utilisateur Keycloak.</param>
+    /// <returns>Le nouveau joueur créé.</returns>
+    public async Task<Player> CreateNewPlayerForUserAsync(string userId)
+    {
+        var defaultWeapon = new Weapon
+        {
+            WeaponId = 0,
+            Type = WeaponType.Sword
+        };
+
+        var newPlayer = new Player
+        {
+            CharacterId = 0,
+            UserId = userId,
+            Health = GameConstants.MaxHealth,
+            Strength = 10,
+            Armor = 5,
+            HeartNumber = GameConstants.MaxHearts,
+            Weapon = defaultWeapon,
+            Potions = new List<Potion>(),
+            IsActive = true,
+            CreatedAt = DateTime.UtcNow
+        };
+
+        _context.Player.Add(newPlayer);
+        await _context.SaveChangesAsync();
+
+        return newPlayer;
+    }
+
+    /// <summary>
     /// Utilise une potion pour un joueur.
     /// </summary>
     /// <param name="playerId">Identifiant du joueur.</param>

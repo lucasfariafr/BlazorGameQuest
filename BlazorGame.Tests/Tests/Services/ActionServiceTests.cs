@@ -46,8 +46,8 @@ public class ActionServiceTests
     public async Task IgnoreAsync_ShouldReturnSuccess()
     {
         var (context, service, sessionService) = CreateService();
-        var session = await sessionService.StartNewGameAsync(DungeonLevel.Easy, 3);
         var player = context.Player.First();
+        var session = await sessionService.StartNewGameAsync(player.CharacterId, DungeonLevel.Easy, 3);
         var room = context.Rooms.First();
         var dungeon = context.Dungeons.First();
 
@@ -165,8 +165,8 @@ public class ActionServiceTests
     public async Task RunAwayAsync_ShouldReturnCorrectActionType()
     {
         var (context, service, sessionService) = CreateService();
-        var session = await sessionService.StartNewGameAsync(DungeonLevel.Easy, 3);
         var player = context.Player.First();
+        var session = await sessionService.StartNewGameAsync(player.CharacterId, DungeonLevel.Easy, 3);
         var room = context.Rooms.First();
         var dungeon = context.Dungeons.First();
 
@@ -267,8 +267,8 @@ public class ActionServiceTests
     public async Task FightAsync_ShouldReturnValidResult_WhenMonsterExists()
     {
         var (context, service, sessionService) = CreateService();
-        var session = await sessionService.StartNewGameAsync(DungeonLevel.Easy, 3);
         var player = context.Player.First();
+        var session = await sessionService.StartNewGameAsync(player.CharacterId, DungeonLevel.Easy, 3);
         player.Strength = 50; // Joueur très fort pour garantir la victoire
         player.Health = 100;
         context.SaveChanges();
@@ -292,8 +292,8 @@ public class ActionServiceTests
     public async Task OpenChestAsync_ShouldOpenChest_WhenExists()
     {
         var (context, service, sessionService) = CreateService();
-        var session = await sessionService.StartNewGameAsync(DungeonLevel.Easy, 3);
         var player = context.Player.First();
+        var session = await sessionService.StartNewGameAsync(player.CharacterId, DungeonLevel.Easy, 3);
         var dungeon = context.Dungeons.First();
         var roomWithChest = context.Rooms
             .Include(r => r.Chest)
@@ -315,8 +315,8 @@ public class ActionServiceTests
     public async Task OpenChestAsync_ShouldReturnError_WhenChestAlreadyOpened()
     {
         var (context, service, sessionService) = CreateService();
-        var session = await sessionService.StartNewGameAsync(DungeonLevel.Easy, 3);
         var player = context.Player.First();
+        var session = await sessionService.StartNewGameAsync(player.CharacterId, DungeonLevel.Easy, 3);
         var dungeon = context.Dungeons.First();
         var roomWithChest = context.Rooms
             .Include(r => r.Chest)
@@ -342,8 +342,8 @@ public class ActionServiceTests
     public async Task RunAwayAsync_ShouldReturnPlayerState()
     {
         var (context, service, sessionService) = CreateService();
-        var session = await sessionService.StartNewGameAsync(DungeonLevel.Easy, 3);
         var player = context.Player.First();
+        var session = await sessionService.StartNewGameAsync(player.CharacterId, DungeonLevel.Easy, 3);
         var room = context.Rooms.First();
         var dungeon = context.Dungeons.First();
 
@@ -359,8 +359,8 @@ public class ActionServiceTests
     public async Task IgnoreAsync_ShouldIndicateDungeonCompleted_WhenLastRoom()
     {
         var (context, service, sessionService) = CreateService();
-        var session = await sessionService.StartNewGameAsync(DungeonLevel.Easy, 2);
         var player = context.Player.First();
+        var session = await sessionService.StartNewGameAsync(player.CharacterId, DungeonLevel.Easy, 2);
         var dungeon = session.Dungeon!;
         var rooms = dungeon.Rooms.OrderBy(r => r.RoomId).ToList();
 
@@ -382,8 +382,8 @@ public class ActionServiceTests
     public async Task FightAsync_ShouldReturnVictory_WhenPlayerWins()
     {
         var (context, service, sessionService) = CreateService();
-        var session = await sessionService.StartNewGameAsync(DungeonLevel.Easy, 5);
         var player = context.Player.First();
+        var session = await sessionService.StartNewGameAsync(player.CharacterId, DungeonLevel.Easy, 5);
         player.Strength = 100;
         player.Health = 100;
         player.Armor = 50;
@@ -407,8 +407,8 @@ public class ActionServiceTests
     public async Task FightAsync_ShouldUpdateScore_WhenPlayerWins()
     {
         var (context, service, sessionService) = CreateService();
-        var session = await sessionService.StartNewGameAsync(DungeonLevel.Easy, 5);
-        var player = session.Player!;
+        var player = context.Player.First();
+        var session = await sessionService.StartNewGameAsync(player.CharacterId, DungeonLevel.Easy, 5);
         player.Strength = 100;
         player.Health = 100;
         player.Armor = 50;
@@ -432,8 +432,8 @@ public class ActionServiceTests
     public async Task SearchAsync_ShouldReturnSuccess_WhenRoomExists()
     {
         var (context, service, sessionService) = CreateService();
-        var session = await sessionService.StartNewGameAsync(DungeonLevel.Easy, 5);
-        var player = session.Player!;
+        var player = context.Player.First();
+        var session = await sessionService.StartNewGameAsync(player.CharacterId, DungeonLevel.Easy, 5);
         var room = session.Dungeon!.Rooms.First();
 
         var result = await service.SearchAsync(player.CharacterId, room.RoomId, session.DungeonId);
@@ -469,8 +469,8 @@ public class ActionServiceTests
 
         for (int i = 0; i < 20; i++)
         {
-            var session = await sessionService.StartNewGameAsync(DungeonLevel.Easy, 5);
-            var player = session.Player!;
+            var player = context.Player.First();
+            var session = await sessionService.StartNewGameAsync(player.CharacterId, DungeonLevel.Easy, 5);
             var roomWithMonster = session.Dungeon!.Rooms.FirstOrDefault(r => r.Monster != null);
 
             if (roomWithMonster != null)
@@ -491,8 +491,8 @@ public class ActionServiceTests
     public async Task FightAsync_ShouldIndicateDungeonCompleted_WhenLastRoom()
     {
         var (context, service, sessionService) = CreateService();
-        var session = await sessionService.StartNewGameAsync(DungeonLevel.Easy, 1);
-        var player = session.Player!;
+        var player = context.Player.First();
+        var session = await sessionService.StartNewGameAsync(player.CharacterId, DungeonLevel.Easy, 1);
         player.Strength = 100;
         player.Health = 100;
         player.Armor = 50;
@@ -519,8 +519,8 @@ public class ActionServiceTests
     public async Task OpenChestAsync_ShouldEquipWeapon_WhenChestContainsWeapon()
     {
         var (context, service, sessionService) = CreateService();
-        var session = await sessionService.StartNewGameAsync(DungeonLevel.Easy, 10);
-        var player = session.Player!;
+        var player = context.Player.First();
+        var session = await sessionService.StartNewGameAsync(player.CharacterId, DungeonLevel.Easy, 10);
         var dungeon = session.Dungeon!;
 
         var roomWithChest = dungeon.Rooms
@@ -542,8 +542,8 @@ public class ActionServiceTests
     public async Task OpenChestAsync_ShouldAddPotion_WhenChestContainsPotion()
     {
         var (context, service, sessionService) = CreateService();
-        var session = await sessionService.StartNewGameAsync(DungeonLevel.Easy, 10);
-        var player = session.Player!;
+        var player = context.Player.First();
+        var session = await sessionService.StartNewGameAsync(player.CharacterId, DungeonLevel.Easy, 10);
         var dungeon = session.Dungeon!;
 
         var roomWithChest = dungeon.Rooms
@@ -565,8 +565,8 @@ public class ActionServiceTests
     public async Task FightAsync_ShouldSetGameOver_WhenPlayerDies()
     {
         var (context, service, sessionService) = CreateService();
-        var session = await sessionService.StartNewGameAsync(DungeonLevel.Difficult, 5);
-        var player = session.Player!;
+        var player = context.Player.First();
+        var session = await sessionService.StartNewGameAsync(player.CharacterId, DungeonLevel.Difficult, 5);
         player.Strength = 1;
         player.Health = 1;
         player.HeartNumber = 0;
@@ -597,8 +597,8 @@ public class ActionServiceTests
     public async Task IgnoreAsync_ShouldReturnNextRoomId()
     {
         var (context, service, sessionService) = CreateService();
-        var session = await sessionService.StartNewGameAsync(DungeonLevel.Easy, 5);
-        var player = session.Player!;
+        var player = context.Player.First();
+        var session = await sessionService.StartNewGameAsync(player.CharacterId, DungeonLevel.Easy, 5);
         var dungeon = session.Dungeon!;
         var rooms = dungeon.Rooms.OrderBy(r => r.RoomId).ToList();
         var firstRoom = rooms.First();
@@ -619,8 +619,8 @@ public class ActionServiceTests
     public async Task SearchAsync_ShouldReturnPlayerState()
     {
         var (context, service, sessionService) = CreateService();
-        var session = await sessionService.StartNewGameAsync(DungeonLevel.Easy, 5);
-        var player = session.Player!;
+        var player = context.Player.First();
+        var session = await sessionService.StartNewGameAsync(player.CharacterId, DungeonLevel.Easy, 5);
         var emptyRoom = session.Dungeon!.Rooms.FirstOrDefault(r => r.Monster == null && r.Chest == null);
 
         if (emptyRoom != null)
@@ -637,8 +637,8 @@ public class ActionServiceTests
     public async Task FightAsync_ShouldContinueGame_WhenPlayerLosesHeart()
     {
         var (context, service, sessionService) = CreateService();
-        var session = await sessionService.StartNewGameAsync(DungeonLevel.Medium, 5);
-        var player = session.Player!;
+        var player = context.Player.First();
+        var session = await sessionService.StartNewGameAsync(player.CharacterId, DungeonLevel.Medium, 5);
         player.Strength = 1;
         player.Health = 100;
         player.HeartNumber = 3;

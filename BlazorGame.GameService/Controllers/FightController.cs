@@ -13,7 +13,7 @@ namespace BlazorGame.GameService.Controllers;
 [Route("api/[controller]")]
 [ApiController]
 [Produces("application/json")]
-[Authorize(Policy = "PlayerOnly")]
+[Authorize(Policy = "AdminOrPlayer")]
 public class FightController : ControllerBase
 {
     private readonly FightService _fightService;

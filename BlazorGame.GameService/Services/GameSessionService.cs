@@ -238,11 +238,16 @@ public class GameSessionService
 
     /// <summary>
     /// Sauvegarde une partie en cours pour la reprendre plus tard.
+    /// Accepte les parties InProgress et Saved (pour re-sauvegarder une partie reprise).
     /// </summary>
     public async Task<GameSession?> SaveGameAsync(int sessionId, int currentRoomId)
     {
         var session = await _context.GameSessions.FindAsync(sessionId);
-        if (session == null || session.Status != GameSessionStatus.InProgress) return null;
+        if (session == null) return null;
+
+        // On peut sauvegarder une partie InProgress ou Saved (reprise puis re-sauvegardée)
+        if (session.Status != GameSessionStatus.InProgress && session.Status != GameSessionStatus.Saved)
+            return null;
 
         session.CurrentRoomId = currentRoomId;
         session.Status = GameSessionStatus.Saved;
