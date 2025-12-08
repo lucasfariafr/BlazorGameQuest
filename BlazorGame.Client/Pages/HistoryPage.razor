@@ -128,6 +128,17 @@
                                         <div class="score-value">@session.Score</div>
                                         <div class="score-label">points</div>
                                     </div>
+                                    @if (session.Status == "Saved" || session.Status == "InProgress")
+                                    {
+                                        <div class="session-actions">
+                                            <button class="btn btn-sm btn-primary" @onclick="() => ResumeGame(session.SessionId)">
+                                                ▶️ Reprendre
+                                            </button>
+                                            <button class="btn btn-sm btn-danger" @onclick="() => DeleteGame(session.SessionId)">
+                                                🗑️ Supprimer
+                                            </button>
+                                        </div>
+                                    }
                                 </div>
                             }
                         </div>
@@ -160,7 +171,7 @@
     private bool isLoading = true;
     private string? errorMessage;
     private List<GameSessionDto>? playerSessions;
-    private int currentPlayerId = 1; // TODO: Récupérer depuis l'authentification
+    private int? currentPlayerId;
 
     protected override async Task OnInitializedAsync()
     {
@@ -174,11 +185,18 @@
 
         try
         {
-            // Récupérer toutes les sessions et filtrer par joueur
-            var response = await Http.GetFromJsonAsync<SessionsResponse>($"http://localhost:5203/api/Admin/sessions");
-            if (response?.Data != null)
+            // Récupérer le joueur de l'utilisateur connecté (le token est ajouté automatiquement)
+            var player = await Http.GetFromJsonAsync<PlayerDto>($"http://localhost:5203/api/Player/me");
+            if (player != null)
             {
-                playerSessions = response.Data.Where(s => s.PlayerId == currentPlayerId).ToList();
+                currentPlayerId = player.CharacterId;
+
+                // Récupérer toutes les sessions et filtrer par joueur
+                var response = await Http.GetFromJsonAsync<SessionsResponse>($"http://localhost:5203/api/Admin/sessions");
+                if (response?.Data != null)
+                {
+                    playerSessions = response.Data.Where(s => s.PlayerId == currentPlayerId).ToList();
+                }
             }
         }
         catch (Exception ex)
@@ -189,6 +207,59 @@
         finally
         {
             isLoading = false;
+        }
+    }
+
+    private async Task ResumeGame(int sessionId)
+    {
+        try
+        {
+            var response = await Http.PostAsync($"http://localhost:5203/api/GameSession/{sessionId}/resume", null);
+            if (response.IsSuccessStatusCode)
+            {
+                var session = await response.Content.ReadFromJsonAsync<GameSessionResumeDto>();
+                if (session != null)
+                {
+                    // Naviguer vers la salle actuelle de la session
+                    Navigation.NavigateTo($"/new-adventure/room/{session.CurrentRoomId}");
+                }
+            }
+            else
+            {
+                errorMessage = "Erreur lors de la reprise de la partie.";
+            }
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Erreur lors de la reprise: {ex.Message}";
+            Console.WriteLine($"Erreur: {ex.Message}");
+        }
+    }
+
+    private async Task DeleteGame(int sessionId)
+    {
+        if (!await JS.InvokeAsync<bool>("confirm", "Êtes-vous sûr de vouloir supprimer cette partie ?"))
+        {
+            return;
+        }
+
+        try
+        {
+            var response = await Http.DeleteAsync($"http://localhost:5203/api/GameSession/{sessionId}");
+            if (response.IsSuccessStatusCode)
+            {
+                // Recharger l'historique
+                await LoadPlayerHistory();
+            }
+            else
+            {
+                errorMessage = "Erreur lors de la suppression de la partie.";
+            }
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Erreur lors de la suppression: {ex.Message}";
+            Console.WriteLine($"Erreur: {ex.Message}");
         }
     }
 
@@ -268,5 +339,30 @@
     {
         public int Count { get; set; }
         public List<GameSessionDto>? Data { get; set; }
+    }
+
+    public class PlayerDto
+    {
+        public int CharacterId { get; set; }
+        public string? Name { get; set; }
+        public string? UserId { get; set; }
+        public int HeartNumber { get; set; }
+        public double Health { get; set; }
+        public int Strength { get; set; }
+        public int Armor { get; set; }
+        public int Damage { get; set; }
+        public bool IsActive { get; set; }
+        public DateTime CreatedAt { get; set; }
+    }
+
+    public class GameSessionResumeDto
+    {
+        public int SessionId { get; set; }
+        public int CurrentRoomId { get; set; }
+        public int PlayerId { get; set; }
+        public int DungeonId { get; set; }
+        public int Score { get; set; }
+        public string? Status { get; set; }
+        public DateTime CreatedAt { get; set; }
     }
 }

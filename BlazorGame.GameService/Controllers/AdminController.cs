@@ -1,6 +1,7 @@
 using BlazorGame.GameService.Services;
 using BlazorGame.SharedModels.Enums.Environment;
 using BlazorGame.SharedModels.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BlazorGame.GameService.Controllers;
@@ -8,6 +9,7 @@ namespace BlazorGame.GameService.Controllers;
 /// <summary>
 /// Contrôleur pour visualiser toutes les données du jeu (Administration/Debugging).
 /// Utilisé pour consulter l'état global du jeu via Postman/Swagger.
+/// Accessible uniquement aux utilisateurs avec le rôle Admin.
 /// </summary>
 [Route("api/[controller]")]
 [ApiController]
@@ -42,6 +44,7 @@ public class AdminController : ControllerBase
     /// </summary>
     /// <returns>Objet contenant toutes les listes d'entités.</returns>
     [HttpGet("overview")]
+    [Authorize(Policy = "AdminOnly")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     public async Task<IActionResult> GetGameOverview()
     {
@@ -76,6 +79,7 @@ public class AdminController : ControllerBase
     /// </summary>
     /// <returns>Liste de toutes les salles.</returns>
     [HttpGet("rooms")]
+    [Authorize(Policy = "AdminOnly")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     public async Task<IActionResult> GetAllRooms()
     {
@@ -92,6 +96,7 @@ public class AdminController : ControllerBase
     /// </summary>
     /// <returns>Liste de tous les joueurs.</returns>
     [HttpGet("players")]
+    [Authorize(Policy = "AdminOnly")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     public async Task<IActionResult> GetAllPlayers()
     {
@@ -108,6 +113,7 @@ public class AdminController : ControllerBase
     /// </summary>
     /// <returns>Liste de tous les monstres.</returns>
     [HttpGet("monsters")]
+    [Authorize(Policy = "AdminOnly")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     public async Task<IActionResult> GetAllMonsters()
     {
@@ -124,6 +130,7 @@ public class AdminController : ControllerBase
     /// </summary>
     /// <returns>Liste de tous les donjons.</returns>
     [HttpGet("dungeons")]
+    [Authorize(Policy = "AdminOnly")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     public async Task<IActionResult> GetAllDungeons()
     {
@@ -140,6 +147,7 @@ public class AdminController : ControllerBase
     /// </summary>
     /// <returns>Liste de toutes les sessions.</returns>
     [HttpGet("sessions")]
+    [Authorize(Policy = "AdminOrPlayer")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     public async Task<IActionResult> GetAllSessions()
     {
@@ -156,6 +164,7 @@ public class AdminController : ControllerBase
     /// </summary>
     /// <returns>Liste des actions possibles avec leurs descriptions.</returns>
     [HttpGet("actions")]
+    [Authorize(Policy = "AdminOnly")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     public IActionResult GetAvailableActions()
     {
@@ -197,6 +206,7 @@ public class AdminController : ControllerBase
     /// </summary>
     /// <returns>Statistiques globales du jeu.</returns>
     [HttpGet("statistics")]
+    [Authorize(Policy = "AdminOnly")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     public async Task<IActionResult> GetGameStatistics()
     {
@@ -258,6 +268,7 @@ public class AdminController : ControllerBase
     /// <param name="isActive">True pour activer, False pour désactiver.</param>
     /// <returns>Le joueur mis à jour.</returns>
     [HttpPatch("players/{playerId}/toggle-active")]
+    [Authorize(Policy = "AdminOnly")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> TogglePlayerActive(int playerId, [FromQuery] bool isActive)
@@ -288,6 +299,7 @@ public class AdminController : ControllerBase
     /// <param name="playerId">Identifiant du joueur.</param>
     /// <returns>Confirmation de suppression.</returns>
     [HttpDelete("players/{playerId}")]
+    [Authorize(Policy = "AdminOnly")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> DeletePlayer(int playerId)
@@ -316,6 +328,7 @@ public class AdminController : ControllerBase
     /// <param name="top">Nombre de joueurs à afficher (par défaut 100).</param>
     /// <returns>Classement des joueurs.</returns>
     [HttpGet("leaderboard")]
+    [Authorize(Policy = "AdminOrPlayer")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     public async Task<IActionResult> GetLeaderboard([FromQuery] int top = 100)
     {
@@ -352,6 +365,7 @@ public class AdminController : ControllerBase
     /// <param name="playerId">Identifiant du joueur.</param>
     /// <returns>Statistiques du joueur.</returns>
     [HttpGet("players/{playerId}/stats")]
+    [Authorize(Policy = "AdminOrPlayer")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> GetPlayerStats(int playerId)
@@ -395,6 +409,7 @@ public class AdminController : ControllerBase
     /// </summary>
     /// <returns>Fichier CSV des joueurs.</returns>
     [HttpGet("players/export/csv")]
+    [Authorize(Policy = "AdminOnly")]
     [Produces("text/csv")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     public async Task<IActionResult> ExportPlayersToCsv()
@@ -417,6 +432,7 @@ public class AdminController : ControllerBase
     /// </summary>
     /// <returns>Fichier JSON des joueurs.</returns>
     [HttpGet("players/export/json")]
+    [Authorize(Policy = "AdminOnly")]
     [Produces("application/json")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     public async Task<IActionResult> ExportPlayersToJson()
@@ -430,6 +446,7 @@ public class AdminController : ControllerBase
     /// </summary>
     /// <returns>Fichier CSV du classement.</returns>
     [HttpGet("leaderboard/export/csv")]
+    [Authorize(Policy = "AdminOnly")]
     [Produces("text/csv")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     public async Task<IActionResult> ExportLeaderboardToCsv()

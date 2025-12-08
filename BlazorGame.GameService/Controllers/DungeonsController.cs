@@ -1,15 +1,18 @@
 using BlazorGame.GameService.Services;
 using BlazorGame.SharedModels.Enums.Environment;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BlazorGame.GameService.Controllers;
 
 /// <summary>
 /// Contrôleur pour gérer les API liées aux donjons.
+/// Accessible aux joueurs et administrateurs.
 /// </summary>
 [Route("api/[controller]")]
 [ApiController]
 [Produces("application/json")]
+[Authorize(Policy = "AdminOrPlayer")]
 public class DungeonController : ControllerBase
 {
     private readonly DungeonsService _dungeonService;

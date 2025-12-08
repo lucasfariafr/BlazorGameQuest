@@ -1,15 +1,19 @@
 using BlazorGame.GameService.Services;
 using BlazorGame.SharedModels.Models.Utils;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace BlazorGame.GameService.Controllers;
 
 /// <summary>
 /// Contrôleur pour gérer les API liées aux joueurs.
+/// Accessible aux joueurs et administrateurs.
 /// </summary>
 [Route("api/[controller]")]
 [ApiController]
 [Produces("application/json")]
+[Authorize(Policy = "AdminOrPlayer")]
 public class PlayerController : ControllerBase
 {
     private readonly PlayerService _playerService;
@@ -49,6 +53,26 @@ public class PlayerController : ControllerBase
             return NotFound(new { message = $"Le joueur avec l'ID {playerId} n'existe pas." });
         }
 
+        return Ok(player);
+    }
+
+    /// <summary>
+    /// Récupère ou crée le joueur associé à l'utilisateur connecté.
+    /// Garantit qu'un utilisateur ne peut avoir qu'un seul joueur.
+    /// </summary>
+    /// <returns>Le joueur associé à l'utilisateur connecté.</returns>
+    [HttpGet("me")]
+    public async Task<IActionResult> GetCurrentUserPlayer()
+    {
+        var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value
+                     ?? User.FindFirst("sub")?.Value;
+
+        if (string.IsNullOrEmpty(userId))
+        {
+            return Unauthorized(new { message = "Utilisateur non authentifié." });
+        }
+
+        var player = await _playerService.GetOrCreatePlayerForUserAsync(userId);
         return Ok(player);
     }
 

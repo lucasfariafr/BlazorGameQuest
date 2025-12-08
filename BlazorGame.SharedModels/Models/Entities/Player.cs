@@ -11,6 +11,13 @@ public class Player : Character
 {
 
     /// <summary>
+    /// Identifiant de l'utilisateur Keycloak associé à ce joueur.
+    /// Un utilisateur ne peut avoir qu'un seul joueur.
+    /// </summary>
+    [JsonPropertyOrder(0)]
+    public string? UserId { get; set; }
+
+    /// <summary>
     /// Nombre de coeurs restants du joueur.
     /// </summary>
     [JsonPropertyOrder(1)]

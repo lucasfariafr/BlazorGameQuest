@@ -33,30 +33,20 @@ public class GameSessionService
     }
 
     /// <summary>
-    /// Crée une nouvelle partie avec un nouveau joueur et un nouveau donjon.
+    /// Crée une nouvelle partie pour un joueur existant avec un nouveau donjon.
     /// </summary>
+    /// <param name="playerId">Identifiant du joueur.</param>
     /// <param name="dungeonLevel">Niveau de difficulté du donjon.</param>
     /// <param name="roomCount">Nombre de salles dans le donjon.</param>
     /// <returns>La session de jeu créée.</returns>
-    public async Task<GameSession> StartNewGameAsync(DungeonLevel dungeonLevel = DungeonLevel.Easy, int roomCount = 5)
+    public async Task<GameSession> StartNewGameAsync(int playerId, DungeonLevel dungeonLevel = DungeonLevel.Easy, int roomCount = 5)
     {
-        // Créer un nouveau joueur
-        var nextPlayerId = await _context.Player.AnyAsync()
-            ? await _context.Player.MaxAsync(p => p.CharacterId) + 1
-            : 1;
-
-        var player = new Player
+        // Récupérer le joueur existant
+        var player = await _context.Player.FindAsync(playerId);
+        if (player == null)
         {
-            CharacterId = nextPlayerId,
-            Strength = 10,
-            Armor = 5,
-            Health = GameConstants.MaxHealth,
-            HeartNumber = GameConstants.MaxHearts,
-            Potions = new List<Potion>()
-        };
-
-        _context.Player.Add(player);
-        await _context.SaveChangesAsync();
+            throw new ArgumentException($"Le joueur avec l'ID {playerId} n'existe pas.", nameof(playerId));
+        }
 
         // Générer un nouveau donjon
         var dungeon = await _dungeonsService.GenerateRandomDungeonAsync(dungeonLevel, roomCount);
