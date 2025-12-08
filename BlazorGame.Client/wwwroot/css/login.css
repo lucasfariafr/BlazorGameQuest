@@ -34,7 +34,7 @@ input::-webkit-calendar-picker-indicator {
   display: none !important;
 }
 
-.inputs-container input[type="email"],
+.inputs-container input[type="username"],
 .inputs-container input[type="password"],
 .inputs-container input[type="text"] {
   width: 100%;
@@ -112,4 +112,15 @@ button:disabled {
 
 .footer-container button:hover {
   background-color: #1f2937;
+}
+
+.error-message {
+  background-color: #fee2e2;
+  border: 1px solid #fca5a5;
+  color: #dc2626;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  font-size: 0.9rem;
+  text-align: center;
 }

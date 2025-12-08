@@ -1,21 +1,98 @@
 @page "/new-adventure"
+@using BlazorGame.SharedModels.DTOs
 @inject NavigationManager Navigation
+@inject HttpClient Http
 
 <PageTitle>Bladebound · Nouvelle aventure</PageTitle>
 
 <div class="adventure-container">
     <h4>Bienvenu dans Bladebound !</h4>
     <p>Une aventure palpitante vous attend… Oserez-vous relever le défi ?</p>
-    <button class="btn btn-primary" @onclick="StartNewGame">Commencer</button>
+
+    @if (!string.IsNullOrEmpty(errorMessage))
+    {
+        <div class="alert alert-danger">@errorMessage</div>
+    }
+
+    <div class="difficulty-selector mb-3">
+        <label class="form-label">Niveau de difficulté :</label>
+        <select class="form-select difficulty-select" @bind="selectedDifficulty">
+            <option value="Easy">Facile</option>
+            <option value="Medium">Moyen</option>
+            <option value="Difficult">Difficile</option>
+        </select>
+    </div>
+
+    <div class="rooms-selector mb-3">
+        <label class="form-label">Nombre de salles : @roomCount</label>
+        <input type="range" class="form-range" min="3" max="10" @bind="roomCount" />
+    </div>
+
+    @if (isLoading)
+    {
+        <div class="d-flex justify-content-center">
+            <div class="spinner-border text-primary" role="status"></div>
+        </div>
+    }
+    else
+    {
+        <button class="btn btn-primary btn-lg" @onclick="StartNewGame" disabled="@isLoading">Commencer l'aventure</button>
+    }
 </div>
 
 @code {
+    private bool isLoading = false;
+    private string? errorMessage;
+    private string selectedDifficulty = "Easy";
+    private int roomCount = 5;
 
     /// <summary>
-    /// Navigue dans la premiere salle.
+    /// Crée une nouvelle session de jeu et navigue vers la première salle.
     /// </summary>
-    private void StartNewGame()
+    private async Task StartNewGame()
     {
-        Navigation.NavigateTo("new-adventure/room/1");
+        isLoading = true;
+        errorMessage = null;
+
+        try
+        {
+            // Créer une nouvelle session de jeu via l'API
+            var request = new StartGameRequestDto
+            {
+                DifficultyLevel = selectedDifficulty,
+                RoomCount = roomCount
+            };
+
+            var response = await Http.PostAsJsonAsync(
+                "http://localhost:5203/api/GameSession/start",
+                request);
+
+            if (response.IsSuccessStatusCode)
+            {
+                var session = await response.Content.ReadFromJsonAsync<GameSessionDto>(
+                    new JsonSerializerOptions
+                    {
+                        PropertyNameCaseInsensitive = true
+                    });
+
+                if (session != null)
+                {
+                    Navigation.NavigateTo(
+                        $"new-adventure/room/{session.CurrentRoomId}?dungeonId={session.DungeonId}&playerId={session.PlayerId}&sessionId={session.SessionId}");
+                }
+            }
+            else
+            {
+                errorMessage = "Erreur lors de la création de la partie.";
+            }
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Erreur: {ex.Message}";
+        }
+        finally
+        {
+            isLoading = false;
+        }
     }
 }

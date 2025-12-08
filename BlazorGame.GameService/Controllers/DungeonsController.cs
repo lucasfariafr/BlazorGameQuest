@@ -1,11 +1,18 @@
+using BlazorGame.GameService.Services;
+using BlazorGame.SharedModels.Enums.Environment;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+
 namespace BlazorGame.GameService.Controllers;
 
 /// <summary>
 /// Contrôleur pour gérer les API liées aux donjons.
+/// Accessible aux joueurs et administrateurs.
 /// </summary>
 [Route("api/[controller]")]
 [ApiController]
 [Produces("application/json")]
+[Authorize(Policy = "AdminOrPlayer")]
 public class DungeonController : ControllerBase
 {
     private readonly DungeonsService _dungeonService;
@@ -45,5 +52,25 @@ public class DungeonController : ControllerBase
         }
 
         return Ok(dungeon);
+    }
+
+    /// <summary>
+    /// Génère un donjon aléatoire avec des salles, monstres et coffres.
+    /// </summary>
+    /// <param name="level">Niveau de difficulté (Easy, Medium, Difficult).</param>
+    /// <param name="roomCount">Nombre de salles à générer (par défaut 5).</param>
+    /// <returns>Le donjon généré.</returns>
+    [HttpPost("generate")]
+    public async Task<IActionResult> GenerateRandomDungeon(
+        [FromQuery] DungeonLevel level = DungeonLevel.Easy,
+        [FromQuery] int roomCount = 5)
+    {
+        if (roomCount < 1 || roomCount > 20)
+        {
+            return BadRequest(new { message = "Le nombre de salles doit être entre 1 et 20." });
+        }
+
+        var dungeon = await _dungeonService.GenerateRandomDungeonAsync(level, roomCount);
+        return CreatedAtAction(nameof(GetDungeonById), new { dungeonId = dungeon.DungeonId }, dungeon);
     }
 }

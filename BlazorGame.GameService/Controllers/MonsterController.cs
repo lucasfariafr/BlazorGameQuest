@@ -1,11 +1,19 @@
+using BlazorGame.GameService.Services;
+using BlazorGame.SharedModels.Enums.Entities;
+using BlazorGame.SharedModels.Models.Entities;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+
 namespace BlazorGame.GameService.Controllers;
 
 /// <summary>
 /// Contrôleur pour gérer les API liées aux monstres.
+/// Accessible aux joueurs et administrateurs.
 /// </summary>
 [Route("api/[controller]")]
 [ApiController]
 [Produces("application/json")]
+[Authorize(Policy = "AdminOrPlayer")]
 public class MonstersController : ControllerBase
 {
     private readonly MonstersService _monsterService;

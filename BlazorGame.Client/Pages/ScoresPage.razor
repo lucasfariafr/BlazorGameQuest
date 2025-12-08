@@ -1,56 +1,283 @@
 @page "/scores"
 @inject NavigationManager Navigation
+@inject HttpClient Http
+@inject IJSRuntime JS
 
-<PageTitle>Bladebound · Tableau de scores</PageTitle>
+<PageTitle>Bladebound · Classement Général</PageTitle>
 
-<div class="table-container">
-    <div class="header">
-        <div class="header-actions">
-            <button class="btn filter">Filter</button>
-            <button class="btn export">Exporter</button>
+<div class="scores-page">
+    <!-- En-tête -->
+    <div class="page-header">
+        <div class="container-fluid">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <h1 class="page-title">
+                        <span class="title-icon">🏆</span>
+                        Classement Général
+                    </h1>
+                    <p class="page-subtitle">Les meilleurs aventuriers de Bladebound</p>
+                </div>
+                <div class="col-md-6 text-end">
+                    <button class="btn btn-light" @onclick="LoadLeaderboard">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2z"/>
+                            <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466"/>
+                        </svg>
+                        Actualiser
+                    </button>
+                    <button class="btn btn-primary ms-2" @onclick="ExportLeaderboard">
+                        📥 Exporter
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
 
-    <table class="table-content">
-        <thead>
-            <tr>
-                <th>Joueur</th>
-                <th>Niveau</th>
-                <th>Score</th>
-                <th class="center">Salles explorées</th>
-                <th class="center">Trésors trouvés</th>
-                <th class="center">Ennemies vaincues</th>
-                <th class="center">Status</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><span class="player-name">Fafa</span></td>
-                <td>Moyen</td>
-                <td>2650</td>
-                <td class="center">12</td>
-                <td class="center">4</td>
-                <td class="center">8</td>
-                <td class="center"><span class="status survived">Victoire</span></td>
-            </tr>
-            <tr>
-                <td><span class="player-name">Hadj</span></td>
-                <td>Difficile</td>
-                <td>1600</td>
-                <td class="center">5</td>
-                <td class="center">1</td>
-                <td class="center">3</td>
-                <td class="center"><span class="status dead">Mort</span></td>
-            </tr>
-            <tr>
-                <td><span class="player-name">Fafa</span></td>
-                <td>Facile</td>
-                <td>1550</td>
-                <td class="center">12</td>
-                <td class="center">2</td>
-                <td class="center">10</td>
-                <td class="center"><span class="status survived">Victoire</span></td>
-            </tr>
-        </tbody>
-    </table>
+    @if (isLoading)
+    {
+        <div class="loading-container">
+            <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Chargement...</span>
+            </div>
+            <p class="mt-3">Chargement du classement...</p>
+        </div>
+    }
+    else
+    {
+        <div class="container-fluid py-4">
+            <!-- Podium (Top 3) -->
+            @if (leaderboard != null && leaderboard.Count >= 3)
+            {
+                <div class="podium-container mb-5">
+                    <div class="row justify-content-center">
+                        <!-- 2ème place -->
+                        <div class="col-md-4 order-md-1">
+                            <div class="podium-card second">
+                                <div class="podium-rank">
+                                    <span class="medal">🥈</span>
+                                    <span class="rank-number">2</span>
+                                </div>
+                                <div class="player-avatar">
+                                    <span class="avatar-icon">👤</span>
+                                </div>
+                                <h5 class="player-name">Joueur #@leaderboard[1].PlayerId</h5>
+                                <div class="player-score">@leaderboard[1].TotalScore pts</div>
+                                <div class="player-stats">
+                                    <div class="stat">
+                                        <span class="stat-value">@leaderboard[1].GamesPlayed</span>
+                                        <span class="stat-label">parties</span>
+                                    </div>
+                                    <div class="stat">
+                                        <span class="stat-value">@leaderboard[1].Victories</span>
+                                        <span class="stat-label">victoires</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 1ère place -->
+                        <div class="col-md-4 order-md-2">
+                            <div class="podium-card first">
+                                <div class="podium-rank">
+                                    <span class="medal">🥇</span>
+                                    <span class="rank-number">1</span>
+                                </div>
+                                <div class="player-avatar">
+                                    <span class="avatar-icon">👤</span>
+                                </div>
+                                <h5 class="player-name">Joueur #@leaderboard[0].PlayerId</h5>
+                                <div class="player-score">@leaderboard[0].TotalScore pts</div>
+                                <div class="player-stats">
+                                    <div class="stat">
+                                        <span class="stat-value">@leaderboard[0].GamesPlayed</span>
+                                        <span class="stat-label">parties</span>
+                                    </div>
+                                    <div class="stat">
+                                        <span class="stat-value">@leaderboard[0].Victories</span>
+                                        <span class="stat-label">victoires</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 3ème place -->
+                        <div class="col-md-4 order-md-3">
+                            <div class="podium-card third">
+                                <div class="podium-rank">
+                                    <span class="medal">🥉</span>
+                                    <span class="rank-number">3</span>
+                                </div>
+                                <div class="player-avatar">
+                                    <span class="avatar-icon">👤</span>
+                                </div>
+                                <h5 class="player-name">Joueur #@leaderboard[2].PlayerId</h5>
+                                <div class="player-score">@leaderboard[2].TotalScore pts</div>
+                                <div class="player-stats">
+                                    <div class="stat">
+                                        <span class="stat-value">@leaderboard[2].GamesPlayed</span>
+                                        <span class="stat-label">parties</span>
+                                    </div>
+                                    <div class="stat">
+                                        <span class="stat-value">@leaderboard[2].Victories</span>
+                                        <span class="stat-label">victoires</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+            <!-- Classement complet -->
+            <div class="card leaderboard-card">
+                <div class="card-header">
+                    <h5>📊 Classement Complet</h5>
+                    <div class="header-info">
+                        <span class="badge bg-primary">@(leaderboard?.Count ?? 0) joueurs</span>
+                    </div>
+                </div>
+                <div class="card-body">
+                    @if (leaderboard != null && leaderboard.Any())
+                    {
+                        <div class="leaderboard-table">
+                            <div class="table-header">
+                                <div class="col-rank">Rang</div>
+                                <div class="col-player">Joueur</div>
+                                <div class="col-score">Score Total</div>
+                                <div class="col-games">Parties</div>
+                                <div class="col-stats">Statistiques</div>
+                                <div class="col-avg">Moyenne</div>
+                            </div>
+                            @{
+                                int rank = 1;
+                            }
+                            @foreach (var entry in leaderboard)
+                            {
+                                <div class="table-row @(rank <= 3 ? "top-rank" : "")">
+                                    <div class="col-rank">
+                                        @if (rank <= 3)
+                                        {
+                                            <span class="medal-small">@GetMedalIcon(rank)</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="rank-text">#@rank</span>
+                                        }
+                                    </div>
+                                    <div class="col-player">
+                                        <div class="player-info">
+                                            <div class="player-id">Joueur #@entry.PlayerId</div>
+                                            <div class="player-meta">
+                                                Dernier jeu: @entry.LastPlayed.ToString("dd/MM/yyyy")
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-score">
+                                        <div class="score-total">@entry.TotalScore</div>
+                                        <div class="score-best">Record: @entry.BestScore</div>
+                                    </div>
+                                    <div class="col-games">
+                                        <div class="games-count">@entry.GamesPlayed</div>
+                                    </div>
+                                    <div class="col-stats">
+                                        <span class="stat-badge success">@entry.Victories V</span>
+                                        <span class="stat-badge danger">@entry.Defeats D</span>
+                                    </div>
+                                    <div class="col-avg">
+                                        <div class="avg-score">@entry.AverageScore.ToString("F1")</div>
+                                    </div>
+                                </div>
+                                rank++;
+                            }
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="empty-state">
+                            <div class="empty-icon">🏆</div>
+                            <h5>Aucun classement disponible</h5>
+                            <p>Soyez le premier à apparaître dans le classement !</p>
+                            <button class="btn btn-primary" @onclick='() => Navigation.NavigateTo("/new-adventure")'>
+                                Commencer une Aventure
+                            </button>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    }
+
+    @if (!string.IsNullOrEmpty(errorMessage))
+    {
+        <div class="toast-notification error">
+            ❌ @errorMessage
+        </div>
+    }
 </div>
+
+@code {
+    private bool isLoading = true;
+    private string? errorMessage;
+    private List<LeaderboardEntry>? leaderboard;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadLeaderboard();
+    }
+
+    private async Task LoadLeaderboard()
+    {
+        isLoading = true;
+        errorMessage = null;
+
+        try
+        {
+            var response = await Http.GetFromJsonAsync<LeaderboardResponse>($"http://localhost:5203/api/Admin/leaderboard?top=100");
+            if (response?.Data != null)
+            {
+                leaderboard = response.Data;
+            }
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Erreur lors du chargement du classement: {ex.Message}";
+            Console.WriteLine($"Erreur: {ex.Message}");
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+
+    private string GetMedalIcon(int rank) => rank switch
+    {
+        1 => "🥇",
+        2 => "🥈",
+        3 => "🥉",
+        _ => ""
+    };
+
+    private async Task ExportLeaderboard()
+    {
+        await JS.InvokeVoidAsync("open", "http://localhost:5203/api/Admin/leaderboard/export/csv", "_blank");
+    }
+
+    // DTOs
+    public class LeaderboardEntry
+    {
+        public int PlayerId { get; set; }
+        public int TotalScore { get; set; }
+        public int GamesPlayed { get; set; }
+        public int Victories { get; set; }
+        public int Defeats { get; set; }
+        public int BestScore { get; set; }
+        public double AverageScore { get; set; }
+        public DateTime LastPlayed { get; set; }
+    }
+
+    public class LeaderboardResponse
+    {
+        public int Count { get; set; }
+        public List<LeaderboardEntry>? Data { get; set; }
+    }
+}

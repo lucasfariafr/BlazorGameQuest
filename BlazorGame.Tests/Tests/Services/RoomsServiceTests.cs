@@ -1,3 +1,7 @@
+using BlazorGame.GameService.Data;
+using BlazorGame.GameService.Services;
+using Microsoft.EntityFrameworkCore;
+
 namespace BlazorGame.Tests.Tests;
 
 /// <summary>
@@ -137,5 +141,117 @@ public class RoomsServiceTests
         var room = await service.GetRoomByIdAsync(999);
 
         Assert.Null(room);
+    }
+
+    /// <summary>
+    /// Vérifie que les salles ont des IDs uniques.
+    /// </summary>
+    [Fact]
+    public async Task GetAllRoomsAsync_ShouldReturnRoomsWithUniqueIds()
+    {
+        using var context = CreateInMemoryContext();
+        var service = new RoomsService(context);
+
+        var rooms = await service.GetAllRoomsAsync();
+        var roomIds = rooms.Select(r => r.RoomId).ToList();
+
+        Assert.Equal(roomIds.Distinct().Count(), roomIds.Count);
+    }
+
+    /// <summary>
+    /// Vérifie que chaque salle a une liste d'actions non vide.
+    /// </summary>
+    [Fact]
+    public async Task GetAllRoomsAsync_EachRoom_ShouldHaveActions()
+    {
+        using var context = CreateInMemoryContext();
+        var service = new RoomsService(context);
+
+        var rooms = await service.GetAllRoomsAsync();
+
+        Assert.All(rooms, room =>
+        {
+            Assert.NotNull(room.Actions);
+            Assert.NotEmpty(room.Actions);
+        });
+    }
+
+    /// <summary>
+    /// Vérifie que GetRoomByIdAsync retourne la salle avec son ID correct.
+    /// </summary>
+    [Fact]
+    public async Task GetRoomByIdAsync_ShouldReturnCorrectRoom()
+    {
+        using var context = CreateInMemoryContext();
+        var service = new RoomsService(context);
+        var expectedRoom = context.Rooms.First();
+
+        var room = await service.GetRoomByIdAsync(expectedRoom.RoomId);
+
+        Assert.NotNull(room);
+        Assert.Equal(expectedRoom.Description, room.Description);
+    }
+
+    /// <summary>
+    /// Vérifie que les salles peuvent avoir des monstres.
+    /// </summary>
+    [Fact]
+    public async Task GetAllRoomsAsync_ShouldContainMonsterRooms()
+    {
+        using var context = CreateInMemoryContext();
+        var service = new RoomsService(context);
+
+        var rooms = await service.GetAllRoomsAsync();
+        var monstersRooms = rooms.Where(r => r.Monster != null);
+
+        Assert.NotEmpty(monstersRooms);
+    }
+
+    /// <summary>
+    /// Vérifie que les salles peuvent avoir des coffres.
+    /// </summary>
+    [Fact]
+    public async Task GetAllRoomsAsync_ShouldContainChestRooms()
+    {
+        using var context = CreateInMemoryContext();
+        var service = new RoomsService(context);
+
+        var rooms = await service.GetAllRoomsAsync();
+        var chestRooms = rooms.Where(r => r.Chest != null);
+
+        Assert.NotEmpty(chestRooms);
+    }
+
+    /// <summary>
+    /// Vérifie que GetRoomByIdAsync avec un ID valide ne retourne pas null.
+    /// </summary>
+    [Fact]
+    public async Task GetRoomByIdAsync_ValidId_ShouldNotReturnNull()
+    {
+        using var context = CreateInMemoryContext();
+        var service = new RoomsService(context);
+        var firstRoom = context.Rooms.First();
+
+        var room = await service.GetRoomByIdAsync(firstRoom.RoomId);
+
+        Assert.NotNull(room);
+    }
+
+    /// <summary>
+    /// Vérifie que les descriptions de salles sont non nulles.
+    /// </summary>
+    [Fact]
+    public async Task GetAllRoomsAsync_Descriptions_ShouldNotBeNull()
+    {
+        using var context = CreateInMemoryContext();
+        var service = new RoomsService(context);
+
+        var rooms = await service.GetAllRoomsAsync();
+
+        Assert.All(rooms, room =>
+        {
+            Assert.NotNull(room.Description);
+            Assert.NotEmpty(room.Description);
+        });
     }
 }

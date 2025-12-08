@@ -1,3 +1,10 @@
+using BlazorGame.GameService.Data;
+using BlazorGame.GameService.Services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using System.Text.Json.Serialization;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Configurer les services et l'injection de dépendances
@@ -9,13 +16,6 @@ builder.Services.AddDbContext<GameDatabaseContext>(opt =>
         .UseLazyLoadingProxies());
 
 var app = builder.Build();
-
-// Initialiser la base de données avec des données par défaut
-using (var scope = app.Services.CreateScope())
-{
-    var db = scope.ServiceProvider.GetRequiredService<GameDatabaseContext>();
-    DatabaseInitializer.Initialize(db);
-}
 
 // Configurer le pipeline de traitement des requêtes HTTP
 ConfigureMiddleware(app);
@@ -33,6 +33,8 @@ static void ConfigureServices(IServiceCollection services, IConfiguration config
     services.AddScoped<MonstersService>();
     services.AddScoped<PlayerService>();
     services.AddScoped<RoomsService>();
+    services.AddScoped<ActionService>();
+    services.AddScoped<GameSessionService>();
 
     // Configuration des contrôleurs avec options JSON
     services.AddControllers()
@@ -48,10 +50,63 @@ static void ConfigureServices(IServiceCollection services, IConfiguration config
     {
         options.AddPolicy("AllowBlazorClient", policy =>
         {
-            policy.WithOrigins("http://localhost:5133")
+            policy.WithOrigins("http://localhost:5000")
                   .AllowAnyHeader()
                   .AllowAnyMethod();
         });
+    });
+
+    // Configuration de l'authentification JWT
+    services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+        .AddJwtBearer(options =>
+        {
+            options.Authority = "http://localhost:8180/realms/efrei-realm";
+            options.RequireHttpsMetadata = false; // Pour développement uniquement
+            options.TokenValidationParameters = new TokenValidationParameters
+            {
+                ValidateIssuer = true,
+                ValidIssuer = "http://localhost:8180/realms/efrei-realm",
+                ValidateAudience = true,
+                ValidAudience = "account",
+                ValidateLifetime = true,
+                ValidateIssuerSigningKey = true,
+                RoleClaimType = System.Security.Claims.ClaimTypes.Role
+            };
+
+            // Transformer les claims pour extraire les rôles du token
+            options.Events = new Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerEvents
+            {
+                OnTokenValidated = context =>
+                {
+                    var claimsIdentity = context.Principal?.Identity as System.Security.Claims.ClaimsIdentity;
+                    if (claimsIdentity != null)
+                    {
+                        // Extraire les rôles du claim "roles" et les ajouter comme role claims
+                        var rolesClaim = claimsIdentity.FindFirst("roles");
+                        if (rolesClaim != null)
+                        {
+                            var roles = System.Text.Json.JsonSerializer.Deserialize<string[]>(rolesClaim.Value);
+                            if (roles != null)
+                            {
+                                foreach (var role in roles)
+                                {
+                                    claimsIdentity.AddClaim(new System.Security.Claims.Claim(
+                                        System.Security.Claims.ClaimTypes.Role, role));
+                                }
+                            }
+                        }
+                    }
+                    return System.Threading.Tasks.Task.CompletedTask;
+                }
+            };
+        });
+
+    // Configuration de l'autorisation avec politiques par rôle
+    services.AddAuthorization(options =>
+    {
+        options.AddPolicy("AdminOnly", policy => policy.RequireRole("Admin"));
+        options.AddPolicy("PlayerOnly", policy => policy.RequireRole("Player"));
+        options.AddPolicy("AdminOrPlayer", policy => policy.RequireRole("Admin", "Player"));
     });
 
     // Configuration Swagger pour la documentation de l'API
@@ -62,7 +117,16 @@ static void ConfigureServices(IServiceCollection services, IConfiguration config
         {
             Title = "Bladebound API v1",
             Version = "v1",
+            Description = "API REST pour le jeu Bladebound : gestion des donjons, joueurs, monstres et sessions de jeu",
         });
+
+        // Inclure les commentaires XML pour la documentation
+        var xmlFile = $"{System.Reflection.Assembly.GetExecutingAssembly().GetName().Name}.xml";
+        var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+        if (File.Exists(xmlPath))
+        {
+            c.IncludeXmlComments(xmlPath);
+        }
     });
 }
 
@@ -81,6 +145,7 @@ static void ConfigureMiddleware(WebApplication app)
     app.UseHttpsRedirection();
     app.UseCors("AllowBlazorClient");
     app.UseRouting();
+    app.UseAuthentication(); // Ajouté pour l'authentification JWT
     app.UseAuthorization();
 
     app.MapControllers();

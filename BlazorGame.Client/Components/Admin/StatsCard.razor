@@ -1,0 +1,51 @@
+@* Composant réutilisable pour afficher une carte de statistiques *@
+
+<div class="stats-card @CssClass" @onclick="OnClick">
+    <div class="stats-icon">
+        @Icon
+    </div>
+    <div class="stats-content">
+        <div class="stats-value">@Value</div>
+        <div class="stats-label">@Label</div>
+        @if (!string.IsNullOrEmpty(SubText))
+        {
+            <div class="stats-subtext">@SubText</div>
+        }
+    </div>
+    @if (Trend.HasValue)
+    {
+        <div class="stats-trend @(Trend.Value >= 0 ? "trend-up" : "trend-down")">
+            @if (Trend.Value >= 0)
+            {
+                <span>↗ +@Trend.Value%</span>
+            }
+            else
+            {
+                <span>↘ @Trend.Value%</span>
+            }
+        </div>
+    }
+</div>
+
+@code {
+    [Parameter]
+    public string? Icon { get; set; }
+
+    [Parameter]
+    public string? Value { get; set; }
+
+    [Parameter]
+    public string? Label { get; set; }
+
+    [Parameter]
+    public string? SubText { get; set; }
+
+    [Parameter]
+    public double? Trend { get; set; }
+
+    [Parameter]
+    public string? CssClass { get; set; }
+
+    [Parameter]
+    public EventCallback OnClick { get; set; }
+}

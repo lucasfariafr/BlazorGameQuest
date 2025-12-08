@@ -1,3 +1,8 @@
+using BlazorGame.GameService.Data;
+using BlazorGame.SharedModels.Enums.Entities;
+using BlazorGame.SharedModels.Models.Entities;
+using Microsoft.EntityFrameworkCore;
+
 namespace BlazorGame.GameService.Services;
 
 /// <summary>

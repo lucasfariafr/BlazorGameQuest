@@ -1,3 +1,9 @@
+using BlazorGame.SharedModels.Models;
+using BlazorGame.SharedModels.Models.Entities;
+using BlazorGame.SharedModels.Models.Environment;
+using BlazorGame.SharedModels.Models.Utils;
+using Microsoft.EntityFrameworkCore;
+
 namespace BlazorGame.GameService.Data;
 
 /// <summary>
@@ -26,6 +32,9 @@ public class GameDatabaseContext : DbContext
 
     /// <summary>Table des donjons.</summary>
     public DbSet<Dungeon> Dungeons { get; set; } = null!;
+
+    /// <summary>Table des sessions de jeu.</summary>
+    public DbSet<GameSession> GameSessions { get; set; } = null!;
 
     /// <summary>
     /// Initialise le contexte avec les options spécifiées.

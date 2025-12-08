@@ -1,3 +1,7 @@
+using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
+using BlazorGame.SharedModels.Enums.Entities;
+
 namespace BlazorGame.SharedModels.Models.Entities;
 
 /// <summary>

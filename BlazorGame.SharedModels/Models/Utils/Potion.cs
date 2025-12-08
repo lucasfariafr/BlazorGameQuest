@@ -1,3 +1,7 @@
+using System.ComponentModel.DataAnnotations;
+using BlazorGame.SharedModels.Data;
+using BlazorGame.SharedModels.Enums.Utils;
+
 namespace BlazorGame.SharedModels.Models.Utils;
 
 /// <summary>

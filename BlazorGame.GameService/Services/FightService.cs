@@ -1,3 +1,8 @@
+using BlazorGame.GameService.Data;
+using BlazorGame.SharedModels.Constants;
+using BlazorGame.SharedModels.DTOs;
+using BlazorGame.SharedModels.Models.Entities;
+
 namespace BlazorGame.GameService.Services;
 
 /// <summary>
@@ -77,6 +82,16 @@ public class FightService
             turns.Add(turn);
         }
 
+        // Gérer le système de cœurs si le joueur meurt
+        if (player.Health <= 0 && player.HeartNumber > 0)
+        {
+            player.HeartNumber--;
+            if (player.HeartNumber > 0)
+            {
+                player.Health = GameConstants.MaxHealth;
+            }
+        }
+
         return new FightResultDto
         {
             Turns = turns,
@@ -103,17 +118,20 @@ public class FightService
     /// </summary>
     private string DetermineFightOutcome(Player player, Monster monster)
     {
-        if (player.Health <= 0 && monster.Health <= 0)
-        {
-            return "Égalité : les deux combattants sont morts !";
-        }
-
-        if (player.Health <= 0)
+        // Le joueur est vraiment mort (plus de cœurs)
+        if (player.Health <= 0 && player.HeartNumber <= 0)
         {
             return $"Défaite : le joueur a été vaincu par le {monster.Type} !";
         }
 
-        return $"Victoire : le {monster.Type} a été vaincu !";
+        // Le monstre est mort
+        if (monster.Health <= 0)
+        {
+            return $"Victoire : le {monster.Type} a été vaincu !";
+        }
+
+        // Le joueur a perdu ce combat mais a des cœurs restants
+        return $"Vous avez perdu un cœur mais vous survivez !";
     }
 
     /// <summary>

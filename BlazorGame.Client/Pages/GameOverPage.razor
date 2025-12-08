@@ -1,0 +1,51 @@
+@page "/game-over"
+@inject NavigationManager Navigation
+
+<PageTitle>Bladebound · Game Over</PageTitle>
+
+<div class="gameover-container">
+    <div class="gameover-content">
+        <div class="gameover-icon">&#128128;</div>
+        <h1>Game Over</h1>
+        <p class="gameover-message">Vous avez été vaincu...</p>
+        <p class="gameover-description">Le donjon a eu raison de vous cette fois-ci. Mais un vrai héros n'abandonne jamais !</p>
+
+        <div class="score-display">
+            <span class="score-label">Score final</span>
+            <span class="score-value">@score</span>
+        </div>
+
+        <div class="gameover-actions">
+            <button class="btn btn-danger btn-lg" @onclick="TryAgain">
+                Réessayer
+            </button>
+            <button class="btn btn-outline-secondary" @onclick="GoHome">
+                Retour à l'accueil
+            </button>
+        </div>
+    </div>
+</div>
+
+@code {
+    private int score = 0;
+
+    protected override void OnInitialized()
+    {
+        var uri = new Uri(Navigation.Uri);
+        var query = System.Web.HttpUtility.ParseQueryString(uri.Query);
+        if (int.TryParse(query["score"], out var s))
+        {
+            score = s;
+        }
+    }
+
+    private void TryAgain()
+    {
+        Navigation.NavigateTo("/new-adventure");
+    }
+
+    private void GoHome()
+    {
+        Navigation.NavigateTo("/home");
+    }
+}

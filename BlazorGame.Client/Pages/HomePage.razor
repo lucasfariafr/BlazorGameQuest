@@ -8,8 +8,11 @@
         <h4>
             Prêt pour le <span class="highlight">défi</span> ?
         </h4>
-        <p>Entre dans l’arène.</p>
-        <button class="btn btn-primary" @onclick="HandleStart">Rejoins moi !</button>
+        <p>Entre dans l'arène.</p>
+        <div class="home-actions">
+            <button class="btn btn-primary" @onclick="HandleStart">Nouvelle aventure</button>
+            <button class="btn btn-outline-secondary" @onclick="HandleLoadGame">Reprendre une partie</button>
+        </div>
     </div>
     <div class="right-side">
         <img src="images/icons/hero-icon.png" alt="Icône du joueur" />
@@ -24,5 +27,13 @@
     private void HandleStart()
     {
         Navigation.NavigateTo("/new-adventure");
+    }
+
+    /// <summary>
+    /// Navigue vers les parties sauvegardées.
+    /// </summary>
+    private void HandleLoadGame()
+    {
+        Navigation.NavigateTo("/saved-games");
     }
 }
