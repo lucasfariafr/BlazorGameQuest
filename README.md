@@ -84,11 +84,6 @@ Ensuite, ouvrez l’application à l’adresse suivante : http://localhost:5000/
 
 Dans un terminal, exécutez :
 
-```bash
-cd BlazorGame.Tests
-dotnet test --collect:"XPlat Code Coverage"
-```
-
 ## Notes
 
 - Assurez-vous que GameService est lancé avant de démarrer le frontend.
