@@ -93,7 +93,7 @@
         try
         {
             savedGames = await Http.GetFromJsonAsync<List<SavedGameDto>>(
-                "http://localhost:5203/api/GameSession/saved",
+                "api/GameSession/saved",
                 new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
         }
         catch
@@ -114,7 +114,7 @@
         try
         {
             var response = await Http.PostAsync(
-                $"http://localhost:5203/api/GameSession/{game.SessionId}/resume",
+                $"api/GameSession/{game.SessionId}/resume",
                 null);
 
             if (response.IsSuccessStatusCode)
@@ -141,7 +141,7 @@
         isDeleting = true;
         try
         {
-            await Http.DeleteAsync($"http://localhost:5203/api/GameSession/{sessionId}");
+            await Http.DeleteAsync($"api/GameSession/{sessionId}");
             await LoadSavedGames();
         }
         finally

@@ -186,13 +186,13 @@
         try
         {
             // Récupérer le joueur de l'utilisateur connecté (le token est ajouté automatiquement)
-            var player = await Http.GetFromJsonAsync<PlayerDto>($"http://localhost:5203/api/Player/me");
+            var player = await Http.GetFromJsonAsync<PlayerDto>($"api/Player/me");
             if (player != null)
             {
                 currentPlayerId = player.CharacterId;
 
                 // Récupérer toutes les sessions et filtrer par joueur
-                var response = await Http.GetFromJsonAsync<SessionsResponse>($"http://localhost:5203/api/Admin/sessions");
+                var response = await Http.GetFromJsonAsync<SessionsResponse>($"api/Admin/sessions");
                 if (response?.Data != null)
                 {
                     playerSessions = response.Data.Where(s => s.PlayerId == currentPlayerId).ToList();
@@ -214,7 +214,7 @@
     {
         try
         {
-            var response = await Http.PostAsync($"http://localhost:5203/api/GameSession/{sessionId}/resume", null);
+            var response = await Http.PostAsync($"api/GameSession/{sessionId}/resume", null);
             if (response.IsSuccessStatusCode)
             {
                 var session = await response.Content.ReadFromJsonAsync<GameSessionResumeDto>();
@@ -245,7 +245,7 @@
 
         try
         {
-            var response = await Http.DeleteAsync($"http://localhost:5203/api/GameSession/{sessionId}");
+            var response = await Http.DeleteAsync($"api/GameSession/{sessionId}");
             if (response.IsSuccessStatusCode)
             {
                 // Recharger l'historique

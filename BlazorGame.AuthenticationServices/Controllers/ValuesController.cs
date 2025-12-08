@@ -10,14 +10,14 @@ public class ValuesController : ControllerBase
 {
     [HttpGet("get-admin")]
     [Authorize(Roles = "Admin")]
-    public IActionResult teste()
+    public IActionResult GetAdmin()
     {
         return Ok("Je suis un admin");
     }
 
     [HttpGet("get-player")]
     [Authorize(Roles = "Player")]
-    public IActionResult GetGeneral()
+    public IActionResult GetPlayer()
     {
         return Ok("Je suis un joueur");
     }

@@ -118,7 +118,7 @@ else
     {
         try
         {
-            var player = await Http.GetFromJsonAsync<Player>($"http://localhost:5203/api/Player/{playerId}", new JsonSerializerOptions
+            var player = await Http.GetFromJsonAsync<Player>($"api/Player/{playerId}", new JsonSerializerOptions
             {
                 Converters = { new JsonStringEnumConverter() },
                 PropertyNameCaseInsensitive = true
@@ -155,7 +155,7 @@ else
     /// </summary>
     private async Task LoadRoom()
     {
-        room = await Http.GetFromJsonAsync<Room>($"http://localhost:5203/api/Rooms/{roomId}", new JsonSerializerOptions
+        room = await Http.GetFromJsonAsync<Room>($"api/Rooms/{roomId}", new JsonSerializerOptions
         {
             Converters = { new JsonStringEnumConverter() },
             PropertyNameCaseInsensitive = true

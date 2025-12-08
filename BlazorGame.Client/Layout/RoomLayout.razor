@@ -202,7 +202,7 @@
             };
 
             var response = await Http.PostAsync(
-                $"http://localhost:5203/api/Action/{endpoint}?playerId={PlayerId}&roomId={RoomId}&dungeonId={DungeonId}",
+                $"api/Action/{endpoint}?playerId={PlayerId}&roomId={RoomId}&dungeonId={DungeonId}",
                 null);
 
             if (response.IsSuccessStatusCode)
@@ -290,7 +290,7 @@
         try
         {
             var response = await Http.PostAsync(
-                $"http://localhost:5203/api/GameSession/{SessionId}/save?currentRoomId={RoomId}",
+                $"api/GameSession/{SessionId}/save?currentRoomId={RoomId}",
                 null);
 
             if (response.IsSuccessStatusCode)

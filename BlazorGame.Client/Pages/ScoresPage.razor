@@ -232,7 +232,7 @@
 
         try
         {
-            var response = await Http.GetFromJsonAsync<LeaderboardResponse>($"http://localhost:5203/api/Admin/leaderboard?top=100");
+            var response = await Http.GetFromJsonAsync<LeaderboardResponse>($"api/Admin/leaderboard?top=100");
             if (response?.Data != null)
             {
                 leaderboard = response.Data;
@@ -259,7 +259,7 @@
 
     private async Task ExportLeaderboard()
     {
-        await JS.InvokeVoidAsync("open", "http://localhost:5203/api/Admin/leaderboard/export/csv", "_blank");
+        await JS.InvokeVoidAsync("open", "api/Admin/leaderboard/export/csv", "_blank");
     }
 
     // DTOs

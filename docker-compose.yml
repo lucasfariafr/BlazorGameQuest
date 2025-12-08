@@ -20,6 +20,19 @@ services:
     networks:
       - appnet
   
+  api-gateway:
+    build:
+      context: .
+      dockerfile: BlazorGame.Gateway/Dockerfile
+    container_name: api_gateway
+    ports:
+      - "5000:5000"
+    depends_on:
+      - keycloak-auth-service
+      - game-service
+    networks:
+      - appnet
+
   keycloak-auth-service:
     build:
       context: .
@@ -29,6 +42,17 @@ services:
       - "5051:5051"
     networks:
       - appnet
+
+  game-service:
+    build:
+      context: .
+      dockerfile: BlazorGame.GameService/Dockerfile
+    container_name: game_service
+    ports:
+      - "5203:5203"
+    networks:
+      - appnet
+
 
 volumes:
   postgres_data:

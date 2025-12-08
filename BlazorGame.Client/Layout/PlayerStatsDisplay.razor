@@ -145,7 +145,7 @@
         try
         {
             var response = await Http.PostAsync(
-                $"http://localhost:5203/api/Player/{PlayerId}/use-potion/{potionId}",
+                $"api/Player/{PlayerId}/use-potion/{potionId}",
                 null);
 
             if (response.IsSuccessStatusCode)

@@ -116,7 +116,7 @@
 
         try
         {
-            var response = await Http.PostAsJsonAsync("http://localhost:5051/api/auth/login", credentials);
+            var response = await Http.PostAsJsonAsync("auth/login", credentials);
             
             if (response.IsSuccessStatusCode)
             {

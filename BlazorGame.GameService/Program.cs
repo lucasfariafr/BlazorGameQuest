@@ -20,7 +20,7 @@ var app = builder.Build();
 // Configurer le pipeline de traitement des requêtes HTTP
 ConfigureMiddleware(app);
 
-app.Run();
+app.Run("http://0.0.0.0:5203");
 
 /// <summary>
 /// Configure les services de l'application et l'injection de dépendances.
@@ -50,22 +50,28 @@ static void ConfigureServices(IServiceCollection services, IConfiguration config
     {
         options.AddPolicy("AllowBlazorClient", policy =>
         {
-            policy.WithOrigins("http://localhost:5000")
+            policy.WithOrigins("http://localhost:5001")
                   .AllowAnyHeader()
                   .AllowAnyMethod();
         });
     });
 
     // Configuration de l'authentification JWT
+    var keycloakBaseUrl = configuration["Keycloak:BaseUrl"] ?? "http://localhost:8180";
+    var keycloakRealm = configuration["Keycloak:Realm"] ?? "efrei-realm";
+    var keycloakAuthority = $"{keycloakBaseUrl}/realms/{keycloakRealm}";
+    
+    var tokenIssuer = "http://localhost:8180/realms/efrei-realm";
+    
     services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         .AddJwtBearer(options =>
         {
-            options.Authority = "http://localhost:8180/realms/efrei-realm";
-            options.RequireHttpsMetadata = false; // Pour développement uniquement
+            options.Authority = keycloakAuthority;
+            options.RequireHttpsMetadata = false;
             options.TokenValidationParameters = new TokenValidationParameters
             {
                 ValidateIssuer = true,
-                ValidIssuer = "http://localhost:8180/realms/efrei-realm",
+                ValidIssuer = tokenIssuer,
                 ValidateAudience = true,
                 ValidAudience = "account",
                 ValidateLifetime = true,
@@ -73,7 +79,6 @@ static void ConfigureServices(IServiceCollection services, IConfiguration config
                 RoleClaimType = System.Security.Claims.ClaimTypes.Role
             };
 
-            // Transformer les claims pour extraire les rôles du token
             options.Events = new Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerEvents
             {
                 OnTokenValidated = context =>
@@ -81,7 +86,6 @@ static void ConfigureServices(IServiceCollection services, IConfiguration config
                     var claimsIdentity = context.Principal?.Identity as System.Security.Claims.ClaimsIdentity;
                     if (claimsIdentity != null)
                     {
-                        // Extraire les rôles du claim "roles" et les ajouter comme role claims
                         var rolesClaim = claimsIdentity.FindFirst("roles");
                         if (rolesClaim != null)
                         {
@@ -145,7 +149,7 @@ static void ConfigureMiddleware(WebApplication app)
     app.UseHttpsRedirection();
     app.UseCors("AllowBlazorClient");
     app.UseRouting();
-    app.UseAuthentication(); // Ajouté pour l'authentification JWT
+    app.UseAuthentication();
     app.UseAuthorization();
 
     app.MapControllers();
